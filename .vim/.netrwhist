@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/etc/nginx/sites-enabled'
-let g:netrw_dirhist_2='/home/karambir/Codes/song-bot'
-let g:netrw_dirhist_3='/home/karambir/Codes/showbookie/showbookie/settings'
-let g:netrw_dirhist_4='/home/karambir/Codes/codesters/templates/search'
-let g:netrw_dirhist_5='/home/karambir/Codes/bazaarshastra/bazaarshastra'

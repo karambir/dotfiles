@@ -20,6 +20,13 @@ alias _apache="sudo service apache2"
 alias p="ipython"
 alias v="vim"
 
+#Vagrant Commands
+alias vgi="vagrant init"
+alias vga="vagrant add"
+alias vgu="vagrant up"
+alias vgs="vagrant ssh"
+alias vgh="vagrant halt"
+
 # SSH
 
 # Django Commands
@@ -42,7 +49,7 @@ alias s="sudo"
 alias root="sudo su"
 alias i="sudo apt-get install"
 alias up="sudo apt-get update"
-alias ug="sudo apt-get update"
+alias ug="sudo apt-get upgrade"
 
 if [ $(uname) = "Linux" ]
 then
@@ -83,13 +90,24 @@ alias	md='mkdir -p'
 alias	rd=rmdir
 
 function service-help() {
+echo "Service Alias Usage"
 echo "_mysql   = sudo service mysql"
 echo "_postgre = sudo service postgresql"
 echo "_nginx   = sudo service nginx"
 echo "_apache  = sudo service apache2" 
 }
 
+function vagrant-help() {
+echo "Vagrant Alias Usage"
+echo "vgi = vagrant init"
+echo "vga = vagrant add"
+echo "vgu = vagrant up"
+echo "vgs = vagrant ssh"
+echo "vgh = vagrant halt"
+}
+
 function django-help() {
+echo "Django Alias Usage"
 echo "djrun    = ./manage.py runserver"
 echo "djshell  = ./manage.py shell_plus"
 echo "djmigrate= ./manage.py migrate"
