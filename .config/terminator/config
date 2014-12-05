@@ -1,0 +1,48 @@
+[global_config]
+  title_transmit_bg_color = "#d30102"
+  focus = system
+[keybindings]
+[profiles]
+  [[default]]
+    use_system_font = False
+    background_darkness = 0.64
+    background_type = transparent
+    background_image = None
+    foreground_color = "#ffffff"
+    font = Ubuntu Mono 12
+    scrollback_infinite = True
+  [[solarized-dark]]
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    background_image = None
+    cursor_color = "#eee8d5"
+    foreground_color = "#eee8d5"
+    background_color = "#002b36"
+    scrollback_infinite = True
+  [[trans]]
+    use_system_font = False
+    background_darkness = 0.64
+    background_type = transparent
+    background_image = None
+    foreground_color = "#ffffff"
+    font = Ubuntu Mono 12
+    scrollback_infinite = True
+  [[test]]
+    palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000cd:#cd00cd:#00cdcd:#faebd7:#404040:#ff0000:#00ff00:#ffff00:#0000ff:#ff00ff:#00ffff:#ffffff"
+    background_image = None
+  [[solarized-light]]
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    background_image = None
+    cursor_color = "#002b36"
+    foreground_color = "#002b36"
+    background_color = "#eee8d5"
+    scrollback_infinite = True
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = trans
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
