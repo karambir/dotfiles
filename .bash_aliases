@@ -140,7 +140,7 @@ echo
 # Git Aliases
 alias gcl='git clone'
 alias ga='git add'
-alias gall='git add .'
+alias gall='git add --all .'
 alias g='git'
 alias get='git'
 alias gst='git status'
