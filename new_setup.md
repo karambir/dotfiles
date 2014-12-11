@@ -12,7 +12,6 @@ tree
 curl
 python-pip
 ipython
-youtube-dl
 gparted
 nginx
 postgresql-9.3
@@ -27,6 +26,7 @@ sudo update-rc.d -f postgresql disable
 ## sudo pip install>>
 virtualenvwrapper
 requests
+youtube-dl (apt-get have old version, which does play good with playlists)
 
 ## setup vim:
 copy vimrc from dotfiles repo
