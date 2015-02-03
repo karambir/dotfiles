@@ -24,9 +24,9 @@
 + sudo update-rc.d -f postgresql disable
 
 ## sudo pip install>>
-+ virtualenvwrapper
++ virtualenvwrapper (it will install virtualenv also)
 + requests
-+ youtube-dl (apt-get have old version, which does play good with playlists)
++ youtube-dl (apt-get have old version, which does not play good with playlists)
 
 ## setup vim:
 + copy vimrc from dotfiles repo
