@@ -28,10 +28,10 @@ set t_Co=16
 let g:solarized_termcolors = 16
 let NERDTreeIgnore = ['\.pyc$']
 if has('gui_running')
-    colorscheme jellybeans
-    set background=dark
+    colorscheme peaksea
+"    set background=dark
 else
-    colorscheme jellybeans
+    colorscheme peaksea
 endif
 
 "Use dollar sign when changing something
@@ -333,6 +333,14 @@ endfunction
 
 "spell check when writing commit logs
 autocmd filetype svn,*commit* setlocal spell
+
+"Set tab length to 2 spaces for html, css and js
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype js setlocal ts=2 sts=2 sw=2
+autocmd Filetype css setlocal ts=2 sts=2 sw=2
+
+"Recognize .gs google script files as javascript
+autocmd BufRead,BufNewFile *.gs setfiletype javascript
 
 "http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
 "hacks from above (the url, not jesus) to delete fugitive buffers when we

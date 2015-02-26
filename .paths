@@ -1,2 +1,2 @@
-export WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME=$HOME/envs
 source /usr/local/bin/virtualenvwrapper.sh
