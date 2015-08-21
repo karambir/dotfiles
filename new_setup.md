@@ -18,13 +18,13 @@
 + postgresql-server-dev-9.3
 + gnome-shell (make gdm default)
 + chromium-browser
++ python-pip virtualenvwrapper
 
 ## Disable nginx, postgres on startup
 + sudo update-rc.d -f nginx disable
 + sudo update-rc.d -f postgresql disable
 
 ## sudo pip install>>
-+ virtualenvwrapper (it will install virtualenv also)
 + requests
 + youtube-dl (apt-get have old version, which does not play good with playlists)
 
