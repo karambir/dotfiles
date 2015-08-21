@@ -19,7 +19,6 @@ These dotfiles were extended from [Swarrop CH dotbash](https://github.com/swaroo
 + Add a symbolic link to ./vim/vimrc at .vimrc
 + Vimrc will install vim wakatime plugin. If you are not using it then it from .vim/vimrc file.
 + Vimrc also try to get Source Code Pro font. Download it and install it in your system.
-+ Bash paths file assumes you are using virtualenvwrapper. Remove it if you are not.
 
 ##Note:
 

@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# Personal aliases
-makecfunc() {
-clang -ggdb3 -O0 -std=c99 -Wall -Werror $1.c -o $1
-}
-makecfunccs50() {
-clang -ggdb3 -O0 -std=c99 -Wall -Werror $1.c -lcs50 -lm -o $1
-}
-alias makec=makecfunc
-alias makecs50=makecfunccs50
-
 # Services
 alias _mysql="sudo service mysql"
 alias _postgre="sudo service postgresql"
@@ -18,6 +8,7 @@ alias _apache="sudo service apache2"
 
 # Run Programs 
 alias p="ipython"
+alias pi="pip install"
 alias v="vim"
 
 #Vagrant Commands
@@ -40,6 +31,7 @@ alias sl=ls
 alias ls='ls -G'        # Compact view, show colors
 alias la='ls -AF'       # Compact view, show hidden
 alias ll='ls -lhrt'
+alias lla='ls -lahrt'
 alias l='ls -a'
 alias l1='ls -1'
 
@@ -121,6 +113,7 @@ echo "  sl      = ls"
 echo "  ls      = ls -G"
 echo "  la      = ls -AF"
 echo "  ll      = ls -al"
+echo "  lla     = ls -lahrt"
 echo "  l       = ls -a"
 echo "  k/clr = clear"
 echo "  ..      = cd .."
