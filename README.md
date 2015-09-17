@@ -12,6 +12,7 @@ These dotfiles were extended from [Swarrop CH dotbash](https://github.com/swaroo
 + Print help for bash aliases.
 + Vim themes and some basic plugins using Bundle.
 + A colorful bash prompt with info about git branch and virtualenv. From [this gist](https://gist.github.com/insin/1425703)
++ Lots of helpful git aliases from [here](https://github.com/theskumar/dotfiles)
 
 ##Usage:
 
