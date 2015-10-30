@@ -2,21 +2,32 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 " alternatively, pass a path where Vundle should install plugins
 "let path = '~/some/path/here'
 "call vundle#rc(path)
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Bundle 'millermedeiros/vim-statline'
-Bundle 'wakatime/vim-wakatime'
-Bundle 'mattn/emmet-vim'
+Plugin 'millermedeiros/vim-statline'
+Plugin 'wakatime/vim-wakatime'
+Plugin 'mattn/emmet-vim'
+Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
+"Plugin 'fisadev/vim-isort'
+Plugin 'scrooloose/nerdtree'
+Plugin 'wincent/command-t'
+Plugin 'editorconfig/editorconfig-vim'
 
+
+let mapleader=" "
+
+:set guioptions-=T  "remove toolbar
 
 "Set font to Source Code Pro
 if has('gui_running')
@@ -28,10 +39,10 @@ set t_Co=16
 let g:solarized_termcolors = 16
 let NERDTreeIgnore = ['\.pyc$']
 if has('gui_running')
-    colorscheme peaksea
-"    set background=dark
+    colorscheme jellybeans
+    set background=dark
 else
-    colorscheme peaksea
+    colorscheme jellybeans
 endif
 
 "Use dollar sign when changing something
@@ -231,7 +242,7 @@ endfunction
 "recalculate the long line warning when idle and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
 
-"return a warning for "long lines" where "long" is either &textwidth or 80 (if
+"return a warning for "long lines" where "long" is either &textwidth or 120 (if
 "no &textwidth is set)
 "
 "return '' if no long lines
@@ -262,7 +273,7 @@ endfunction
 
 "return a list containing the lengths of the long lines in this buffer
 function! s:LongLines()
-    let threshold = (&tw ? &tw : 80)
+    let threshold = (&tw ? &tw : 120)
     let spaces = repeat(" ", &ts)
     let line_lens = map(getline(1,'$'), 'len(substitute(v:val, "\\t", spaces, "g"))')
     return filter(line_lens, 'v:val > threshold')
@@ -284,6 +295,11 @@ endfunction
 "nerdtree settings
 let g:NERDTreeMouseMode = 2
 let g:NERDTreeWinSize = 40
+
+"open a NERDTree automatically when vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 
 "explorer mappings
 nnoremap <f1> :BufExplorer<cr>
@@ -334,14 +350,6 @@ endfunction
 "spell check when writing commit logs
 autocmd filetype svn,*commit* setlocal spell
 
-"Set tab length to 2 spaces for html, css and js
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype js setlocal ts=2 sts=2 sw=2
-autocmd Filetype css setlocal ts=2 sts=2 sw=2
-
-"Recognize .gs google script files as javascript
-autocmd BufRead,BufNewFile *.gs setfiletype javascript
-
 "http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
 "hacks from above (the url, not jesus) to delete fugitive buffers when we
 "leave them - otherwise the buffer list gets poluted
@@ -353,3 +361,13 @@ autocmd BufReadPost fugitive://*
   \   nnoremap <buffer> .. :edit %:h<CR> |
   \ endif
 
+"Disable ropes autocompletion from python mode
+"let g:pymode_rope_lookup_project = 0
+"let g:pymode_rope_completion = 0
+"let g:pymode_rope_complete_on_dot = 0
+
+"Tell jedi to force python version. Helps in auto-completion
+"let g:jedi#force_py_version = 3
+
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
