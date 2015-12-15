@@ -11,18 +11,15 @@ call vundle#rc()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'millermedeiros/vim-statline'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'mattn/emmet-vim'
 Plugin 'Lokaltog/vim-easymotion'
-"Plugin 'klen/python-mode'
-Plugin 'davidhalter/jedi-vim'
-"Plugin 'fisadev/vim-isort'
 Plugin 'scrooloose/nerdtree'
 Plugin 'wincent/command-t'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'szw/vim-tags'
 
 
 let mapleader=" "
@@ -78,7 +75,7 @@ if v:version >= 703
     set undodir=~/.vim/undofiles
     set undofile
 
-    set colorcolumn=+1 "mark the ideal max text width
+    set colorcolumn=+41 "mark the ideal max text width
 endif
 
 "default indent settings
@@ -150,8 +147,6 @@ set statusline+=%*
 set statusline+=%#identifier#
 set statusline+=%m
 set statusline+=%*
-
-set statusline+=%{fugitive#statusline()}
 
 "display a warning if &et is wrong, or we have mixed-indenting
 set statusline+=%#error#
@@ -350,24 +345,6 @@ endfunction
 "spell check when writing commit logs
 autocmd filetype svn,*commit* setlocal spell
 
-"http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
-"hacks from above (the url, not jesus) to delete fugitive buffers when we
-"leave them - otherwise the buffer list gets poluted
-"
-"add a mapping on .. to view parent tree
-autocmd BufReadPost fugitive://* set bufhidden=delete
-autocmd BufReadPost fugitive://*
-  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-  \   nnoremap <buffer> .. :edit %:h<CR> |
-  \ endif
+map <F4> :!ctags -R --python-kinds=-i --languages=python -f $VIRTUAL_ENV/.tags $VIRTUAL_ENV/lib/python*/site-packages<CT>
+set tags=$VIRTUAL_ENV/.tags
 
-"Disable ropes autocompletion from python mode
-"let g:pymode_rope_lookup_project = 0
-"let g:pymode_rope_completion = 0
-"let g:pymode_rope_complete_on_dot = 0
-
-"Tell jedi to force python version. Helps in auto-completion
-"let g:jedi#force_py_version = 3
-
-nmap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)

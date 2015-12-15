@@ -1,30 +1,20 @@
 #!/bin/bash
 
-# Services
-alias _mysql="sudo service mysql"
-alias _postgre="sudo service postgresql"
-alias _nginx="sudo service nginx"
-alias _apache="sudo service apache2" 
-
 # Run Programs 
 alias p="ipython"
 alias pi="pip install"
 alias v="vim"
 
-#Vagrant Commands
-alias vgi="vagrant init"
-alias vga="vagrant add"
-alias vgu="vagrant up"
-alias vgs="vagrant ssh"
-alias vgh="vagrant halt"
+# Gen ctags for Python projects
+alias pygenctags='ctags -R --python-kinds=-i --languages=python -f $VIRTUAL_ENV/.tags $VIRTUAL_ENV/lib/python*/site-packages'
 
 # SSH
 
 # Django Commands
-alias djrun="./manage.py runserver"
-alias djshell="./manage.py shell_plus"
-alias djmigrate="./manage.py migrate"
-alias djstatic="./manage.py collecstatic"
+alias djrun="python manage.py runserver"
+alias djshell="python manage.py shell_plus"
+alias djmigrate="python manage.py migrate"
+alias djstatic="python manage.py collecstatic"
 
 # List directory contents
 alias sl=ls
@@ -39,9 +29,9 @@ alias l1='ls -1'
 # Sudo related
 alias s="sudo"
 alias root="sudo su"
-alias i="sudo apt-get install"
-alias up="sudo apt-get update"
-alias ug="sudo apt-get upgrade"
+alias i="sudo pacman -S"
+alias ug="sudo pacman -Syu"
+alias up="sudo pacman -Sy"
 
 if [ $(uname) = "Linux" ]
 then
@@ -80,23 +70,6 @@ fi
 # Directory
 alias	md='mkdir -p'
 alias	rd=rmdir
-
-function service-help() {
-echo "Service Alias Usage"
-echo "_mysql   = sudo service mysql"
-echo "_postgre = sudo service postgresql"
-echo "_nginx   = sudo service nginx"
-echo "_apache  = sudo service apache2" 
-}
-
-function vagrant-help() {
-echo "Vagrant Alias Usage"
-echo "vgi = vagrant init"
-echo "vga = vagrant add"
-echo "vgu = vagrant up"
-echo "vgs = vagrant ssh"
-echo "vgh = vagrant halt"
-}
 
 function django-help() {
 echo "Django Alias Usage"
