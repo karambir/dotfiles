@@ -1,37 +1,56 @@
 #!/bin/bash
 
-# Run Programs 
-alias p="ipython"
-alias pi="pip install"
-alias v="vim"
+alias mycow='fortune | cowsay | lolcat'
 
 # Gen ctags for Python projects
 alias pygenctags='ctags -R --python-kinds=-i --languages=python -f $VIRTUAL_ENV/.tags $VIRTUAL_ENV/lib/python*/site-packages'
 
+alias df='df -h'
+alias du='du -hs'
+alias ip="curl ipinfo.io/ip"
+alias pyclean='find . -name \*.pyc -type f -ls -delete'
+alias pipgrep='pip freeze | grep '
+alias psgrep='ps aux | grep '
+alias sshconfig="v ~/.ssh/config"
+alias gitconfig="v ~/.gitconfig"
+alias incognito='export HISTFILE=/dev/null'
+
+
+# Run Programs 
+alias p="ipython"
+alias v="vim"
+
+#Vagrant Commands
+alias vgi="vagrant init"
+alias vga="vagrant add"
+alias vgu="vagrant up"
+alias vgs="vagrant ssh"
+alias vgh="vagrant halt"
+
 # SSH
 
 # Django Commands
-alias djrun="python manage.py runserver"
-alias djshell="python manage.py shell_plus"
-alias djmigrate="python manage.py migrate"
-alias djstatic="python manage.py collecstatic"
+alias djrun="./manage.py runserver"
+alias djshell="./manage.py shell_plus"
+alias djmigrate="./manage.py migrate"
+alias djstatic="./manage.py collecstatic"
 
 # List directory contents
 alias sl=ls
 alias ls='ls -G'        # Compact view, show colors
 alias la='ls -AF'       # Compact view, show hidden
 alias ll='ls -lhrt'
-alias lla='ls -lahrt'
 alias l='ls -a'
 alias l1='ls -1'
 
 
 # Sudo related
 alias s="sudo"
+alias _='sudo'
 alias root="sudo su"
-alias i="sudo pacman -S"
-alias ug="sudo pacman -Syu"
-alias up="sudo pacman -Sy"
+alias _i="sudo apt install"
+alias _up="sudo apt update"
+alias _ug="sudo apt upgrade"
 
 if [ $(uname) = "Linux" ]
 then
@@ -71,6 +90,23 @@ fi
 alias	md='mkdir -p'
 alias	rd=rmdir
 
+function service-help() {
+echo "Service Alias Usage"
+echo "_mysql   = sudo service mysql"
+echo "_postgre = sudo service postgresql"
+echo "_nginx   = sudo service nginx"
+echo "_apache  = sudo service apache2" 
+}
+
+function vagrant-help() {
+echo "Vagrant Alias Usage"
+echo "vgi = vagrant init"
+echo "vga = vagrant add"
+echo "vgu = vagrant up"
+echo "vgs = vagrant ssh"
+echo "vgh = vagrant halt"
+}
+
 function django-help() {
 echo "Django Alias Usage"
 echo "djrun    = ./manage.py runserver"
@@ -86,7 +122,6 @@ echo "  sl      = ls"
 echo "  ls      = ls -G"
 echo "  la      = ls -AF"
 echo "  ll      = ls -al"
-echo "  lla     = ls -lahrt"
 echo "  l       = ls -a"
 echo "  k/clr = clear"
 echo "  ..      = cd .."
@@ -106,7 +141,7 @@ echo
 # Git Aliases
 alias gcl='git clone'
 alias ga='git add'
-alias gall='git add --all .'
+alias gall='git add .'
 alias g='git'
 alias get='git'
 alias gst='git status'
