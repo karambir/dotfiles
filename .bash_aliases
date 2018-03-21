@@ -14,6 +14,7 @@ alias psgrep='ps aux | grep '
 alias sshconfig="v ~/.ssh/config"
 alias gitconfig="v ~/.gitconfig"
 alias incognito='export HISTFILE=/dev/null'
+alias sl='streamlink'
 
 
 # Run Programs 
@@ -36,7 +37,6 @@ alias djmigrate="./manage.py migrate"
 alias djstatic="./manage.py collecstatic"
 
 # List directory contents
-alias sl=ls
 alias ls='ls -G'        # Compact view, show colors
 alias la='ls -AF'       # Compact view, show hidden
 alias ll='ls -lhrt'
