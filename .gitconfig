@@ -209,3 +209,8 @@
 
 	signoff = true
 	coverLetter = auto
+
+[user]
+
+	email = me@karambir.in
+	name = Karambir Singh Nain

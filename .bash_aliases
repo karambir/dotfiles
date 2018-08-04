@@ -7,14 +7,16 @@ alias pygenctags='ctags -R --python-kinds=-i --languages=python -f $VIRTUAL_ENV/
 
 alias df='df -h'
 alias du='du -hs'
-alias ip="curl ipinfo.io/ip"
+alias myip="curl ipinfo.io/ip"
 alias pyclean='find . -name \*.pyc -type f -ls -delete'
-alias pipgrep='pip freeze | grep '
+alias pipgrep='pip freeze | grep -i '
 alias psgrep='ps aux | grep '
 alias sshconfig="v ~/.ssh/config"
 alias gitconfig="v ~/.gitconfig"
 alias incognito='export HISTFILE=/dev/null'
 alias sl='streamlink'
+alias sv='source venv/bin/activate'
+alias cv='virtualenv venv -p $(pyenv which python)'
 
 
 # Run Programs 

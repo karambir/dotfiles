@@ -1,57 +1,63 @@
 # My normal system setup
 
-## normal apt-get install>>
-+ build-essential
-+ python-dev
-+ python3-dev
-+ ubuntu-restricted-extras (will display Microsoft fonts license)
-+ vim-gtk
-+ terminator
-+ git
-+ tree
-+ curl
-+ python-pip
-+ ipython
-+ gparted
-+ nginx
-+ postgresql-9.3
-+ postgresql-server-dev-9.3
-+ gnome-shell (make gdm default)
-+ chromium-browser
-+ python-pip virtualenvwrapper
+## normal apt install
 
-## Disable nginx, postgres on startup
-+ sudo update-rc.d -f nginx disable
-+ sudo update-rc.d -f postgresql disable
+- build-essential
+- python-dev
+- python3-dev
+- ubuntu-restricted-extras (will display Microsoft fonts license)
+- vim-gtk
+- terminator
+- git
+- tree
+- curl
+- ipython
+- gparted
+- nginx
+- postgresql-9.6
+- postgresql-server-dev-9.6
+- gnome-shell (make gdm default)
+- chromium-browser
+- thunderbird
+- python-pip virtualenvwrapper
+- jq
+- s3cmd
+- duplicity
+- keepassxc
+- nextcloud-client
 
-## sudo pip install>>
-+ requests
-+ youtube-dl (apt-get have old version, which does not play good with playlists)
+## Setup python dev environment
+
+- [Install Pyenv](https://github.com/pyenv/pyenv-installer) for managing multiple python versions
+- [Install pipsi](https://github.com/mitsuhiko/pipsi) for installing user level pip packages easily. Install it using system python as pyenv installed pythons will get overrided more often.
+- Pipsi install following:
+  - youtube-dl
+  - streamlink
+  - awscli
+  - ansible
+  - fabric3
+  - cookiecutter
 
 ## setup vim:
-+ copy vimrc from dotfiles repo
-+ remove all dir from .vim/bundle
-+ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
-+ run vim and do BundleInstall
-+ copy wakatime key
+
+- copy vimrc from dotfiles repo
+- remove all dir from .vim/bundle
+- git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
+- run vim and do BundleInstall
+- copy wakatime key
 
 ## Setup SourceCodePro font
-+ sudo mkdir -p /usr/share/fonts/opentype
-+ sudo cp -r SourceCodePro_FontsOnly-1.017/OTF/* /usr/share/fonts/opentype/
 
-## Setup themes and icons
-+ sudo apt-add-repository ppa:numix/ppa
-+ sudo add-apt-repository ppa:noobslab/themes
-+ sudo add-apt-repository ppa:moka/stable
-+ install >> moka-icon-theme moka-gtk-theme moka-gnome-shell-theme orchis-gtk-theme numix-gtk-theme numix-icon-theme unity-tweak-tool
-
-+ sudo add-apt-repository ppa:noobslab/icons
-+ install >> faience-icon-theme faenza-icon-theme
+- sudo mkdir -p /usr/share/fonts/opentype
+- sudo cp -r SourceCodePro_FontsOnly-1.017/OTF/\* /usr/share/fonts/opentype/
 
 ## External debs
-+ Virtualbox (default virtualbox do not play well with default vagrant)
-+ Vagrant
-+ Skype
-+ Heroku
-+ Steam
-+ Dropbox
+
+- Virtualbox (default virtualbox do not play well with default vagrant)
+- Vagrant
+- Pycharm(install snap version is a good way)
+- Steam
+- Qwnotes
+- Zulip and Mattermost chat clients
+- Packer and Terraform
+- Setup nvm and rvm if required
