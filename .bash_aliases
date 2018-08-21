@@ -7,6 +7,7 @@ alias pygenctags='ctags -R --python-kinds=-i --languages=python -f $VIRTUAL_ENV/
 
 alias df='df -h'
 alias du='du -hs'
+alias fo='xdg-open'
 alias myip="curl ipinfo.io/ip"
 alias pyclean='find . -name \*.pyc -type f -ls -delete'
 alias pipgrep='pip freeze | grep -i '
