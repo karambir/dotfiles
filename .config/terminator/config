@@ -1,50 +1,107 @@
 [global_config]
   focus = system
-  title_transmit_bg_color = "#d30102"
+  enabled_plugins = TerminatorThemes, LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
 [keybindings]
 [layouts]
   [[default]]
-    [[[child1]]]
-      parent = window0
-      profile = solarized-dark
-      type = Terminal
-    [[[window0]]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_window = True
+      maximised = False
+      order = 0
       parent = ""
+      position = 26:23
+      size = 783, 503
+      title = karambir@redEyed
       type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = PencilLight
+      type = Terminal
 [plugins]
 [profiles]
   [[default]]
-    background_color = "#002b36"
-    cursor_color = "#ebe9e2"
-    foreground_color = "#eee8d5"
-    login_shell = True
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
     scrollback_infinite = True
-  [[solarized-dark]]
-    background_color = "#002b36"
-    cursor_color = "#ebe9e2"
-    foreground_color = "#eee8d5"
     login_shell = True
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    background_color = "#f1f1f1"
+    cursor_color = "#20bbfc"
+    foreground_color = "#424242"
+    palette = "#212121:#c30771:#10a778:#a89c14:#008ec4:#523c79:#20a5ba:#d9d9d9:#424242:#fb007a:#5fd7af:#f3e430:#20bbfc:#6855de:#4fb8cc:#f1f1f1"
+  [[3024 Day]]
     scrollback_infinite = True
-  [[solarized-light]]
-    background_color = "#eee8d5"
-    cursor_color = "#002b36"
-    foreground_color = "#002b36"
     login_shell = True
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    background_color = "#f7f7f7"
+    cursor_color = "#4a4543"
+    foreground_color = "#4a4543"
+    palette = "#090300:#db2d20:#01a252:#fded02:#01a0e4:#a16a94:#b5e4f4:#a5a2a2:#5c5855:#e8bbd0:#3a3432:#4a4543:#807d7c:#d6d5d4:#cdab53:#f7f7f7"
+  [[Elemental]]
+    background_color = "#22211d"
     scrollback_infinite = True
-  [[test]]
-    cursor_color = "#aaaaaa"
     login_shell = True
-    palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000cd:#cd00cd:#00cdcd:#faebd7:#404040:#ff0000:#00ff00:#ffff00:#0000ff:#ff00ff:#00ffff:#ffffff"
+    cursor_color = "#facb80"
+    foreground_color = "#807a74"
+    palette = "#3c3c30:#98290f:#479a43:#7f7111:#497f7d:#7f4e2f:#387f58:#807974:#555445:#e0502a:#61e070:#d69927:#79d9d9:#cd7c54:#59d599:#fff1e9"
+  [[Elementary]]
     scrollback_infinite = True
-  [[trans]]
-    background_darkness = 0.64
-    background_type = transparent
-    cursor_color = "#ffffff"
-    font = Ubuntu Mono 12
+    login_shell = True
+    background_color = "#181818"
+    cursor_color = "#bbbbbb"
+    foreground_color = "#efefef"
+    palette = "#242424:#d71c15:#5aa513:#fdb40c:#063b8c:#e40038:#2595e1:#efefef:#4b4b4b:#fc1c18:#6bc219:#fec80e:#0955ff:#fb0050:#3ea8fc:#8c00ec"
+  [[Elio]]
+    scrollback_infinite = True
+    login_shell = True
+    background_color = "#041a3b"
+    cursor_color = "#fbfbfb"
+    foreground_color = "#f2f2f2"
+    palette = "#303030:#e1321a:#6ab017:#ffc005:#729FCF:#ec0048:#2aa7e7:#f2f2f2:#5d5d5d:#ff361e:#7bc91f:#ffd00a:#0071ff:#ff1d62:#4bb8fd:#a020f0"
+  [[Nebula]]
+    scrollback_infinite = True
+    login_shell = True
+    background_color = "#23262e"
+    cursor_color = "#00e8c6"
     foreground_color = "#ffffff"
-    login_shell = True
+    palette = "#2e3436:#ff007a:#84ff39:#f3d56e:#7cb7ff:#c74ded:#00e8c6:#d3d7cf:#555753:#ff007a:#84ff39:#f3d56e:#7cb7ff:#c74ded:#00e8c6:#eeeeec"
+  [[PencilLight]]
     scrollback_infinite = True
-    use_system_font = False
+    login_shell = True
+    background_color = "#f1f1f1"
+    cursor_color = "#20bbfc"
+    foreground_color = "#424242"
+    palette = "#212121:#c30771:#10a778:#a89c14:#008ec4:#523c79:#20a5ba:#d9d9d9:#424242:#fb007a:#5fd7af:#f3e430:#20bbfc:#6855de:#4fb8cc:#f1f1f1"
+  [[Piatto Light]]
+    scrollback_infinite = True
+    login_shell = True
+    background_color = "#ffffff"
+    cursor_color = "#5e77c8"
+    foreground_color = "#414141"
+    palette = "#414141:#b23771:#66781e:#cd6f34:#3c5ea8:#a454b2:#66781e:#ffffff:#3f3f3f:#db3365:#829429:#cd6f34:#3c5ea8:#a454b2:#829429:#f2f2f2"
+  [[Solarized Dark]]
+    scrollback_infinite = True
+    login_shell = True
+    background_color = "#001e27"
+    cursor_color = "#708284"
+    foreground_color = "#708284"
+    palette = "#002831:#d11c24:#738a05:#a57706:#2176c7:#c61c6f:#259286:#eae3cb:#001e27:#bd3613:#475b62:#536870:#708284:#5956ba:#819090:#fcf4dc"
+  [[Solarized Dark - Patched]]
+    scrollback_infinite = True
+    login_shell = True
+    background_color = "#001e27"
+    cursor_color = "#708284"
+    foreground_color = "#708284"
+    palette = "#002831:#d11c24:#738a05:#a57706:#2176c7:#c61c6f:#259286:#eae3cb:#475b62:#bd3613:#475b62:#536870:#708284:#5956ba:#819090:#fcf4dc"
+  [[Solarized Light]]
+    scrollback_infinite = True
+    login_shell = True
+    background_color = "#fcf4dc"
+    cursor_color = "#536870"
+    foreground_color = "#536870"
+    palette = "#002831:#d11c24:#738a05:#a57706:#2176c7:#c61c6f:#259286:#eae3cb:#001e27:#bd3613:#475b62:#536870:#708284:#5956ba:#819090:#fcf4dc"
+  [[SpaceGray Eighties]]
+    scrollback_infinite = True
+    login_shell = True
+    background_color = "#222222"
+    cursor_color = "#bbbbbb"
+    foreground_color = "#bdbaae"
+    palette = "#15171c:#ec5f67:#81a764:#fec254:#5486c0:#bf83c1:#57c2c1:#efece7:#555555:#ff6973:#93d493:#ffd256:#4d84d1:#ff55ff:#83e9e4:#ffffff"
