@@ -1,9 +1,15 @@
 #!/bin/bash
 
-alias mycow='fortune | cowsay | lolcat'
+alias mycow='fortune | cowsay'
 
 # Gen ctags for Python projects
 alias pygenctags='ctags -R --python-kinds=-i --languages=python -f $VIRTUAL_ENV/.tags $VIRTUAL_ENV/lib/python*/site-packages'
+
+#Arch linux
+alias _i="trizen -S"
+alias _ug="trizen -Syu --devel --show-ood --noedit --needed"
+alias dig='drill'
+alias netstat='ss'
 
 alias df='df -h'
 alias du='du -hs'
@@ -24,15 +30,6 @@ alias cv='virtualenv venv -p $(pyenv which python)'
 alias p="ipython"
 alias v="vim"
 
-#Vagrant Commands
-alias vgi="vagrant init"
-alias vga="vagrant add"
-alias vgu="vagrant up"
-alias vgs="vagrant ssh"
-alias vgh="vagrant halt"
-
-# SSH
-
 # Django Commands
 alias djrun="./manage.py runserver"
 alias djshell="./manage.py shell_plus"
@@ -51,9 +48,6 @@ alias l1='ls -1'
 alias s="sudo"
 alias _='sudo'
 alias root="sudo su"
-alias _i="sudo apt install"
-alias _up="sudo apt update"
-alias _ug="sudo apt upgrade"
 
 if [ $(uname) = "Linux" ]
 then
