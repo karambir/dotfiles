@@ -13,8 +13,9 @@ HISTCONTROL=ignorespace
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000000
-HISTFILESIZE=5000000
+# https://stackoverflow.com/questions/19454837/bash-histsize-vs-histfilesize
+HISTSIZE=100000
+HISTFILESIZE=50000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -118,14 +119,6 @@ complete -cf sudo
 # nvm from aur
 source /usr/share/nvm/init-nvm.sh
 
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
-}
-
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
-
 # Start one ssh-agent
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
@@ -133,3 +126,6 @@ fi
 if [[ ! "$SSH_AUTH_SOCK" ]]; then
     eval "$(<"$XDG_RUNTIME_DIR/ssh-agent.env")"
 fi
+
+# Add autojump
+source /etc/profile.d/autojump.bash

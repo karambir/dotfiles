@@ -1,13 +1,13 @@
 #!/bin/bash
 
 alias mycow='fortune | cowsay'
-
-# Gen ctags for Python projects
-alias pygenctags='ctags -R --python-kinds=-i --languages=python -f $VIRTUAL_ENV/.tags $VIRTUAL_ENV/lib/python*/site-packages'
+alias myproxy='ssh -D 8123 -f -C -q -N <server>'
+alias watchcpu='watch -n.1 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
 
 #Arch linux
 alias _i="trizen -S"
 alias _ug="trizen -Syu --devel --show-ood --noedit --needed"
+alias sc="sudo systemctl"
 alias dig='drill'
 alias netstat='ss'
 
@@ -22,8 +22,9 @@ alias sshconfig="v ~/.ssh/config"
 alias gitconfig="v ~/.gitconfig"
 alias incognito='export HISTFILE=/dev/null'
 alias sl='streamlink'
-alias sv='source venv/bin/activate'
-alias cv='virtualenv venv -p $(pyenv which python)'
+alias slc='streamlink --player="vlc --network-caching 3000"'
+alias sv='source .venv/bin/activate'
+alias cv='/usr/bin/virtualenv .venv -p $(pyenv which python)'
 
 
 # Run Programs 
