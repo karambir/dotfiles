@@ -66,15 +66,6 @@ fi
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
 # Load our dotfiles like ~/.bash_aliases, etc…
 #   ~/.extra can be used for settings you don’t want to commit,
 #   Use it to configure your PATH,
@@ -82,6 +73,13 @@ for file in ~/.{bash_aliases,bash_prompt,bash_paths,bash_extras}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
+
+# Activate powerline
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+POWERLINE_REPO_ROOT=~/.local/pipx/venvs/powerline-status/lib/python3.9/site-packages
+. $POWERLINE_REPO_ROOT/powerline/bindings/bash/powerline.sh
 
 
 
@@ -99,6 +97,11 @@ fi
 # bash completion with sudo
 complete -cf sudo
 
+# pipx completion
+eval "$(register-python-argcomplete pipx)"
+
+
+
 ##
 ## Other customizations
 ##
@@ -111,3 +114,6 @@ export MANPAGER="less -X"
 # Set language
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
+
+# pipx set custom python path
+export PIPX_DEFAULT_PYTHON=/usr/bin/python

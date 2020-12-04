@@ -34,6 +34,7 @@
   - ansible
   - cookiecutter
   - tox
+  - powerline-status
 
 ## setup vim:
 
