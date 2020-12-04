@@ -9,6 +9,7 @@ These dotfiles are extended and copied from various sources with appropriate lic
 
 ## Features:
 
+- Few bash customizations(some from [Paul Dotfiles](]https://github.com/paulirish/dotfiles))
 - Bash aliases for daily usage commands with bash, git and some services.
 - Print help for bash aliases.
 - Vim themes and some basic plugins using Vundle.

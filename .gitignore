@@ -1,5 +1,7 @@
 ### Project specific ###
 
+.bash_extras
+bash_extras
 .vim/bundle/*
 
 ### Linux ###

@@ -12,3 +12,9 @@ fi
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+# Add autojump
+source /etc/profile.d/autojump.bash
+
+# nvm from aur
+source /usr/share/nvm/init-nvm.sh
