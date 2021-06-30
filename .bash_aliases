@@ -1,12 +1,25 @@
 #!/bin/bash
 
+function loaddotenv() {
+#   if [ ! -f .env ]
+#   then
+#     export $(cat .env | xargs)
+#   fi
+  if [ -f .env ]
+  then
+    export $(cat .env | sed 's/#.*//g' | xargs)
+  fi
+}
+
 alias mycow='fortune | cowsay'
-alias myproxy='ssh -D 8123 -f -C -q -N <server>'
+alias myproxy='ssh -D 8123 -f -C -q -N $1'
 alias watchcpu='watch -n.1 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
+alias generaterandom='openssl rand -hex $1'
 
 #Arch linux
-alias _i="trizen -S"
-alias _ug="trizen -Syu --devel --show-ood --noedit --needed"
+#alias _i="trizen -S"
+#alias _ug="trizen -Syu --devel --show-ood --noedit --needed"
+alias _ug="yay -Syu --devel --needed && flatpak update --noninteractive"
 alias sc="sudo systemctl"
 alias dig='drill'
 alias netstat='ss'
@@ -24,7 +37,9 @@ alias incognito='export HISTFILE=/dev/null'
 alias sl='streamlink'
 alias slc='streamlink --player="vlc --network-caching 3000"'
 alias sv='source .venv/bin/activate'
-alias cv='/usr/bin/virtualenv .venv -p $(pyenv which python)'
+# alias cv='/usr/bin/virtualenv .venv -p $(pyenv which python)'
+alias cv='python -m venv .venv'
+alias rv='rm -r .venv'
 
 
 # Run Programs 
