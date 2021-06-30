@@ -214,3 +214,5 @@
 
 	email = karambir@example.com
 	name = Karambir Example
+[init]
+	defaultBranch = main
