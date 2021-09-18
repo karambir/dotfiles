@@ -11,8 +11,12 @@
 - git
 - tree
 - curl
-- ipython
+- htop
+- glances
+- nethogs
+- vnstat
 - gparted
+- autojump
 - postgresql-12
 - postgresql-server-dev-12
 - chromium-browser
@@ -22,6 +26,10 @@
 - s3cmd
 - duplicity
 - nextcloud-client
+- ffmpeg
+- vlc
+- shotwell
+- gimp
 
 ## Setup python dev environment
 
@@ -59,6 +67,8 @@
 - Discord
 - Spotify
 - Bitwarden
-- Glimpse
+- Zoom
 - Fractal
-- gitg
+- Tootle
+- Slack
+- Postman
