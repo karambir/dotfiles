@@ -9,19 +9,34 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # pyenv shims
-if command -v pyenv 1>/dev/null 2>&1; then
-#   eval "$(pyenv init -)"
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init --path)"
+# if command -v pyenv 1>/dev/null 2>&1; then
+# #   eval "$(pyenv init -)"
+#     export PYENV_ROOT="$HOME/.pyenv"
+#     export PATH="$PYENV_ROOT/bin:$PATH"
+#     eval "$(pyenv init --path)"
+# fi
+
+
+# asdf and asdf completions
+if [ -d "$HOME/.asdf" ] ; then
+    . $HOME/.asdf/asdf.sh
+    . $HOME/.asdf/completions/asdf.bash
 fi
 
 # Add autojump
-source /etc/profile.d/autojump.bash
+# arch
+# source /etc/profile.d/autojump.bash
+# debian
+if [ -f /usr/share/autojump/autojump.sh ] ; then
+    source /usr/share/autojump/autojump.sh
+fi
 
 # nvm from aur
-source /usr/share/nvm/init-nvm.sh
+# if [ -f /usr/share/nvm/init-nvm.sh ] : then
+# source /usr/share/nvm/init-nvm.sh
+# fi
 
 # rustup
-source $HOME/.cargo/env
-
+# if [ -f "$HOME/.cargo/env" ] : then
+# source $HOME/.cargo/env
+# fi

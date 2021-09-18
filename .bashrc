@@ -74,31 +74,34 @@ for file in ~/.{bash_aliases,bash_prompt,bash_paths,bash_extras}; do
 done
 unset file
 
-# Activate powerline
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-POWERLINE_REPO_ROOT=~/.local/pipx/venvs/powerline-status/lib/python3.9/site-packages
-. $POWERLINE_REPO_ROOT/powerline/bindings/bash/powerline.sh
-
-
 
 ##
 ## Bash and other completions
 ##
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+# shellcheck shell=sh disable=SC1091,SC2039,SC2166
+# Check for interactive bash and that we haven't already been sourced.
+if [ "x${BASH_VERSION-}" != x -a "x${PS1-}" != x -a "x${BASH_COMPLETION_VERSINFO-}" = x ]; then
+
+    # Check for recent enough version of bash.
+    if [ "${BASH_VERSINFO[0]}" -gt 4 ] ||
+        [ "${BASH_VERSINFO[0]}" -eq 4 -a "${BASH_VERSINFO[1]}" -ge 2 ]; then
+        [ -r "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion" ] &&
+            . "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion"
+        if shopt -q progcomp && [ -r /usr/share/bash-completion/bash_completion ]; then
+            # Source completion code.
+            . /usr/share/bash-completion/bash_completion
+        fi
+    fi
+
 fi
+
 
 # bash completion with sudo
 complete -cf sudo
 
 # pipx completion
-eval "$(register-python-argcomplete pipx)"
+# eval "$(register-python-argcomplete pipx)"
 
 
 
@@ -114,6 +117,18 @@ export MANPAGER="less -X"
 # Set language
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
+
+# activate starship
+# https://starship.rs/
+eval "$(starship init bash)"
+
+# Activate powerline
+# powerline-daemon -q
+# POWERLINE_BASH_CONTINUATION=1
+# POWERLINE_BASH_SELECT=1
+# POWERLINE_REPO_ROOT=~/.local/pipx/venvs/powerline-status/lib/python3.9/site-packages
+# . $POWERLINE_REPO_ROOT/powerline/bindings/bash/powerline.sh
+
 
 # pipx set custom python path
 export PIPX_DEFAULT_PYTHON=/usr/bin/python

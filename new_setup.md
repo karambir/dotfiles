@@ -31,6 +31,10 @@
 - shotwell
 - gimp
 
+## Setup bash prompt
+
+- Install Starship `sh -c "$(curl -fsSL https://starship.rs/install.sh)"`
+
 ## Setup python dev environment
 
 - [Install Pyenv](https://github.com/pyenv/pyenv-installer) for managing multiple python versions
@@ -42,7 +46,6 @@
   - ansible
   - cookiecutter
   - tox
-  - powerline-status
 
 ## setup vim:
 
