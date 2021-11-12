@@ -25,7 +25,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 # https://stackoverflow.com/questions/19454837/bash-histsize-vs-histfilesize
-HISTSIZE=100000
+HISTSIZE=200000
 HISTFILESIZE=50000000
 
 # Save multi-line commands as one command
@@ -79,26 +79,20 @@ unset file
 ## Bash and other completions
 ##
 
-# shellcheck shell=sh disable=SC1091,SC2039,SC2166
-# Check for interactive bash and that we haven't already been sourced.
-if [ "x${BASH_VERSION-}" != x -a "x${PS1-}" != x -a "x${BASH_COMPLETION_VERSINFO-}" = x ]; then
-
-    # Check for recent enough version of bash.
-    if [ "${BASH_VERSINFO[0]}" -gt 4 ] ||
-        [ "${BASH_VERSINFO[0]}" -eq 4 -a "${BASH_VERSINFO[1]}" -ge 2 ]; then
-        [ -r "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion" ] &&
-            . "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion"
-        if shopt -q progcomp && [ -r /usr/share/bash-completion/bash_completion ]; then
-            # Source completion code.
-            . /usr/share/bash-completion/bash_completion
-        fi
-    fi
-
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
 fi
 
 
 # bash completion with sudo
-complete -cf sudo
+# complete -cf sudo
 
 # pipx completion
 # eval "$(register-python-argcomplete pipx)"
@@ -121,13 +115,6 @@ export LANG="en_US"
 # activate starship
 # https://starship.rs/
 eval "$(starship init bash)"
-
-# Activate powerline
-# powerline-daemon -q
-# POWERLINE_BASH_CONTINUATION=1
-# POWERLINE_BASH_SELECT=1
-# POWERLINE_REPO_ROOT=~/.local/pipx/venvs/powerline-status/lib/python3.9/site-packages
-# . $POWERLINE_REPO_ROOT/powerline/bindings/bash/powerline.sh
 
 
 # pipx set custom python path
