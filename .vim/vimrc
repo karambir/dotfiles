@@ -13,7 +13,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-surround'
 Plugin 'millermedeiros/vim-statline'
-Plugin 'wakatime/vim-wakatime'
 Plugin 'mattn/emmet-vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
