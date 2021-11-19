@@ -12,22 +12,21 @@
       parent = ""
       position = 26:23
       size = 783, 503
-      title = karambir@redEyed
       type = Window
     [[[terminal1]]]
       order = 0
       parent = child0
-      profile = PencilLight
+      profile = "Solarized Dark - Patched"
       type = Terminal
 [plugins]
 [profiles]
   [[default]]
     scrollback_infinite = True
     login_shell = True
-    background_color = "#f1f1f1"
-    cursor_color = "#20bbfc"
-    foreground_color = "#424242"
-    palette = "#212121:#c30771:#10a778:#a89c14:#008ec4:#523c79:#20a5ba:#d9d9d9:#424242:#fb007a:#5fd7af:#f3e430:#20bbfc:#6855de:#4fb8cc:#f1f1f1"
+    background_color = "#001e27"
+    cursor_color = "#708284"
+    foreground_color = "#708284"
+    palette = "#002831:#d11c24:#738a05:#a57706:#2176c7:#c61c6f:#259286:#eae3cb:#475b62:#bd3613:#475b62:#536870:#708284:#5956ba:#819090:#fcf4dc"
   [[3024 Day]]
     scrollback_infinite = True
     login_shell = True
