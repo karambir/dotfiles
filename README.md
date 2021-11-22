@@ -15,7 +15,8 @@ These dotfiles are extended and copied from various sources with appropriate lic
 - Bash status line configured with [Starship](https://starship.rs).
 - Vim themes and some basic plugins using Vundle.
 - Lots of helpful git aliases from [here](https://github.com/theskumar/dotfiles)
-- SSH config for modern algorithms from [Mozilla](https://infosec.mozilla.org/guidelines/openssh). For new ssh key: `ssh-keygen -t ed25519 -f ~/.ssh/id_karambir_$(date +%Y-%m-%d) -C "karambir personal"`
+- SSH config for modern algorithms from [Mozilla](https://infosec.mozilla.org/guidelines/openssh). For new ssh key: `ssh-keygen -t ed25519 -f ~/.ssh/id_personal_$(date +%Y-%m-%d) -C "personal"`
+- A list of commonly used cli and gui programs to one can install via apt and flatpak. See [New Setup](./new_setup.md)
 
 ## Usage:
 

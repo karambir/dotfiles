@@ -45,15 +45,16 @@
 - obs-studio
 - transmission-gtk
 - nomacs
+- code (Visual Studio Code)
 
 With few commands:
 
 ```bash
-sudo apt install make build-essential ubuntu-restricted-extras vim-gtk terminator git ca-certificates gnupg tree wget curl htop glances nethogs vnstat autojump neofetch jq make s3cmd duplicity encfs securefs ffmpeg pipx 
+sudo apt install make build-essential python3-dev python-is-python3 ubuntu-restricted-extras vim-gtk terminator git ca-certificates gnupg tree wget curl htop glances nethogs vnstat autojump neofetch jq make s3cmd duplicity encfs securefs ffmpeg pipx
 
 sudo apt install postgresql-13 postgresql-server-dev-13 postgresql-contrib redis-server
  
-sudo apt install gparted timeshift vlc handbrake shotwell nomacs gimp obs-studio thunderbird sirikali nextcloud-desktop transmission-gtk
+sudo apt install gparted timeshift vlc handbrake shotwell nomacs gimp obs-studio thunderbird sirikali nextcloud-desktop transmission-gtk code
 ```
 
 ## Setup bash prompt
@@ -100,6 +101,11 @@ asdf install rust latest
 asdf install nodejs lts
 asdf install python latest
 asdf install golang latest
+
+asdf global python system
+asdf global nodejs lts
+asdf global rust latest
+asdf global golang latest
 ```
 
 [GitUI](https://github.com/extrawurst/gitui) is very handy tool for git operations. Install it with:
@@ -128,13 +134,8 @@ Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
 
 - copy vimrc from dotfiles repo
 - remove all dir from .vim/bundle
-- git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
-- run vim and do BundleInstall
-
-## Setup SourceCodePro font
-
-- sudo mkdir -p /usr/share/fonts/opentype
-- sudo cp -r SourceCodePro_FontsOnly-1.017/OTF/\* /usr/share/fonts/opentype/
+- `git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle`
+- run vim and do `:PackageInstall`
 
 ## External DEB/AUR/Flatpak
 
