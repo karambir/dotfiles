@@ -19,6 +19,7 @@
 - glances
 - nethogs
 - vnstat
+- ldnsutils  (for drill command)
 - gparted
 - autojump
 - neofetch
@@ -50,7 +51,7 @@
 With few commands:
 
 ```bash
-sudo apt install make build-essential python3-dev python-is-python3 ubuntu-restricted-extras vim-gtk terminator git ca-certificates gnupg tree wget curl htop glances nethogs vnstat autojump neofetch jq make s3cmd duplicity encfs securefs ffmpeg pipx
+sudo apt install make build-essential python3-dev python-is-python3 ubuntu-restricted-extras vim-gtk terminator git ca-certificates gnupg tree wget curl htop glances nethogs vnstat ldnsutils autojump neofetch jq make s3cmd duplicity encfs securefs ffmpeg pipx
 
 sudo apt install postgresql-13 postgresql-server-dev-13 postgresql-contrib redis-server
  
@@ -155,6 +156,7 @@ Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
 - Tootle
 - Slack
 - Postman
+- Kdenlive
 
 One command for flatpaks
 
@@ -172,5 +174,11 @@ flatpak install com.axosoft.GitKraken \
   org.kde.gwenview \
   org.qownnotes.QOwnNotes \
   org.telegram.desktop \
-  us.zoom.Zoom
+  us.zoom.Zoom \
+  org.kde.kdenlive
 ```
+
+## Setup Tailscale
+
+1. Make sure machine name is not conlicting with current [list](https://login.tailscale.com/admin/machines)
+2. Use official [setup instructions](https://tailscale.com/download)
