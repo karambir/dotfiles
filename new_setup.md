@@ -6,7 +6,9 @@
 - build-essential
 - python-is-python3
 - python3-dev
+- python3-venv
 - ubuntu-restricted-extras (will display Microsoft fonts license)
+- ubuntu-restricted-addons
 - vim-gtk
 - terminator
 - git
@@ -19,6 +21,7 @@
 - glances
 - nethogs
 - vnstat
+- tmux
 - ldnsutils  (for drill command)
 - gparted
 - autojump
@@ -51,11 +54,13 @@
 With few commands:
 
 ```bash
-sudo apt install make build-essential python3-dev python-is-python3 ubuntu-restricted-extras vim-gtk terminator git ca-certificates gnupg tree wget curl htop glances nethogs vnstat ldnsutils autojump neofetch jq make s3cmd duplicity encfs securefs ffmpeg pipx
+sudo apt install make build-essential python3-dev python3-venv python-is-python3 git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils autojump neofetch jq make s3cmd duplicity encfs securefs ffmpeg pipx
 
 sudo apt install postgresql-13 postgresql-server-dev-13 postgresql-contrib redis-server
- 
-sudo apt install gparted timeshift vlc handbrake shotwell nomacs gimp obs-studio thunderbird sirikali nextcloud-desktop transmission-gtk code
+
+sudo apt install ubuntu-restricted-extras ubuntu-restricted-addons
+
+sudo apt install vim-gtk terminator gparted timeshift vlc handbrake shotwell nomacs gimp obs-studio thunderbird sirikali nextcloud-desktop transmission-gtk code
 ```
 
 ## Setup bash prompt
