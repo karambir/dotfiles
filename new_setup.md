@@ -135,6 +135,11 @@ Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
   - cookiecutter
   - pgcli
   - poetry
+  - duplicity
+
+
+> Duplicity requires systems libs like: `librsync-dev intltool`
+
 
 ## Setup vim:
 
