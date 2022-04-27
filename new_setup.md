@@ -54,7 +54,7 @@
 With few commands:
 
 ```bash
-sudo apt install make build-essential python3-dev python3-venv python-is-python3 git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils autojump neofetch jq make s3cmd duplicity encfs securefs ffmpeg pipx
+sudo apt install make build-essential python3-dev python3-venv python-is-python3 git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils autojump neofetch jq s3cmd duplicity encfs securefs ffmpeg pipx
 
 sudo apt install postgresql-13 postgresql-server-dev-13 postgresql-contrib redis-server
 
@@ -143,10 +143,10 @@ Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
 
 ## Setup vim:
 
-- copy vimrc from dotfiles repo
+- copy vimrc from dotfiles repo to `~/.vimrc`
 - remove all dir from .vim/bundle
-- `git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle`
-- run vim and do `:PackageInstall`
+- ` git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+- run vim and do `:PluginInstall`
 
 ## External DEB/AUR/Flatpak
 
