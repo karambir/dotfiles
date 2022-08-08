@@ -24,6 +24,7 @@ alias _ug="sudo apt-get update && sudo apt-get upgrade -y && flatpak update --no
 alias sc="sudo systemctl"
 alias dig='drill'
 alias netstat='ss'
+alias dc='docker-compose'
 
 alias df='df -h'
 alias du='du -hs'
@@ -44,14 +45,8 @@ alias rv='rm -r .venv'
 
 
 # Run Programs 
-alias p="ipython"
+alias p="python"
 alias v="vim"
-
-# Django Commands
-alias djrun="./manage.py runserver"
-alias djshell="./manage.py shell_plus"
-alias djmigrate="./manage.py migrate"
-alias djstatic="./manage.py collecstatic"
 
 # List directory contents
 alias ls='ls -G'        # Compact view, show colors
@@ -104,31 +99,6 @@ fi
 alias	md='mkdir -p'
 alias	rd=rmdir
 
-function service-help() {
-echo "Service Alias Usage"
-echo "_mysql   = sudo service mysql"
-echo "_postgre = sudo service postgresql"
-echo "_nginx   = sudo service nginx"
-echo "_apache  = sudo service apache2" 
-}
-
-function vagrant-help() {
-echo "Vagrant Alias Usage"
-echo "vgi = vagrant init"
-echo "vga = vagrant add"
-echo "vgu = vagrant up"
-echo "vgs = vagrant ssh"
-echo "vgh = vagrant halt"
-}
-
-function django-help() {
-echo "Django Alias Usage"
-echo "djrun    = ./manage.py runserver"
-echo "djshell  = ./manage.py shell_plus"
-echo "djmigrate= ./manage.py migrate"
-echo "djstatic = ./manage.py collecstatic"
-}
-
 function aliases-help() {
 echo "Generic Alias Usage"
 echo
@@ -137,7 +107,7 @@ echo "  ls      = ls -G"
 echo "  la      = ls -AF"
 echo "  ll      = ls -al"
 echo "  l       = ls -a"
-echo "  k/clr = clear"
+echo "  k/clr   = clear"
 echo "  ..      = cd .."
 echo "  ...     = cd ../.."
 echo "  -       = cd -"
@@ -149,6 +119,29 @@ echo "  q       = exit"
 echo "  irc     = $IRC_CLIENT"
 echo "  md      = mkdir -p"
 echo "  rd      = rmdir"
+echo " generaterandom = openssl rand -hex $1"
+echo " _ug      = sudo apt-get update && sudo apt-get upgrade -y && flatpak update --noninteractive"
+echo " sc       = sudo systemctl"
+echo " dig      = drill"
+echo " netstat  = ss"
+echo " df       = df -h"
+echo " du       = du -hs"
+echo " fo       = xdg-open"
+echo " myip     = curl ifconfig.co"
+echo " psgrep   = ps aux | grep "
+echo " dc       = docker-compose"
+echo
+}
+
+function python-help() {
+echo "Python Dev Aliases Usage"
+echo
+echo " p       =  python"
+echo " pyclean  = find . -name \*.pyc -type f -ls -delete"
+echo " pipgrep  = pip freeze | grep -i "
+echo " sv       = source .venv/bin/activate"
+echo " cv       = python -m venv .venv"
+echo " rv       = rm -r .venv"
 echo
 }
 

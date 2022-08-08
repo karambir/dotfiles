@@ -88,6 +88,10 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+  # Add local bash completion
+  if [ -f ~/.bash_completion ]; then
+    . ~/.bash_completion
+  fi
 fi
 
 
