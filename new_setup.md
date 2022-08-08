@@ -50,6 +50,11 @@
 - transmission-gtk
 - nomacs
 - code (Visual Studio Code)
+- fonts-firacode
+- fonts-noto-mono
+- fonts-jetbrains-mono
+- fonts-inconsolata
+- fonts-anonymous-pro
 
 With few commands:
 
@@ -61,6 +66,8 @@ sudo apt install postgresql-13 postgresql-server-dev-13 postgresql-contrib redis
 sudo apt install ubuntu-restricted-extras ubuntu-restricted-addons
 
 sudo apt install vim-gtk terminator gparted timeshift vlc handbrake shotwell nomacs gimp obs-studio thunderbird sirikali nextcloud-desktop transmission-gtk code
+
+sudo apt install fonts-firacode fonts-noto-mono fonts-jetbrains-mono fonts-inconsolata fonts-anonymous-pro
 ```
 
 ## Setup bash prompt
@@ -127,9 +134,9 @@ Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
 
 - [Install pipx](https://github.com/pipxproject/pipx/) for installing user level pip packages easily. Install it using system python as pyenv installed pythons will get overrided more often.
 - Pipx install following:
-  - youtube-dl
   - yt-dlp
   - streamlink
+  - gallery-dl
   - awscli
   - ansible
   - cookiecutter
@@ -173,17 +180,23 @@ One command for flatpaks
 ```bash
 flatpak install com.axosoft.GitKraken \
   com.bitwarden.desktop \
+  com.brave.Browser \
   com.discordapp.Discord \
   com.getpostman.Postman \
   com.github.bleakgrey.tootle \
   com.nextcloud.desktopclient.nextcloud \
   com.slack.Slack \
   com.spotify.Client \
+  io.dbeaver.DBeaverCommunity \
+  io.dbeaver.DBeaverCommunity.Client.mariadb \
+  io.dbeaver.DBeaverCommunity.Client.pgsql \
   org.chromium.Chromium \
   org.gnome.Fractal \
   org.kde.gwenview \
+  org.kde.okular \
   org.qownnotes.QOwnNotes \
   org.telegram.desktop \
+  rest.insomnia.Insomnia \
   us.zoom.Zoom \
   org.kde.kdenlive
 ```
