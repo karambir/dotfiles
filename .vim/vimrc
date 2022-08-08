@@ -18,7 +18,6 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
 Plugin 'wincent/command-t'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'szw/vim-tags'
 
 
 let mapleader=" "
@@ -343,7 +342,4 @@ endfunction
 
 "spell check when writing commit logs
 autocmd filetype svn,*commit* setlocal spell
-
-map <F4> :!ctags -R --python-kinds=-i --languages=python -f $VIRTUAL_ENV/.tags $VIRTUAL_ENV/lib/python*/site-packages<CT>
-set tags=$VIRTUAL_ENV/.tags
 
