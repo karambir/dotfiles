@@ -174,6 +174,7 @@ Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
 - Slack
 - Postman
 - Kdenlive
+- DrawIO
 
 One command for flatpaks
 
@@ -198,10 +199,11 @@ flatpak install com.axosoft.GitKraken \
   org.telegram.desktop \
   rest.insomnia.Insomnia \
   us.zoom.Zoom \
-  org.kde.kdenlive
+  org.kde.kdenlive \
+  com.jgraph.drawio.desktop
 ```
 
 ## Setup Tailscale
 
-1. Make sure machine name is not conlicting with current [list](https://login.tailscale.com/admin/machines)
+1. Make sure machine name is not conflicting with current [list](https://login.tailscale.com/admin/machines)
 2. Use official [setup instructions](https://tailscale.com/download)
