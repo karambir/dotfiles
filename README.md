@@ -2,6 +2,7 @@
 
 - Few Bash customisations
 - vim using Vundle
+- Starship
 - Terminator
 - SSH
 
@@ -29,7 +30,7 @@ These dotfiles are extended and copied from various sources with appropriate lic
 
 ## Note:
 
-The master branch is suitable for bash in Debian/Arch based systems. If you are working on MacOS then checkout the osx branch(Deprecated).
+The master branch is suitable for bash in Debian/Arch based systems. If you are working on MacOS then checkout the macos branch.
 
 ## License
 
