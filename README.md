@@ -1,18 +1,19 @@
 # DotFiles
 
-- Few Bash customisations
+- Few Zsh customisations
 - vim using Vundle
-- Terminator
+- Starship
+- Iterm2
 - SSH
 
 These dotfiles are extended and copied from various sources with appropriate license. A Big thanks to all of them.
 
 ## Features:
 
-- Few bash customizations(some from [Paul Dotfiles](]https://github.com/paulirish/dotfiles))
-- Bash aliases for daily usage commands with bash, git and some services.
+- Few zsh customizations
+- Aliases for daily usage commands with bash, git and some services.
 - Print help for bash aliases.
-- Bash status line configured with [Starship](https://starship.rs).
+- ZSH status line configured with [Starship](https://starship.rs).
 - Vim themes and some basic plugins using Vundle.
 - Lots of helpful git aliases from [here](https://github.com/theskumar/dotfiles)
 - SSH config for modern algorithms from [Mozilla](https://infosec.mozilla.org/guidelines/openssh). For new ssh key: `ssh-keygen -t ed25519 -f ~/.ssh/id_personal_$(date +%Y-%m-%d) -C "personal"`
@@ -29,7 +30,7 @@ These dotfiles are extended and copied from various sources with appropriate lic
 
 ## Note:
 
-The master branch is suitable for bash in Debian/Arch based systems. If you are working on MacOS then checkout the osx branch(Deprecated).
+The master branch is suitable for bash in Debian/Arch based systems. If you are working on MacOS then checkout the macos branch.
 
 ## License
 

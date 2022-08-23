@@ -1,4 +1,54 @@
-#!/bin/bash
+###### ZSH
+
+# bindings
+bindkey "^R" history-incremental-search-backward
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
+# history
+export HISTSIZE=500000
+export SAVEHIST=900000
+setopt INC_APPEND_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS
+
+
+
+###### CONFIGS
+export PIPX_DEFAULT_PYTHON="/Users/karambir/.asdf/installs/python/3.9.13/bin/python"
+
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    autoload -Uz compinit
+    compinit
+fi
+
+# starship
+eval "$(starship init zsh)"
+
+# autojump
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
+# asdf
+. /opt/homebrew/opt/asdf/asdf.sh
+# eval "$(register-python-argcomplete pipx)"
+
+
+
+###### PATHS
+export PATH="/Users/karambir/.local/bin:$PATH"
+
+export PATH="/opt/homebrew/opt/ssh-copy-id/bin:$PATH"
+
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+
+
+
+# ALIASES
 
 function loaddotenv() {
 #   if [ ! -f .env ]
@@ -16,15 +66,10 @@ alias myproxy='ssh -D 8123 -f -C -q -N $1'
 alias watchcpu='watch -n.1 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
 alias generaterandom='openssl rand -hex $1'
 
-#Arch linux
-#alias _i="trizen -S"
-#alias _ug="trizen -Syu --devel --show-ood --noedit --needed"
-#alias _ug="yay -Syu --devel --needed && flatpak update --noninteractive"
 alias _ug="sudo apt-get update && sudo apt-get upgrade -y && flatpak update --noninteractive"
 alias sc="sudo systemctl"
 alias dig='drill'
 alias netstat='ss'
-alias dc='docker-compose'
 
 alias df='df -h'
 alias du='du -hs'
@@ -39,14 +84,19 @@ alias incognito='export HISTFILE=/dev/null'
 alias sl='streamlink'
 alias slc='streamlink --player="vlc --network-caching 3000"'
 alias sv='source .venv/bin/activate'
-# alias cv='/usr/bin/virtualenv .venv -p $(pyenv which python)'
 alias cv='python -m venv .venv'
 alias rv='rm -r .venv'
 
 
-# Run Programs 
+# Run Programs
 alias p="python"
 alias v="vim"
+
+# Django Commands
+alias djrun="./manage.py runserver"
+alias djshell="./manage.py shell_plus"
+alias djmigrate="./manage.py migrate"
+alias djstatic="./manage.py collecstatic"
 
 # List directory contents
 alias ls='ls -G'        # Compact view, show colors
@@ -54,22 +104,6 @@ alias la='ls -AF'       # Compact view, show hidden
 alias ll='ls -lhrt'
 alias l='ls -a'
 alias l1='ls -1'
-
-
-# Sudo related
-alias s="sudo"
-alias _='sudo'
-alias root="sudo su"
-
-if [ $(uname) = "Linux" ]
-then
-  alias ls="ls --color=always"
-fi
-which gshuf &> /dev/null
-if [ $? -eq 1 ]
-then
-  alias shuf=gshuf
-fi
 
 alias k='clear'
 alias clr='clear'
@@ -99,51 +133,6 @@ fi
 alias	md='mkdir -p'
 alias	rd=rmdir
 
-function aliases-help() {
-echo "Generic Alias Usage"
-echo
-echo "  sl      = ls"
-echo "  ls      = ls -G"
-echo "  la      = ls -AF"
-echo "  ll      = ls -al"
-echo "  l       = ls -a"
-echo "  k/clr   = clear"
-echo "  ..      = cd .."
-echo "  ...     = cd ../.."
-echo "  -       = cd -"
-echo "  h       = history"
-echo "  md      = mkdir -p"
-echo "  rd      = rmdir"
-echo "  editor  = $EDITOR"
-echo "  q       = exit"
-echo "  irc     = $IRC_CLIENT"
-echo "  md      = mkdir -p"
-echo "  rd      = rmdir"
-echo " generaterandom = openssl rand -hex $1"
-echo " _ug      = sudo apt-get update && sudo apt-get upgrade -y && flatpak update --noninteractive"
-echo " sc       = sudo systemctl"
-echo " dig      = drill"
-echo " netstat  = ss"
-echo " df       = df -h"
-echo " du       = du -hs"
-echo " fo       = xdg-open"
-echo " myip     = curl ifconfig.co"
-echo " psgrep   = ps aux | grep "
-echo " dc       = docker-compose"
-echo
-}
-
-function python-help() {
-echo "Python Dev Aliases Usage"
-echo
-echo " p       =  python"
-echo " pyclean  = find . -name \*.pyc -type f -ls -delete"
-echo " pipgrep  = pip freeze | grep -i "
-echo " sv       = source .venv/bin/activate"
-echo " cv       = python -m venv .venv"
-echo " rv       = rm -r .venv"
-echo
-}
 
 # Git Aliases
 alias gcl='git clone'
@@ -199,45 +188,3 @@ case $OSTYPE in
     alias gd='git diff'
     ;;
 esac
-
-
-
-function git-help() {
-  echo "Git Custom Aliases Usage"
-  echo
-  echo "  gcl	  = git clone"
-  echo "  g       = git"
-  echo "  get 	  = git"
-  echo "  ga      = git add"
-  echo "  gall	  = git add ."
-  echo "  gst/gs  = git status"
-  echo "  gss	  = git status -s"
-  echo "  gl      = git pull"
-  echo "  gp      = git push"
-  echo "  gd      = git diff | vim -R -"
-  echo "  gdv     = git diff -w \"$@\" | vim -R -"
-  echo "  gc      = git commit -v -m"
-  echo "  gce     = git commit --allow-empty-message -m ''"
-  echo "  gcb     = git add . && git commit --allow-empty-message -m ''"
-  echo "  gca     = git commit -v -a -m"
-  echo "  gci 	  = git commit --interactive"
-  echo "  gb      = git branch"
-  echo "  gba     = git branch -a"
-  echo "  gcount  = git shortlog -sn"
-  echo "  gcp     = git cherry-pick"
-  echo "  gco     = git checkout"
-  echo "  gexport = git git archive --format zip --output"
-  echo "  gdel    = git branch -d"
-  echo "  gpo     = git push origin"
-  echo "  gpl     = git push local"
-  echo "  gph     = git push heroku master"
-  echo "  gmu     = git fetch origin -v; git fetch upstream -v; git merge upstream/master"
-  echo "  gll     = git log --graph --pretty=oneline --abbrev-commit"
-  echo "  gitlog  = git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-  echo "  grb     = git rebase -p"
-  echo "  gup     = git fetch origin && grb origin/<git_current_branch>"
-  echo "  gpthis  = git push origin HEAD:<git_current_branch>"
-  echo "  gm      = git merge --no-ff"
-  echo "  gsync   = gup && gpthis"
-  echo
-}
