@@ -1,103 +1,53 @@
 # My normal system setup
 
-## normal apt/pacman install
+## normal brew install
 
-- make
-- build-essential
-- python-is-python3
-- python3-dev
-- python3-venv
-- ubuntu-restricted-extras (will display Microsoft fonts license)
-- ubuntu-restricted-addons
-- vim-gtk
-- terminator
-- git
-- ca-certificates
-- gnupg
-- tree
-- wget
-- curl
-- htop
-- glances
-- nethogs
-- vnstat
-- tmux
-- ldnsutils  (for drill command)
-- gparted
-- autojump
-- neofetch
-- postgresql-13
-- postgresql-contrib
-- postgresql-server-dev-13
-- redis-server
-- chromium-browser
-- thunderbird
-- jq
-- s3cmd
-- duplicity
-- encfs
-- securefs
-- sirikali
-- nextcloud-desktop
-- ffmpeg
-- vlc
-- handbrake
-- shotwell
-- gimp
-- pipx
-- timeshift
-- obs-studio
-- transmission-gtk
-- nomacs
-- code (Visual Studio Code)
-- fonts-firacode
-- fonts-noto-mono
-- fonts-jetbrains-mono
-- fonts-inconsolata
-- fonts-anonymous-pro
+==> Formulae
+asdf
+autojump
+curl
+doppler
+ffmpeg
+git
+gnupg
+nmap
+openssl
+pipx
+postgresql
+python@3.10
+readline
+redis
+rsync
+sqlite3
+ssh-copy-id
+starship
+vim
+wget
+xz
+zlib
+zsh-completions
 
-With few commands:
-
-```bash
-sudo apt install make build-essential python3-dev python3-venv python-is-python3 git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils autojump neofetch jq s3cmd duplicity encfs securefs ffmpeg pipx
-
-sudo apt install postgresql-13 postgresql-server-dev-13 postgresql-contrib redis-server
-
-sudo apt install ubuntu-restricted-extras ubuntu-restricted-addons
-
-sudo apt install vim-gtk terminator gparted timeshift vlc handbrake shotwell nomacs gimp obs-studio thunderbird sirikali nextcloud-desktop transmission-gtk code
-
-sudo apt install fonts-firacode fonts-noto-mono fonts-jetbrains-mono fonts-inconsolata fonts-anonymous-pro
-```
+==> Casks
+bitwarden
+brave-browser
+font-fira-code
+font-fira-code-nerd-font
+font-fira-mono-nerd-font
+font-jetbrains-mono-nerd-font
+font-noto-nerd-font
+handbrake
+iterm2
+macfuse
+osxfuse
+postman
+pycharm
+visual-studio-code
+vlc
+webstorm
 
 ## Setup bash prompt
 
 - Install Starship `sh -c "$(curl -fsSL https://starship.rs/install.sh)"`
-
-## Setup qemu/virtual machines
-
-`sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager`
-
-## Setup docker
-
-```bash
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-sudo groupadd docker
-sudo usermod -aG docker $USER
-```
-
-Put following in `/etc/docker/daemon.json`:
-
-```json
-{
-    "dns": ["1.1.1.1", "1.0.0.1"]
-}
-```
 
 ## Setup ASDF for multiple dev env
 
@@ -155,53 +105,8 @@ Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
 - ` git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 - run vim and do `:PluginInstall`
 
-## External DEB/AUR/Flatpak
-
-- Pycharm
-- Tailscale
-- Nextdns
-- Terraform
-- Tailscale
-- Steam
-- Qwnotes
-- Telegram
-- Discord
-- Spotify
-- Bitwarden
-- Zoom
-- Fractal
-- Tootle
-- Slack
-- Postman
-- Kdenlive
-
-One command for flatpaks
-
-```bash
-flatpak install com.axosoft.GitKraken \
-  com.bitwarden.desktop \
-  com.brave.Browser \
-  com.discordapp.Discord \
-  com.getpostman.Postman \
-  com.github.bleakgrey.tootle \
-  com.nextcloud.desktopclient.nextcloud \
-  com.slack.Slack \
-  com.spotify.Client \
-  io.dbeaver.DBeaverCommunity \
-  io.dbeaver.DBeaverCommunity.Client.mariadb \
-  io.dbeaver.DBeaverCommunity.Client.pgsql \
-  org.chromium.Chromium \
-  org.gnome.Fractal \
-  org.kde.gwenview \
-  org.kde.okular \
-  org.qownnotes.QOwnNotes \
-  org.telegram.desktop \
-  rest.insomnia.Insomnia \
-  us.zoom.Zoom \
-  org.kde.kdenlive
-```
 
 ## Setup Tailscale
 
-1. Make sure machine name is not conlicting with current [list](https://login.tailscale.com/admin/machines)
+1. Make sure machine name is not conflicting with current [list](https://login.tailscale.com/admin/machines)
 2. Use official [setup instructions](https://tailscale.com/download)
