@@ -1,59 +1,73 @@
 # My normal system setup
 
-## normal brew install
+## Brew List
 
-==> Formulae
-asdf
-autojump
-curl
-doppler
-ffmpeg
-git
-gnupg
-nmap
-openssl
-pipx
-postgresql
-python@3.10
-readline
-redis
-rsync
-sqlite3
-ssh-copy-id
-starship
-vim
-wget
-xz
-zlib
-zsh-completions
+### Formulae
 
-==> Casks
-bitwarden
-brave-browser
-font-fira-code
-font-fira-code-nerd-font
-font-fira-mono-nerd-font
-font-jetbrains-mono-nerd-font
-font-noto-nerd-font
-handbrake
-iterm2
-macfuse
-osxfuse
-postman
-pycharm
-visual-studio-code
-vlc
-webstorm
+- asdf
+- autojump
+- curl
+- ffmpeg
+- git
+- gnupg
+- nmap
+- openssl
+- pipx
+- postgresql
+- python@3.10
+- readline
+- redis
+- rsync
+- sqlite3
+- ssh-copy-id
+- starship
+- vim
+- wget
+- xz
+- zlib
+- zsh-completions
 
-## Setup bash prompt
+### Casks
 
-- Install Starship `sh -c "$(curl -fsSL https://starship.rs/install.sh)"`
+- firefox
+- google-chrome
+- brave-browser
+- bitwarden
+- slack
+- vlc
+- handbrake
+- iterm2
+- visual-studio-code
+- pycharm
+- webstorm
+- postman
+- font-fira-code
+- font-fira-code-nerd-font
+- font-fira-mono-nerd-font
+- font-jetbrains-mono-nerd-font
+- font-noto-nerd-font
+- macfuse
+- osxfuse
+
+## Brew Install
+
+```bash
+brew install asdf autojump curl ffmpeg git gnupg nmap openssl pipx postgresql python@3.10 readline redis rsync sqlite3 ssh-copy-id starship vim wget xz zlib zsh-completions
+
+brew tap homebrew/cask-fonts
+
+brew install dopplerhq/cli/doppler
+
+brew install firefox google-chrome brave-browser bitwarden slack vlc handbrake iterm2 visual-studio-code pycharm webstorm postman
+
+brew install font-fira-code font-fira-code-nerd-font font-fira-mono-nerd-font font-jetbrains-mono-nerd-font font-noto-nerd-font
+
+brew install macfuse osxfuse
+```
 
 ## Setup ASDF for multiple dev env
 
-- ASDF need some apt packages for installing python from tar.gz.
-- `sudo apt-get install libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev`
-- [Install ASDF](https://asdf-vm.com/) for managing multiple python, rust and node versions
+- ASDF need some apt packages for installing python from tar.gz: `readline zlib xz`. [Check ASDF](https://asdf-vm.com/) for other requirements.
 
 ```bash
 asdf plugin add python
@@ -82,7 +96,6 @@ Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
 
 ## Python specific CLI tools
 
-- [Install pipx](https://github.com/pipxproject/pipx/) for installing user level pip packages easily. Install it using system python as pyenv installed pythons will get overrided more often.
 - Pipx install following:
   - yt-dlp
   - streamlink

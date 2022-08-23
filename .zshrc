@@ -42,9 +42,14 @@ eval "$(starship init zsh)"
 ###### PATHS
 export PATH="/Users/karambir/.local/bin:$PATH"
 
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+
 export PATH="/opt/homebrew/opt/ssh-copy-id/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+
+export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+
 
 
 
