@@ -19,12 +19,13 @@ alias generaterandom='openssl rand -hex $1'
 #Arch linux
 #alias _i="trizen -S"
 #alias _ug="trizen -Syu --devel --show-ood --noedit --needed"
-#alias _ug="yay -Syu --devel --needed && flatpak update --noninteractive"
-alias _ug="sudo apt-get update && sudo apt-get upgrade -y && flatpak update --noninteractive"
+alias _ug="yay -Syu --devel --needed && flatpak update --noninteractive"
+#alias _ug="sudo apt-get update && sudo apt-get upgrade -y && flatpak update --noninteractive"
 alias sc="sudo systemctl"
 alias dig='drill'
 alias netstat='ss'
-alias dc='docker-compose'
+alias dc='docker compose'
+alias docker-compose='docker compose'
 
 alias df='df -h'
 alias du='du -hs'
@@ -36,6 +37,7 @@ alias psgrep='ps aux | grep '
 alias sshconfig="v ~/.ssh/config"
 alias gitconfig="v ~/.gitconfig"
 alias incognito='export HISTFILE=/dev/null'
+alias yt='yt-dlp'
 alias sl='streamlink'
 alias slc='streamlink --player="vlc --network-caching 3000"'
 alias sv='source .venv/bin/activate'
@@ -46,7 +48,8 @@ alias rv='rm -r .venv'
 
 # Run Programs 
 alias p="python"
-alias v="vim"
+alias v="nvim"
+alias vim="nvim"
 
 # List directory contents
 alias ls='ls -G'        # Compact view, show colors
@@ -129,7 +132,7 @@ echo " du       = du -hs"
 echo " fo       = xdg-open"
 echo " myip     = curl ifconfig.co"
 echo " psgrep   = ps aux | grep "
-echo " dc       = docker-compose"
+echo " dc       = docker compose"
 echo
 }
 

@@ -10,6 +10,7 @@
 - ubuntu-restricted-extras (will display Microsoft fonts license)
 - ubuntu-restricted-addons
 - vim-gtk
+- nvim
 - terminator
 - git
 - ca-certificates
@@ -59,7 +60,7 @@
 With few commands:
 
 ```bash
-sudo apt install make build-essential python3-dev python3-venv python-is-python3 git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils autojump neofetch jq s3cmd duplicity encfs securefs ffmpeg pipx
+sudo apt install make build-essential python3-dev python3-venv python-is-python3 git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils autojump neofetch jq s3cmd duplicity encfs securefs ffmpeg pipx nvim
 
 sudo apt install postgresql-13 postgresql-server-dev-13 postgresql-contrib redis-server
 
