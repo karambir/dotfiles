@@ -161,7 +161,6 @@ alias gl='git pull'
 alias gp='git push'
 alias gpo='git push origin'
 alias gpl='git push local'
-alias gph='git push heroku master'
 alias gdv='git diff -w "$@" | nvim -R -'
 alias gc='git commit -v -m'
 alias gca='git commit -v -a -m'
@@ -175,7 +174,7 @@ alias gcp='git cherry-pick'
 alias gco='git checkout'
 alias gexport='git archive --format zip --output'
 alias gdel='git branch -d'
-alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
+alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/main'
 alias gll='git log --graph --pretty=oneline --abbrev-commit'
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
@@ -233,8 +232,7 @@ function git-help() {
   echo "  gdel    = git branch -d"
   echo "  gpo     = git push origin"
   echo "  gpl     = git push local"
-  echo "  gph     = git push heroku master"
-  echo "  gmu     = git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+  echo "  gmu     = git fetch origin -v; git fetch upstream -v; git merge upstream/main"
   echo "  gll     = git log --graph --pretty=oneline --abbrev-commit"
   echo "  gitlog  = git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
   echo "  grb     = git rebase -p"

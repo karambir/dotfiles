@@ -34,7 +34,7 @@ These dotfiles are extended and copied from various sources with appropriate lic
 
 ## Note:
 
-The master branch is suitable for bash in Debian/Arch based systems. If you are working on MacOS then checkout the macos branch.
+The main branch is suitable for bash in Debian/Arch based systems. If you are working on MacOS then checkout the macos branch.
 
 ## License
 
