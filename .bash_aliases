@@ -162,7 +162,7 @@ alias gp='git push'
 alias gpo='git push origin'
 alias gpl='git push local'
 alias gph='git push heroku master'
-alias gdv='git diff -w "$@" | vim -R -'
+alias gdv='git diff -w "$@" | nvim -R -'
 alias gc='git commit -v -m'
 alias gca='git commit -v -a -m'
 alias gce='git commit --allow-empty-message -m ""'
@@ -193,10 +193,10 @@ alias gsync='git fetch origin && git rebase -p origin/$(git_current_branch) && g
 
 case $OSTYPE in
   linux*)
-    alias gd='git diff | vim -R -'
+    alias gd='git diff | nvim -R -'
     ;;
   darwin*)
-    alias gd='git diff | vim -R -'
+    alias gd='git diff | nvim -R -'
     ;;
   darwin*)
     alias gd='git diff'
@@ -217,8 +217,8 @@ function git-help() {
   echo "  gss	  = git status -s"
   echo "  gl      = git pull"
   echo "  gp      = git push"
-  echo "  gd      = git diff | vim -R -"
-  echo "  gdv     = git diff -w \"$@\" | vim -R -"
+  echo "  gd      = git diff | nvim -R -"
+  echo "  gdv     = git diff -w \"$@\" | nvim -R -"
   echo "  gc      = git commit -v -m"
   echo "  gce     = git commit --allow-empty-message -m ''"
   echo "  gcb     = git add . && git commit --allow-empty-message -m ''"

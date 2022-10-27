@@ -96,7 +96,7 @@ fi
 
 
 # bash completion with sudo
-# complete -cf sudo
+complete -cf sudo
 
 # pipx completion
 # eval "$(register-python-argcomplete pipx)"
@@ -106,8 +106,8 @@ fi
 ##
 ## Other customizations
 ##
-# vim as default
-export EDITOR="vim"
+# neovim as default
+export EDITOR="nvim"
 
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
@@ -122,4 +122,14 @@ eval "$(starship init bash)"
 
 
 # pipx set custom python path
-export PIPX_DEFAULT_PYTHON=/usr/bin/python
+# export PIPX_DEFAULT_PYTHON=/usr/bin/python
+export PIPX_DEFAULT_PYTHON=/home/karambir/.asdf/installs/python/3.9.15/bin/python
+
+# Arch - start ssh-agent
+# https://wiki.archlinux.org/title/SSH_keys#SSH_agents
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi

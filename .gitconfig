@@ -131,7 +131,7 @@
 	trustctime = false
 
 	# Editor used for writing git commits
-	editor = vim
+	editor = nvim
 
 [diff]
 

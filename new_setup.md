@@ -139,10 +139,11 @@ Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
   - streamlink
   - gallery-dl
   - awscli
-  - ansible
+  - ansible (add `--include-deps` flag)
   - cookiecutter
   - pgcli
   - poetry
+  - pre-commit
   - duplicity
 
 
@@ -155,6 +156,13 @@ Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
 - remove all dir from .vim/bundle
 - ` git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 - run vim and do `:PluginInstall`
+
+
+## Setup neovim:
+
+- copy `.config/nvim` from dotfiles repo to `~/.config/nvim`
+- More info [here](https://nvchad.com/quickstart/install#pre-requisites)
+
 
 ## External DEB/AUR/Flatpak
 
