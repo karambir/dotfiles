@@ -206,3 +206,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# neochad for neovim config
+.config/nvim/.github
