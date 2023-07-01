@@ -45,12 +45,14 @@ alias netstat='ss'
 alias du='dust'
 alias cat='bat'
 alias grep='rg'
+alias curl='curlie'
 
 # Run Programs 
 alias p="python"
 alias v="vim"
 alias yt='yt-dlp'
 alias sl='streamlink'
+
 
 # Sudo related
 alias s="sudo"
@@ -69,9 +71,6 @@ alias clr='clear'
 alias edit="$EDITOR"
 
 alias q="exit"
-
-alias irc="$IRC_CLIENT"
-
 
 alias ..='cd ..'         # Go up one directory
 alias ...='cd ../..'     # Go up two directories
@@ -103,7 +102,6 @@ echo "  md      = mkdir -p"
 echo "  rd      = rmdir"
 echo "  editor  = $EDITOR"
 echo "  q       = exit"
-echo "  irc     = $IRC_CLIENT"
 echo "  md      = mkdir -p"
 echo "  rd      = rmdir"
 echo " generaterandom = openssl rand -hex $1"

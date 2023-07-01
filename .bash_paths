@@ -22,7 +22,7 @@ if [ -d "/opt/asdf-vm" ] ; then
 fi
 
 # asdf plugins 
-source " $HOME/.asdf/installs/rust/1.69.0/env"
+source "$HOME/.asdf/installs/rust/1.69.0/env"
 
 # Add zoxide with j command - autojump alternate
 eval "$(zoxide init --cmd j bash)"
