@@ -1,4 +1,4 @@
-# My normal system setup
+# System setup
 
 ## normal apt/pacman install
 
@@ -9,7 +9,6 @@
 - python3-venv
 - ubuntu-restricted-extras (will display Microsoft fonts license)
 - ubuntu-restricted-addons
-- vim-gtk
 - nvim
 - terminator
 - git
@@ -35,7 +34,6 @@
 - thunderbird
 - jq
 - s3cmd
-- duplicity
 - encfs
 - securefs
 - sirikali
@@ -57,6 +55,7 @@
 - fonts-inconsolata
 - fonts-anonymous-pro
 - terraform
+- restic
 
 Some modern programs for traditional unix commands:
 
@@ -74,24 +73,28 @@ Some modern programs for traditional unix commands:
 With few commands:
 
 ```bash
-sudo apt install make build-essential python3-dev python3-venv python-is-python3 git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils autojump neofetch jq s3cmd duplicity encfs securefs ffmpeg pipx nvim
+sudo apt install make build-essential python3-dev python3-venv python-is-python3 git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils autojump neofetch jq s3cmd encfs securefs ffmpeg pipx nvim
 
 sudo apt install postgresql-13 postgresql-server-dev-13 postgresql-contrib redis-server
 
 sudo apt install ubuntu-restricted-extras ubuntu-restricted-addons
 
-sudo apt install vim-gtk terminator gparted timeshift vlc handbrake shotwell nomacs gimp obs-studio thunderbird sirikali nextcloud-desktop transmission-gtk code
+sudo apt install terminator gparted timeshift vlc handbrake shotwell nomacs gimp obs-studio thunderbird sirikali nextcloud-desktop transmission-gtk code
 
 sudo apt install fonts-firacode fonts-noto-mono fonts-jetbrains-mono fonts-inconsolata fonts-anonymous-pro
 ```
+
 
 ## Setup bash prompt
 
 - Install Starship `sh -c "$(curl -fsSL https://starship.rs/install.sh)"`
 
+
 ## Setup qemu/virtual machines
 
-`sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager`
+```bash
+sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
+```
 
 ## Setup docker
 
@@ -136,14 +139,6 @@ asdf global rust latest
 asdf global golang latest
 ```
 
-[GitUI](https://github.com/extrawurst/gitui) is very handy tool for git operations. Install it with:
-
-```sh
-cargo install gitui
-asdf reshim rust
-```
-
-Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
 
 ## Python specific CLI tools
 
@@ -158,18 +153,6 @@ Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
   - pgcli
   - poetry
   - pre-commit
-  - duplicity
-
-
-> Duplicity requires systems libs like: `librsync-dev intltool`
-
-
-## Setup vim:
-
-- copy vimrc from dotfiles repo to `~/.vimrc`
-- remove all dir from .vim/bundle
-- ` git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
-- run vim and do `:PluginInstall`
 
 
 ## Setup neovim:
@@ -220,6 +203,7 @@ flatpak install com.axosoft.GitKraken \
   org.kde.kdenlive \
   com.jgraph.drawio.desktop
 ```
+
 
 ## Setup Tailscale
 

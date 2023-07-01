@@ -16,7 +16,6 @@ These dotfiles are extended and copied from various sources with appropriate lic
 - Print help for bash aliases
 - Bash shell prompt configured with [Starship](https://starship.rs)
 - [Neovim](https://neovim.io/) config using [nvchad](https://nvchad.com)
-- Vim themes and some basic plugins using Vundle
 - Lots of helpful git aliases from [here](https://github.com/theskumar/dotfiles)
 - SSH config for modern algorithms from [Mozilla](https://infosec.mozilla.org/guidelines/openssh). For new ssh key: `ssh-keygen -t ed25519 -f ~/.ssh/id_personal_$(date +%Y-%m-%d) -C "personal"`
 - A list of commonly used cli and gui programs to one can install via apt and flatpak. See [New Setup](./new_setup.md)
@@ -25,9 +24,6 @@ These dotfiles are extended and copied from various sources with appropriate lic
 
 - Clone this repo in home directory
 - Copy `.config` dirs for terminator, starship and neovim
-- Add a symbolic link to ./vim/vimrc at .vimrc
-    - Vimrc will install vim wakatime plugin. If you are not using it then it from .vim/vimrc file
-    - Vimrc also try to use Source Code Pro font. Download it and install it in your system
 - Some programs may need to be installed via system package manager(pacman/apt/brew) or [pipx](https://github.com/pipxproject/pipx/)
 - Have a look at [New Setup](new_setup.md) file for list of programs I have found helpful
 - Terminator config uses *FiraCode Nerd Font Mono* font for starship prompt. Install nerd fonts first
