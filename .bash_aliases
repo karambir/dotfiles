@@ -15,59 +15,48 @@ alias mycow='fortune | cowsay'
 alias myproxy='ssh -D 8123 -f -C -q -N $1'
 alias watchcpu='watch -n.1 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
 alias generaterandom='openssl rand -hex $1'
+alias incognito='export HISTFILE=/dev/null'
+alias myip="curl ifconfig.co"
 
-#Arch linux
-#alias _i="trizen -S"
-#alias _ug="trizen -Syu --devel --show-ood --noedit --needed"
+# Arch linux
 alias _ug="yay -Syu --devel --needed && flatpak update --noninteractive"
 #alias _ug="sudo apt-get update && sudo apt-get upgrade -y && flatpak update --noninteractive"
+
+# Shortcuts
 alias sc="sudo systemctl"
-alias dig='drill'
-alias netstat='ss'
 alias dc='docker compose'
 alias docker-compose='docker compose'
-
 alias df='df -h'
-alias du='du -hs'
 alias fo='xdg-open'
-alias myip="curl ifconfig.co"
 alias pyclean='find . -name \*.pyc -type f -ls -delete'
 alias pipgrep='pip freeze | grep -i '
 alias psgrep='ps aux | grep '
 alias sshconfig="v ~/.ssh/config"
 alias gitconfig="v ~/.gitconfig"
-alias incognito='export HISTFILE=/dev/null'
-alias yt='yt-dlp'
-alias sl='streamlink'
 alias slc='streamlink --player="vlc --network-caching 3000"'
 alias sv='source .venv/bin/activate'
-# alias cv='/usr/bin/virtualenv .venv -p $(pyenv which python)'
 alias cv='python -m venv .venv'
 alias rv='rm -r .venv'
 
+# Alternate programs for common commands
+alias ls='exa'
+alias dig='drill'
+alias netstat='ss'
+alias du='dust'
+alias cat='bat'
+alias grep='rg'
 
 # Run Programs 
 alias p="python"
-alias v="nvim"
-alias vim="nvim"
-
-# List directory contents
-alias ls='ls -G'        # Compact view, show colors
-alias la='ls -AF'       # Compact view, show hidden
-alias ll='ls -lhrt'
-alias l='ls -a'
-alias l1='ls -1'
-
+alias v="vim"
+alias yt='yt-dlp'
+alias sl='streamlink'
 
 # Sudo related
 alias s="sudo"
 alias _='sudo'
 alias root="sudo su"
 
-if [ $(uname) = "Linux" ]
-then
-  alias ls="ls --color=always"
-fi
 which gshuf &> /dev/null
 if [ $? -eq 1 ]
 then
@@ -105,11 +94,6 @@ alias	rd=rmdir
 function aliases-help() {
 echo "Generic Alias Usage"
 echo
-echo "  sl      = ls"
-echo "  ls      = ls -G"
-echo "  la      = ls -AF"
-echo "  ll      = ls -al"
-echo "  l       = ls -a"
 echo "  k/clr   = clear"
 echo "  ..      = cd .."
 echo "  ...     = cd ../.."
@@ -161,7 +145,7 @@ alias gl='git pull'
 alias gp='git push'
 alias gpo='git push origin'
 alias gpl='git push local'
-alias gdv='git diff -w "$@" | nvim -R -'
+alias gdv='git diff -w "$@" | vim -R -'
 alias gc='git commit -v -m'
 alias gca='git commit -v -a -m'
 alias gce='git commit --allow-empty-message -m ""'
@@ -174,7 +158,7 @@ alias gcp='git cherry-pick'
 alias gco='git checkout'
 alias gexport='git archive --format zip --output'
 alias gdel='git branch -d'
-alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/main'
+alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
 alias gll='git log --graph --pretty=oneline --abbrev-commit'
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
@@ -192,10 +176,10 @@ alias gsync='git fetch origin && git rebase -p origin/$(git_current_branch) && g
 
 case $OSTYPE in
   linux*)
-    alias gd='git diff | nvim -R -'
+    alias gd='git diff | vim -R -'
     ;;
   darwin*)
-    alias gd='git diff | nvim -R -'
+    alias gd='git diff | vim -R -'
     ;;
   darwin*)
     alias gd='git diff'
@@ -216,8 +200,8 @@ function git-help() {
   echo "  gss	  = git status -s"
   echo "  gl      = git pull"
   echo "  gp      = git push"
-  echo "  gd      = git diff | nvim -R -"
-  echo "  gdv     = git diff -w \"$@\" | nvim -R -"
+  echo "  gd      = git diff | vim -R -"
+  echo "  gdv     = git diff -w \"$@\" | vim -R -"
   echo "  gc      = git commit -v -m"
   echo "  gce     = git commit --allow-empty-message -m ''"
   echo "  gcb     = git add . && git commit --allow-empty-message -m ''"
@@ -232,7 +216,7 @@ function git-help() {
   echo "  gdel    = git branch -d"
   echo "  gpo     = git push origin"
   echo "  gpl     = git push local"
-  echo "  gmu     = git fetch origin -v; git fetch upstream -v; git merge upstream/main"
+  echo "  gmu     = git fetch origin -v; git fetch upstream -v; git merge upstream/master"
   echo "  gll     = git log --graph --pretty=oneline --abbrev-commit"
   echo "  gitlog  = git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
   echo "  grb     = git rebase -p"

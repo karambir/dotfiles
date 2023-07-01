@@ -123,9 +123,9 @@ eval "$(starship init bash)"
 
 # pipx set custom python path
 # export PIPX_DEFAULT_PYTHON=/usr/bin/python
-export PIPX_DEFAULT_PYTHON=/home/karambir/.asdf/installs/python/3.9.15/bin/python
+export PIPX_DEFAULT_PYTHON=$HOME/.asdf/installs/python/3.9.16/bin/python
 
-# Arch - start ssh-agent
+
 # https://wiki.archlinux.org/title/SSH_keys#SSH_agents
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
@@ -133,3 +133,4 @@ fi
 if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
+

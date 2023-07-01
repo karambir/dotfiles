@@ -56,6 +56,20 @@
 - fonts-jetbrains-mono
 - fonts-inconsolata
 - fonts-anonymous-pro
+- terraform
+
+Some modern programs for traditional unix commands:
+
+- exa (ls)
+- drill (dig)
+- ss (netstat)
+- dust (du)
+- bat (cat)
+- ripgrep (grep)
+- zoxide (autojump)
+- tealdeer (man-pages, not quite a replacement)
+- gitui (git TUI)
+- httpie (curl for web apis)
 
 With few commands:
 
@@ -169,15 +183,12 @@ Issue with asdf rust reshim: https://github.com/code-lever/asdf-rust/issues/14
 - Pycharm
 - Tailscale
 - Nextdns
-- Terraform
 - Tailscale
 - Steam
-- Qwnotes
 - Telegram
 - Discord
 - Spotify
 - Bitwarden
-- Zoom
 - Fractal
 - Tootle
 - Slack
@@ -204,10 +215,8 @@ flatpak install com.axosoft.GitKraken \
   org.gnome.Fractal \
   org.kde.gwenview \
   org.kde.okular \
-  org.qownnotes.QOwnNotes \
   org.telegram.desktop \
   rest.insomnia.Insomnia \
-  us.zoom.Zoom \
   org.kde.kdenlive \
   com.jgraph.drawio.desktop
 ```
