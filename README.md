@@ -2,9 +2,8 @@
 
 - Few Bash customisations and aliases
 - Neovim as Editor instead of vim
-- vim using Vundle(considered legacy)
 - Starship as shell prompt
-- Terminator
+- Terminator config
 - SSH config
 
 These dotfiles are extended and copied from various sources with appropriate license. A Big thanks to all of them.
