@@ -1,5 +1,5 @@
 ###### ZSH
-
+#-------------------------------------
 # bindings
 bindkey "^R" history-incremental-search-backward
 autoload -U up-line-or-beginning-search
@@ -8,6 +8,10 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
+# Bind option+leftArrow and option+rightArrow for moving cursor forward or backwards one word
+bindkey -e
+bindkey '^[[1;9C' forward-word
+bindkey '^[[1;9D' backward-word
 
 # history
 export HISTSIZE=500000
@@ -19,7 +23,13 @@ setopt HIST_IGNORE_DUPS
 
 
 ###### CONFIGS
-export PIPX_DEFAULT_PYTHON="/Users/karambir/.asdf/installs/python/3.9.13/bin/python"
+#-------------------------------------
+
+# macos multithreading allow
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+export PIPX_DEFAULT_PYTHON="$HOME/.asdf/installs/python/3.11.6/bin/python"
+export EDITOR=nvim
 
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
@@ -34,13 +44,19 @@ eval "$(starship init zsh)"
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 # asdf
-. /opt/homebrew/opt/asdf/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 # eval "$(register-python-argcomplete pipx)"
+
+# doppler completions
+source <(doppler completion 2> /dev/null)
 
 
 
 ###### PATHS
+#-------------------------------------
 export PATH="/Users/karambir/.local/bin:$PATH"
+
+export PATH="/Users/karambir/.rd/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 
@@ -50,11 +66,23 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/karambir/.google-cloud-sdk/path.zsh.inc' ]; then . '/Users/karambir/.google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/karambir/.google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/karambir/.google-cloud-sdk/completion.zsh.inc'; fi
 
 
+###### COMPILER FLAGS
+#-------------------------------------
+export LDFLAGS="-L/opt/homebrew/opt/zlib/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/zlib/include"
 
-# ALIASES
 
+##### ALIASES
+#-------------------------------------
 function loaddotenv() {
 #   if [ ! -f .env ]
 #   then
@@ -71,10 +99,10 @@ alias myproxy='ssh -D 8123 -f -C -q -N $1'
 alias watchcpu='watch -n.1 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
 alias generaterandom='openssl rand -hex $1'
 
-alias _ug="sudo apt-get update && sudo apt-get upgrade -y && flatpak update --noninteractive"
+alias _ug="brew update && brew upgrade"
 alias sc="sudo systemctl"
 alias dig='drill'
-alias netstat='ss'
+alias sed='gsed' # Use brew gnu-sed
 
 alias df='df -h'
 alias du='du -hs'
@@ -95,7 +123,9 @@ alias rv='rm -r .venv'
 
 # Run Programs
 alias p="python"
-alias v="vim"
+alias v="nvim"
+alias vim="nvim"
+# alias docker="nerdctl"
 
 # Django Commands
 alias djrun="./manage.py runserver"
