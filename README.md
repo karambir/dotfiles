@@ -3,7 +3,8 @@
 - Few Bash customisations and aliases
 - Neovim as Editor instead of vim
 - Starship as shell prompt
-- Terminator config
+- Terminator and Alacritty config
+- Tmux config
 - SSH config
 
 These dotfiles are extended and copied from various sources with appropriate license. A Big thanks to all of them.
@@ -13,6 +14,7 @@ These dotfiles are extended and copied from various sources with appropriate lic
 - Few bash customizations(some from [Paul Dotfiles](]https://github.com/paulirish/dotfiles))
 - Bash aliases for daily usage commands with bash, git and some services
 - Print help for bash aliases
+- Modern and fast terminal emulator [Alacritty](https://alacritty.org/) with tmux as login shell
 - Bash shell prompt configured with [Starship](https://starship.rs)
 - [Neovim](https://neovim.io/) config using [nvchad](https://nvchad.com)
 - Lots of helpful git aliases from [here](https://github.com/theskumar/dotfiles)
@@ -22,10 +24,12 @@ These dotfiles are extended and copied from various sources with appropriate lic
 ## Usage:
 
 - Clone this repo in home directory
-- Copy `.config` dirs for terminator, starship and neovim
+- Copy `.config` dirs for terminator, alacritty, tmux, starship and neovim
 - Some programs may need to be installed via system package manager(pacman/apt/brew) or [pipx](https://github.com/pipxproject/pipx/)
 - Have a look at [New Setup](new_setup.md) file for list of programs I have found helpful
 - Terminator config uses *FiraCode Nerd Font Mono* font for starship prompt. Install nerd fonts first
+- For Alacritty, get themes by `git clone https://github.com/alacritty/alacritty-theme.git ~/.config/alacritty/themes`
+- For tmux config, we use tpm as plugin manager. Get it by `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
 ## Note:
 
