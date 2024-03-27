@@ -12,7 +12,10 @@ function loaddotenv() {
 }
 
 alias mycow='fortune | cowsay'
-alias myproxy='ssh -D 8123 -f -C -q -N $1'
+# alias myproxy='ssh -D 8123 -f -C -q -N $1'
+alias myproxystart='ssh -D 8123 -S /tmp/.ssh-myproxy -M -f -C -q -N $1'
+alias myproxycheck='ssh -S /tmp/.ssh-myproxy -O check $1'
+alias myproxyexit='ssh -S /tmp/.ssh-myproxy -O exit $1'
 alias watchcpu='watch -n.1 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
 alias generaterandom='openssl rand -hex $1'
 alias incognito='export HISTFILE=/dev/null'
