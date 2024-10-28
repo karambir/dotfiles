@@ -21,14 +21,13 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
 
 
-
 ###### CONFIGS
 #-------------------------------------
 
 # macos multithreading allow
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
-export PIPX_DEFAULT_PYTHON="$HOME/.asdf/installs/python/3.11.6/bin/python"
+export PIPX_DEFAULT_PYTHON="$HOME/.asdf/installs/python/3.12.7/bin/python"
 export EDITOR=nvim
 
 if type brew &>/dev/null; then
@@ -54,10 +53,6 @@ source <(doppler completion 2> /dev/null)
 
 ###### PATHS
 #-------------------------------------
-export PATH="/Users/karambir/.local/bin:$PATH"
-
-export PATH="/Users/karambir/.rd/bin:$PATH"
-
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/ssh-copy-id/bin:$PATH"
@@ -69,17 +64,34 @@ export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/karambir/.google-cloud-sdk/path.zsh.inc' ]; then . '/Users/karambir/.google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '$HOME/.google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/.google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/karambir/.google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/karambir/.google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '$HOME/.google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/.google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="$HOME/.rd/bin:$PATH"
+
+export PATH="/opt/homebrew/opt/kubernetes-cli@1.29/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
 
 
 ###### COMPILER FLAGS
 #-------------------------------------
+# zlib
 export LDFLAGS="-L/opt/homebrew/opt/zlib/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/zlib/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/zlib/lib/pkgconfig"
 
+# curl
+export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/curl/lib"
+export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/curl/include"
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/homebrew/opt/curl/lib/pkgconfig"
+
+# sqlite
+export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/sqlite/lib"
+export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/sqlite/include"
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/opt/homebrew/opt/sqlite/lib/pkgconfig"
 
 ##### ALIASES
 #-------------------------------------
@@ -223,3 +235,10 @@ case $OSTYPE in
     alias gd='git diff'
     ;;
 esac
+
+compinit
+
+# Set language
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
