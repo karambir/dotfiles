@@ -208,4 +208,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # neochad for neovim config
-.config/nvim/.github
+config/nvim/.github
