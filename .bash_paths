@@ -6,14 +6,9 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# pyenv shims
-# if command -v pyenv 1>/dev/null 2>&1; then
-# #   eval "$(pyenv init -)"
-#     export PYENV_ROOT="$HOME/.pyenv"
-#     export PATH="$PYENV_ROOT/bin:$PATH"
-#     eval "$(pyenv init --path)"
-# fi
-
+if [ -d "/var/lib/flatpak/exports/bin/" ] ; then
+    PATH="/var/lib/flatpak/exports/bin/:$PATH"
+fi
 
 # asdf and asdf completions
 if [ -d "/opt/asdf-vm" ] ; then
@@ -21,16 +16,8 @@ if [ -d "/opt/asdf-vm" ] ; then
     # . /opt/asdf-vm/completions/asdf.bash
 fi
 
-# asdf plugins 
-source "$HOME/.asdf/installs/rust/1.69.0/env"
-
 # Add zoxide with j command - autojump alternate
 eval "$(zoxide init --cmd j bash)"
-
-# nvm from aur
-# if [ -f /usr/share/nvm/init-nvm.sh ] : then
-# source /usr/share/nvm/init-nvm.sh
-# fi
 
 # rustup
 # if [ -f "$HOME/.cargo/env" ] : then
@@ -42,3 +29,8 @@ eval "$(zoxide init --cmd j bash)"
 if [ -f '$HOME/.local/google-cloud-sdk/path.bash.inc' ]; then . '$HOME/.local/google-cloud-sdk/path.bash.inc'; fi
 # The next line enables shell command completion for gcloud.
 if [ -f '$HOME/.local/google-cloud-sdk/completion.bash.inc' ]; then . '$HOME/.local/google-cloud-sdk/completion.bash.inc'; fi
+
+# Jetbrains toolbox
+if [ -d "$HOME/.local/share/JetBrains/Toolbox/scripts" ] ; then
+    PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+fi

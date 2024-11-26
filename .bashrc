@@ -31,6 +31,8 @@ HISTFILESIZE=50000000
 # Save multi-line commands as one command
 shopt -s cmdhist
 
+shopt -s autocd # change to named directory
+shopt -s cdspell # autocorrects cd misspellings
 
 
 ##

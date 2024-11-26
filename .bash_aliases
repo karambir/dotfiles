@@ -19,11 +19,22 @@ alias myproxyexit='ssh -S /tmp/.ssh-myproxy -O exit $1'
 alias watchcpu='watch -n.1 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
 alias generaterandom='openssl rand -hex $1'
 alias incognito='export HISTFILE=/dev/null'
-alias myip="curl ifconfig.co"
+alias myip="curl -4 ifconfig.co"
+alias myip6="curl -6 ifconfig.co"
 
 # Arch linux
 alias _ug="yay -Syu --devel --needed && flatpak update --noninteractive"
 #alias _ug="sudo apt-get update && sudo apt-get upgrade -y && flatpak update --noninteractive"
+
+# pacman and yay
+# Ref https://gitlab.com/dwt1/dotfiles
+alias pacsyu='sudo pacman -Syu'                  # update only standard pkgs
+alias pacsyyu='sudo pacman -Syyu'                # Refresh pkglist & update standard pkgs
+alias parsua='paru -Sua --noconfirm'             # update only AUR pkgs (paru)
+alias parsyu='paru -Syu --noconfirm'             # update standard pkgs and AUR pkgs (paru)
+alias unlock='sudo rm /var/lib/pacman/db.lck'    # remove pacman lock
+alias orphan='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages (DANGEROUS!)
+
 
 # Shortcuts
 alias sc="sudo systemctl"
@@ -42,7 +53,12 @@ alias cv='python -m venv .venv'
 alias rv='rm -r .venv'
 
 # Alternate programs for common commands
-alias ls='exa'
+alias ls='eza -al --color=always --group-directories-first' # my preferred listing
+alias la='eza -a --color=always --group-directories-first'  # all files and dirs
+alias ll='eza -l --color=always --group-directories-first'  # long format
+alias lt='eza -aT --color=always --group-directories-first' # tree listing
+alias vimdiff='nvim -d'
+
 alias dig='drill'
 alias netstat='ss'
 alias du='dust'
@@ -92,46 +108,6 @@ fi
 # Directory
 alias	md='mkdir -p'
 alias	rd=rmdir
-
-function aliases-help() {
-echo "Generic Alias Usage"
-echo
-echo "  k/clr   = clear"
-echo "  ..      = cd .."
-echo "  ...     = cd ../.."
-echo "  -       = cd -"
-echo "  h       = history"
-echo "  md      = mkdir -p"
-echo "  rd      = rmdir"
-echo "  editor  = $EDITOR"
-echo "  q       = exit"
-echo "  md      = mkdir -p"
-echo "  rd      = rmdir"
-echo " generaterandom = openssl rand -hex $1"
-echo " _ug      = sudo apt-get update && sudo apt-get upgrade -y && flatpak update --noninteractive"
-echo " sc       = sudo systemctl"
-echo " dig      = drill"
-echo " netstat  = ss"
-echo " df       = df -h"
-echo " du       = du -hs"
-echo " fo       = xdg-open"
-echo " myip     = curl ifconfig.co"
-echo " psgrep   = ps aux | grep "
-echo " dc       = docker compose"
-echo
-}
-
-function python-help() {
-echo "Python Dev Aliases Usage"
-echo
-echo " p       =  python"
-echo " pyclean  = find . -name \*.pyc -type f -ls -delete"
-echo " pipgrep  = pip freeze | grep -i "
-echo " sv       = source .venv/bin/activate"
-echo " cv       = python -m venv .venv"
-echo " rv       = rm -r .venv"
-echo
-}
 
 # Git Aliases
 alias gcl='git clone'
@@ -186,44 +162,3 @@ case $OSTYPE in
     alias gd='git diff'
     ;;
 esac
-
-
-
-function git-help() {
-  echo "Git Custom Aliases Usage"
-  echo
-  echo "  gcl	  = git clone"
-  echo "  g       = git"
-  echo "  get 	  = git"
-  echo "  ga      = git add"
-  echo "  gall	  = git add ."
-  echo "  gst/gs  = git status"
-  echo "  gss	  = git status -s"
-  echo "  gl      = git pull"
-  echo "  gp      = git push"
-  echo "  gd      = git diff | vim -R -"
-  echo "  gdv     = git diff -w \"$@\" | vim -R -"
-  echo "  gc      = git commit -v -m"
-  echo "  gce     = git commit --allow-empty-message -m ''"
-  echo "  gcb     = git add . && git commit --allow-empty-message -m ''"
-  echo "  gca     = git commit -v -a -m"
-  echo "  gci 	  = git commit --interactive"
-  echo "  gb      = git branch"
-  echo "  gba     = git branch -a"
-  echo "  gcount  = git shortlog -sn"
-  echo "  gcp     = git cherry-pick"
-  echo "  gco     = git checkout"
-  echo "  gexport = git git archive --format zip --output"
-  echo "  gdel    = git branch -d"
-  echo "  gpo     = git push origin"
-  echo "  gpl     = git push local"
-  echo "  gmu     = git fetch origin -v; git fetch upstream -v; git merge upstream/master"
-  echo "  gll     = git log --graph --pretty=oneline --abbrev-commit"
-  echo "  gitlog  = git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-  echo "  grb     = git rebase -p"
-  echo "  gup     = git fetch origin && grb origin/<git_current_branch>"
-  echo "  gpthis  = git push origin HEAD:<git_current_branch>"
-  echo "  gm      = git merge --no-ff"
-  echo "  gsync   = gup && gpthis"
-  echo
-}
