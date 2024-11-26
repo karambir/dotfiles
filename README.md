@@ -1,9 +1,9 @@
 # DotFiles
 
 - Few Bash customisations and aliases
-- Neovim as Editor instead of vim
+- Neovim as Editor
 - Starship as shell prompt
-- Terminator and Alacritty config
+- Kitty, Terminator and Alacritty config
 - Tmux config
 - SSH config
 
@@ -12,11 +12,11 @@ These dotfiles are extended and copied from various sources with appropriate lic
 ## Features:
 
 - Few bash customizations(some from [Paul Dotfiles](]https://github.com/paulirish/dotfiles))
+- Modern and fast terminal emulator [Kitty](https://sw.kovidgoyal.net/kitty/). Previous config with Alacritty with Tmux is also available
+- Shell prompt(Bash) configured with [Starship](https://starship.rs)
+- [Neovim](https://neovim.io/) config using [nvchad](https://nvchad.com)
 - Bash aliases for daily usage commands with bash, git and some services
 - Print help for bash aliases
-- Modern and fast terminal emulator [Alacritty](https://alacritty.org/) with tmux as login shell
-- Bash shell prompt configured with [Starship](https://starship.rs)
-- [Neovim](https://neovim.io/) config using [nvchad](https://nvchad.com)
 - Lots of helpful git aliases from [here](https://github.com/theskumar/dotfiles)
 - SSH config for modern algorithms from [Mozilla](https://infosec.mozilla.org/guidelines/openssh). For new ssh key: `ssh-keygen -t ed25519 -f ~/.ssh/id_personal_$(date +%Y-%m-%d) -C "personal"`
 - A list of commonly used cli and gui programs to one can install via apt and flatpak. See [New Setup](./new_setup.md)
@@ -28,7 +28,7 @@ These dotfiles are extended and copied from various sources with appropriate lic
 - Some programs may need to be installed via system package manager(pacman/apt/brew) or [pipx](https://github.com/pipxproject/pipx/)
 - Have a look at [New Setup](new_setup.md) file for list of programs I have found helpful
 - Terminator config uses *FiraCode Nerd Font Mono* font for starship prompt. Install nerd fonts first
-- For Alacritty, get themes by `git clone https://github.com/alacritty/alacritty-theme.git ~/.config/alacritty/themes`
+- For Kitty, get themes by `kitten themes`
 - For tmux config, we use tpm as plugin manager. Get it by `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
 ## Note:

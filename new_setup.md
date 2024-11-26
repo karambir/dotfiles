@@ -21,6 +21,7 @@
 - glances
 - nethogs
 - vnstat
+- kitty
 - tmux
 - ldnsutils  (for drill command)
 - gparted
@@ -73,7 +74,9 @@ Some modern programs for traditional unix commands:
 With few commands:
 
 ```bash
-sudo apt install make build-essential python3-dev python3-venv python-is-python3 git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils autojump neofetch jq s3cmd encfs securefs ffmpeg pipx nvim
+sudo apt install make build-essential python3-dev python3-venv python-is-python3 git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils autojump neofetch jq s3cmd encfs securefs ffmpeg pipx nvim kitty
+
+sudo apt install bat exa ripgrep
 
 sudo apt install postgresql-13 postgresql-server-dev-13 postgresql-contrib redis-server
 

@@ -123,7 +123,7 @@ eval "$(starship init bash)"
 
 # pipx set custom python path
 # export PIPX_DEFAULT_PYTHON=/usr/bin/python
-export PIPX_DEFAULT_PYTHON=$HOME/.asdf/installs/python/3.9.16/bin/python
+export PIPX_DEFAULT_PYTHON=$HOME/.asdf/installs/python/3.11.10/bin/python
 
 
 # https://wiki.archlinux.org/title/SSH_keys#SSH_agents
@@ -134,3 +134,6 @@ if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
+# AUR Makepkg assign more cores for compilation
+# https://wiki.archlinux.org/title/Makepkg#Parallel_compilation
+export MAKEFLAGS="--jobs=$(nproc --ignore=4)"
