@@ -1,7 +1,3 @@
-export PATH=~/.npm-global/bin:$PATH
-
-export GOPATH=$HOME/.golang
-
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
@@ -10,19 +6,13 @@ if [ -d "/var/lib/flatpak/exports/bin/" ] ; then
     PATH="/var/lib/flatpak/exports/bin/:$PATH"
 fi
 
-# asdf and asdf completions
-if [ -d "/opt/asdf-vm" ] ; then
-    . /opt/asdf-vm/asdf.sh
-    # . /opt/asdf-vm/completions/asdf.bash
-fi
-
 # Add zoxide with j command - autojump alternate
 eval "$(zoxide init --cmd j bash)"
 
 # rustup
-# if [ -f "$HOME/.cargo/env" ] : then
-# source $HOME/.cargo/env
-# fi
+if [ -f "$HOME/.cargo/env" ] ; then
+    source $HOME/.cargo/env
+fi
 
 # gcloud
 # The next line updates PATH for the Google Cloud SDK.

@@ -1,11 +1,9 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+#
+# ~/.bashrc
+#
 
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
-
+[[ $- != *i* ]] && return
 
 ##
 ## Bash history
@@ -100,10 +98,6 @@ fi
 # bash completion with sudo
 complete -cf sudo
 
-# pipx completion
-# eval "$(register-python-argcomplete pipx)"
-
-
 
 ##
 ## Other customizations
@@ -112,21 +106,11 @@ complete -cf sudo
 export EDITOR="nvim"
 
 # Don’t clear the screen after quitting a manual page
-export MANPAGER="less -X"
-
-# Set language
-export LC_ALL="en_US.UTF-8"
-export LANG="en_US"
+export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 
 # activate starship
 # https://starship.rs/
 eval "$(starship init bash)"
-
-
-# pipx set custom python path
-# export PIPX_DEFAULT_PYTHON=/usr/bin/python
-export PIPX_DEFAULT_PYTHON=$HOME/.asdf/installs/python/3.11.10/bin/python
-
 
 # https://wiki.archlinux.org/title/SSH_keys#SSH_agents
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then

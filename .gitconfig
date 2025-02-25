@@ -1,218 +1,244 @@
 [alias]
-	bclean = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"
-	bdone = "!f() { git checkout ${1-main} && git up && git bclean ${1-main}; }; f"
-	c = commit -am
-	ci = commit -v
-	cia = commit --amend -va
-	cp = cherry-pick
-	cpc = cherry-pick --continue
-	cpa = cherry-pick --abort
-	cpq = cherry-pick --quit
-	ec = config --global -e
-	r = reset
-	rh = reset --hard
-	rt = remote -v
-	rad = remote add
-	rrm = remote rm
-	rpr = remote prune
-	rre = remote rename
-	rsu = remote set-url
-	br = branch -v
-	bD = branch -D
-	bM = branch -M
-	bra = branch -va
-	bru = branch -u
-	p = push
-	g = grep -p
-	b = blame -M -CC
-	h = help
-	cl = clone
-	s = status -sb
-	co = checkout
-	cob = checkout -b
-	cm = checkout main
-	re = rebase
-	ri = rebase -i
-	rim = rebase -i main
-	rc = rebase --continue
-	ra = rebase --abort
-	rs = rebase --skip
-	ss = stash save
-	sp = stash pop
-	sd = stash drop
-	sc = stash clear
-	sad = submodule add
-	df = diff --color --color-words --abbrev
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	l = log -p
-	sl = log --stat --format=oneline --abbrev-commit
-	fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
-	squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
-	ri = rebase --interactive --autosquash
-	who = !echo \"== Commits by Author:\\n`git shortlog -s -n`\\n\"
-	up = !sh -c 'git pull --rebase --prune $@ && git submodule update --init --recursive && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
-	f = fetch
-	fo = fetch origin
-	fa = fetch --all
-	conf = config --list
-	t = tag
-	td = tag -d
+    bclean = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"
+    bdone = "!f() { git checkout ${1-main} && git up && git bclean ${1-main}; }; f"
+    c = commit -am
+    ci = commit -v
+    cia = commit --amend -va
+    cp = cherry-pick
+    cpc = cherry-pick --continue
+    cpa = cherry-pick --abort
+    cpq = cherry-pick --quit
+    ec = config --global -e
+    r = reset
+    rh = reset --hard
+    rt = remote -v
+    rad = remote add
+    rrm = remote rm
+    rpr = remote prune
+    rre = remote rename
+    rsu = remote set-url
+    br = branch -v
+    bD = branch -D
+    bM = branch -M
+    bra = branch -va
+    bru = branch -u
+    p = push
+    g = grep -p
+    b = blame -M -CC
+    h = help
+    cl = clone
+    s = status -sb
+    co = checkout
+    cob = checkout -b
+    cm = checkout main
+    re = rebase
+    ri = rebase -i
+    rim = rebase -i main
+    rc = rebase --continue
+    ra = rebase --abort
+    rs = rebase --skip
+    ss = stash save
+    sp = stash pop
+    sd = stash drop
+    sc = stash clear
+    sad = submodule add
+    df = diff --color --color-words --abbrev
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    l = log -p
+    sl = log --stat --format=oneline --abbrev-commit
+    fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+    squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+    ri = rebase --interactive --autosquash
+    who = !echo \"== Commits by Author:\\n`git shortlog -s -n`\\n\"
+    up = !sh -c 'git pull --rebase --prune $@ && git submodule update --init --recursive && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
+    f = fetch
+    fo = fetch origin
+    fa = fetch --all
+    conf = config --list
+    t = tag
+    td = tag -d
 
-	# Display the number of commits per author in numerical order
-	who = shortlog -sne --no-merges
-	today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
-	yesterday = !git log --since=\"2 day ago\" --until=midnight --author=\"$(git config user.name)\" --oneline
-	ls = ls-files
+    # Display the number of commits per author in numerical order
+    who = shortlog -sne --no-merges
+    today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
+    yesterday = !git log --since=\"2 day ago\" --until=midnight --author=\"$(git config user.name)\" --oneline
+    ls = ls-files
 
-	# Switch to a branch, creating it if necessary
-	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+    # Switch to a branch, creating it if necessary
+    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
-	# File level ignoring
-	assume   = update-index --assume-unchanged
-	unassume = update-index --no-assume-unchanged
-	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+    # File level ignoring
+    assume   = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 
-	# snapshot stashes
-	snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+    # snapshot stashes
+    snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 
-	# merging
-	ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
-	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+    # merging
+    ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
+    theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 
-	# GitHub Pull Request Management
-	pr = "!f() { git fetch -fu origin refs/pull/$1/head:pr/$1; } ; f"
+    # GitHub Pull Request Management
+    pr = "!f() { git fetch -fu origin refs/pull/$1/head:pr/$1; } ; f"
 
-	# Merge GitHub pull request on top of the `main` branch
-	mpr = "!f() { \
-		if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
-			git fetch origin refs/pull/$1/head:pr/$1 && \
-			git rebase main pr/$1 && \
-			git checkout main && \
-			git merge pr/$1 && \
-			git branch -D pr/$1 && \
-			git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
-		fi \
-	}; f"
+    # Merge GitHub pull request on top of the `main` branch
+    mpr = "!f() { \
+        if [ $(printf \"%s\" \"$1\" | grep '^[0-9]\\+$' > /dev/null; printf $?) -eq 0 ]; then \
+            git fetch origin refs/pull/$1/head:pr/$1 && \
+            git rebase main pr/$1 && \
+            git checkout main && \
+            git merge pr/$1 && \
+            git branch -D pr/$1 && \
+            git commit --amend -m \"$(git log -1 --pretty=%B)\n\nCloses #$1.\"; \
+        fi \
+    }; f"
 
-	reauthor = !sh -c 'eval `git log --reverse --topo-order --pretty=format:\"git cherry-pick -m 1 %H &&  git commit --amend -C %H --author=\\\"%aN <%aE>\\\" && \" $0 ` "echo success" '
+    reauthor = !sh -c 'eval `git log --reverse --topo-order --pretty=format:\"git cherry-pick -m 1 %H &&  git commit --amend -C %H --author=\\\"%aN <%aE>\\\" && \" $0 ` "echo success" '
 
   # Initialize git in a better way
   # Adds .gitattributes, .gitignore and Readme.md file
-	ini = "!f() { git init && echo \"* text=auto\" >> .gitattributes && touch .gitignore README.md && git status; }; f"
-	switch = !legit switch \"$@\"
-	branches = !legit branches
-	sprout = !legit sprout \"$@\"
-	unpublish = !legit unpublish \"$@\"
-	harvest = !legit harvest \"$@\"
-	sync = !legit sync \"$@\"
-	publish = !legit publish \"$@\"
-	graft = !legit graft \"$@\"
+    ini = "!f() { git init && echo \"* text=auto\" >> .gitattributes && touch .gitignore README.md && git status; }; f"
+    switch = !legit switch \"$@\"
+    branches = !legit branches
+    sprout = !legit sprout \"$@\"
+    unpublish = !legit unpublish \"$@\"
+    harvest = !legit harvest \"$@\"
+    sync = !legit sync \"$@\"
+    publish = !legit publish \"$@\"
+    graft = !legit graft \"$@\"
+
+[branch]
+        sort = -committerdate
+
+[tag]
+        sort = version:refname
 
 [color]
 
-	ui = auto
+    ui = auto
+
+[column]
+    ui = auto
+
 
 [core]
 
-	excludesfile = ~/.gitignore
-	attributesfile = ~/.gitattributes
+    excludesfile = ~/.gitignore
+    attributesfile = ~/.gitattributes
 
-	filemode = false
-	autocrlf = false
-	ui = auto
+    filemode = false
+    autocrlf = false
+    ui = auto
 
-	# Treat spaces before tabs and all kinds of trailing whitespace as an error
-	# [default] trailing-space: looks for spaces at the end of a line
-	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+    # Treat spaces before tabs and all kinds of trailing whitespace as an error
+    # [default] trailing-space: looks for spaces at the end of a line
+    # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+    whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
-	# Make `git rebase` safer on OS X
-	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-	trustctime = false
+    # Make `git rebase` safer on OS X
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
 
-	# Editor used for writing git commits
-	editor = nvim
+    # Editor used for writing git commits
+    editor = nvim
 
 [diff]
 
-	tool = vimdiff
-	submodule = log
+    tool = vimdiff
+    submodule = log
+        algorithm = histogram
+        colorMoved = plain
+        mnemonicPrefix = true
+        renames = true
 
 [color "branch"]
 
-	current = yellow reverse
-	local = yellow
-	remote = green
+    current = yellow reverse
+    local = yellow
+    remote = green
 
 [color "diff"]
 
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
 
 [color "status"]
 
-	added = yellow
-	changed = green
-	untracked = cyan
+    added = yellow
+    changed = green
+    untracked = cyan
 
 [merge]
 
-	log = true
-	tool = vimdiff
+    log = true
+    tool = vimdiff
+    conflictstyle = zdiff3
 
 [rebase]
 
-	autosquash = true
-	autostash = true
+    autosquash = true
+    autostash = true
+    updateRefs = true
 
 [giggle]
-	main-window-maximized = true
-	main-window-geometry = 0x0+0+0
-	main-window-view = FileView
-	history-view-vpane-position = 547
-	file-view-vpane-position = 649
+    main-window-maximized = true
+    main-window-geometry = 0x0+0+0
+    main-window-view = FileView
+    history-view-vpane-position = 547
+    file-view-vpane-position = 649
 
 [remote "origin"]
 
-	receivepack = git receive-pack
+    receivepack = git receive-pack
 
 [status]
 
-	short = true
-	branch = true
+    short = true
+    branch = true
 
 [log]
 
-	date = relative
-	mailmap = true
+    date = iso-local
+    mailmap = true
 
 [grep]
 
-	lineNumber = true
+    lineNumber = true
 
 [blame]
 
-	date = relative
-	blankboundary = true
-	showroot = true
+    date = iso-local
+    blankboundary = true
+    showroot = true
+
+[fetch]
+        prune = true
+        pruneTags = true
+        all = true
 
 [pull]
-	rebase = true
+    rebase = true
 
 [push]
 
-	default = simple
+    default = simple
+        autoSetupRemote = true
+        followTags = true
 
 [format]
 
-	signoff = true
-	coverLetter = auto
+    signoff = true
+    coverLetter = auto
+
+[help]
+        autocorrect = prompt
 
 [user]
 
-	email = karambir@example.com
-	name = Karambir Example
+    email = karambir@example.com
+    name = Karambir Example
 [init]
-	defaultBranch = main
+    defaultBranch = main
