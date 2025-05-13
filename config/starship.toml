@@ -2,123 +2,123 @@
 # success_symbol = "[>](bold green)"
 # error_symbol = "[x](bold red)"
 # vicmd_symbol = "[<](bold green)"
-# 
+#
 # [git_commit]
 # tag_symbol = " tag "
-# 
+#
 # [git_status]
 # ahead = ">"
 # behind = "<"
 # diverged = "<>"
 # renamed = "r"
 # deleted = "x"
-# 
+#
 # [aws]
 # symbol = "aws "
-# 
+#
 # [c]
 # symbol = "C "
-# 
+#
 # [cobol]
 # symbol = "cobol "
-# 
+#
 # [conda]
 # symbol = "conda "
-# 
+#
 # [crystal]
 # symbol = "cr "
-# 
+#
 # [cmake]
 # symbol = "cmake "
-# 
+#
 # [dart]
 # symbol = "dart "
-# 
+#
 # [deno]
 # symbol = "deno "
-# 
+#
 # [dotnet]
 # symbol = ".NET "
-# 
+#
 [directory]
 truncate_to_repo = false
 # read_only = " ro"
-# 
+#
 # [docker_context]
 # symbol = "docker "
-# 
+#
 # [elixir]
 # symbol = "exs "
-# 
+#
 # [elm]
 # symbol = "elm "
-# 
+#
 # [git_branch]
 # symbol = "git "
-# 
+#
 # [golang]
 # symbol = "go "
-# 
+#
 # [hg_branch]
 # symbol = "hg "
-# 
+#
 # [java]
 # symbol = "java "
-# 
+#
 # [julia]
 # symbol = "jl "
-# 
+#
 # [kotlin]
 # symbol = "kt "
-# 
+#
 # [lua]
 # symbol = "lua "
-# 
+#
 # [nodejs]
 # symbol = "nodejs "
-# 
+#
 # [memory_usage]
 # symbol = "memory "
 # disabled = true
 # threshold = -1
 # style = "bold dimmed green"
-# 
+#
 # [nim]
 # symbol = "nim "
-# 
+#
 # [nix_shell]
 # symbol = "nix "
-# 
+#
 # [ocaml]
 # symbol = "ml "
-# 
+#
 # [package]
 # symbol = "pkg "
-# 
+#
 # [perl]
 # symbol = "pl "
-# 
+#
 # [php]
 # symbol = "php "
-# 
+#
 # [pulumi]
 # symbol = "pulumi "
-# 
+#
 # [purescript]
 # symbol = "purs "
-# 
+#
 # [python]
 # symbol = "py "
-# 
+#
 # [ruby]
 # symbol = "rb "
-# 
+#
 # [rust]
 # symbol = "rs "
-# 
+#
 # [scala]
 # symbol = "scala "
-# 
+#
 # [status]
 # style = "bg:blue"
 # symbol = "🔴 "
@@ -126,10 +126,10 @@ truncate_to_repo = false
 # format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
 # map_symbol = true
 # disabled = false
-# 
+#
 # [sudo]
 # symbol = "sudo "
 # disabled = false
-# 
+#
 # [swift]
 # symbol = "swift "
