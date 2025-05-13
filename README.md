@@ -1,6 +1,6 @@
 # DotFiles
 
-- Few Bash customisations and aliases
+- Fish shell customisations and aliases
 - Neovim as Editor
 - Starship as shell prompt
 - Kitty, Terminator and Alacritty config
@@ -11,12 +11,11 @@ These dotfiles are extended and copied from various sources with appropriate lic
 
 ## Features:
 
-- Few bash customizations(some from [Paul Dotfiles](]https://github.com/paulirish/dotfiles))
+- Few [Fish](https://fishshell.com/) shell customizations and aliases
+- Some Bash shell customizations and aliases are also present in `.bashrc`, `.bash_paths` and `.bash_aliases`
 - Modern and fast terminal emulator [Kitty](https://sw.kovidgoyal.net/kitty/). Previous config with Alacritty with Tmux is also available
-- Shell prompt(Bash) configured with [Starship](https://starship.rs)
+- Shell prompt configured with [Starship](https://starship.rs)
 - [Neovim](https://neovim.io/) config using [nvchad](https://nvchad.com)
-- Bash aliases for daily usage commands with bash, git and some services
-- Print help for bash aliases
 - Lots of helpful git aliases from [here](https://github.com/theskumar/dotfiles)
 - SSH config for modern algorithms from [Mozilla](https://infosec.mozilla.org/guidelines/openssh). For new ssh key: `ssh-keygen -t ed25519 -f ~/.ssh/id_personal_$(date +%Y-%m-%d) -C "personal"`
 - A list of commonly used cli and gui programs to one can install via apt and flatpak. See [New Setup](./new_setup.md)
@@ -33,7 +32,7 @@ These dotfiles are extended and copied from various sources with appropriate lic
 
 ## Note:
 
-The main branch is suitable for bash in Debian/Arch based systems. If you are working on MacOS then checkout the macos branch.
+The main branch is suitable for fish and bash in Debian/Arch based systems. If you are working on MacOS then checkout the macos branch.
 
 ## License
 
