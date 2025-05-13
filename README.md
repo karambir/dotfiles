@@ -18,15 +18,13 @@ These dotfiles are extended and copied from various sources with appropriate lic
 - [Neovim](https://neovim.io/) config using [nvchad](https://nvchad.com)
 - A collection of helpful git aliases from [here](https://github.com/theskumar/dotfiles)
 - SSH config for modern algorithms from [Mozilla](https://infosec.mozilla.org/guidelines/openssh). For new ssh key: `ssh-keygen -t ed25519 -f ~/.ssh/id_personal_$(date +%Y-%m-%d) -C "personal"`
-- A list of commonly used CLI and GUI programs that one can install via apt and flatpak. See [New Setup](./new_setup.md)
+- A list of commonly used CLI and GUI programs that one can install via apt and flatpak. See [New Setup](./new_setup.md) and [Ansible Setup](./ansible-setup/README.md)
 
 ## Usage:
 
-- Clone this repo in home directory
+- Clone this repo in home directory `git clone https://github.com/karambir/dotfiles.git`
+- Run `ansible-playbook -i inventory site.yml --ask-become-pass` from `ansible-setup` directory to install the programs
 - Copy `.config` directories for fish, terminator, tmux, starship and neovim
-- Some programs may need to be installed via system package manager(pacman/apt/brew) or using `uv tool install <pkg>`
-- Have a look at the [New Setup](new_setup.md) file for a list of programs I have found helpful
-- Terminator config uses *FiraCode Nerd Font Mono* font for starship prompt. Install nerd fonts first
 - For Kitty, get themes by `kitten themes`
 - For tmux config, we use tpm as plugin manager. Get it by `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
