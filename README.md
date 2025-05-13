@@ -3,7 +3,7 @@
 - Fish shell customisations and aliases
 - Neovim as Editor
 - Starship as shell prompt
-- Kitty, Terminator and Alacritty config
+- Kitty and Terminator config
 - Tmux config
 - SSH config
 
@@ -13,7 +13,7 @@ These dotfiles are extended and copied from various sources with appropriate lic
 
 - Few [Fish](https://fishshell.com/) shell customizations and aliases
 - Some Bash shell customizations and aliases are also present in `.bashrc`, `.bash_paths` and `.bash_aliases`
-- Modern and fast terminal emulator [Kitty](https://sw.kovidgoyal.net/kitty/). Previous config with Alacritty with Tmux is also available
+- Modern and fast terminal emulator [Kitty](https://sw.kovidgoyal.net/kitty/).
 - Shell prompt configured with [Starship](https://starship.rs)
 - [Neovim](https://neovim.io/) config using [nvchad](https://nvchad.com)
 - Lots of helpful git aliases from [here](https://github.com/theskumar/dotfiles)
@@ -23,7 +23,7 @@ These dotfiles are extended and copied from various sources with appropriate lic
 ## Usage:
 
 - Clone this repo in home directory
-- Copy `.config` dirs for terminator, alacritty, tmux, starship and neovim
+- Copy `.config` dirs for fish, terminator, tmux, starship and neovim
 - Some programs may need to be installed via system package manager(pacman/apt/brew) or [pipx](https://github.com/pipxproject/pipx/)
 - Have a look at [New Setup](new_setup.md) file for list of programs I have found helpful
 - Terminator config uses *FiraCode Nerd Font Mono* font for starship prompt. Install nerd fonts first
