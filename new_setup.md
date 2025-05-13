@@ -4,9 +4,6 @@
 
 - make
 - build-essential
-- python-is-python3
-- python3-dev
-- python3-venv
 - ubuntu-restricted-extras (will display Microsoft fonts license)
 - ubuntu-restricted-addons
 - nvim
@@ -26,15 +23,13 @@
 - ldnsutils  (for drill command)
 - gparted
 - autojump
-- neofetch
-- postgresql-13
+- fastfetch
+- postgresql-16
 - postgresql-contrib
-- postgresql-server-dev-13
+- postgresql-server-dev-16
 - redis-server
 - chromium-browser
 - thunderbird
-- jq
-- s3cmd
 - encfs
 - securefs
 - sirikali
@@ -44,7 +39,6 @@
 - handbrake
 - shotwell
 - gimp
-- pipx
 - timeshift
 - obs-studio
 - transmission-gtk
@@ -57,6 +51,7 @@
 - fonts-anonymous-pro
 - terraform
 - restic
+- uv
 
 Some modern programs for traditional unix commands:
 
@@ -74,11 +69,11 @@ Some modern programs for traditional unix commands:
 With few commands:
 
 ```bash
-sudo apt install make build-essential python3-dev python3-venv python-is-python3 git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils autojump neofetch jq s3cmd encfs securefs ffmpeg pipx nvim kitty
+sudo apt install make build-essential git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils fastfetch autojump encfs securefs ffmpeg nvim kitty
 
-sudo apt install bat exa ripgrep
+sudo apt install bat exa ripgrep dust zoxide gitui httpie uv
 
-sudo apt install postgresql-13 postgresql-server-dev-13 postgresql-contrib redis-server
+sudo apt install postgresql-16 postgresql-server-dev-16 postgresql-contrib redis-server
 
 sudo apt install ubuntu-restricted-extras ubuntu-restricted-addons
 
@@ -119,44 +114,6 @@ Put following in `/etc/docker/daemon.json`:
     "dns": ["1.1.1.1", "1.0.0.1"]
 }
 ```
-
-## Setup ASDF for multiple dev env
-
-- ASDF need some apt packages for installing python from tar.gz.
-- `sudo apt-get install libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev`
-- [Install ASDF](https://asdf-vm.com/) for managing multiple python, rust and node versions
-
-```bash
-asdf plugin add python
-asdf plugin add rust
-asdf plugin add nodejs
-asdf plugin add golang
-asdf install rust latest
-asdf install nodejs lts
-asdf install python latest
-asdf install golang latest
-
-asdf global python system
-asdf global nodejs lts
-asdf global rust latest
-asdf global golang latest
-```
-
-
-## Python specific CLI tools
-
-- [Install pipx](https://github.com/pipxproject/pipx/) for installing user level pip packages easily. Install it using system python as pyenv installed pythons will get overrided more often.
-- Pipx install following:
-  - yt-dlp
-  - streamlink
-  - gallery-dl
-  - awscli
-  - ansible (add `--include-deps` flag)
-  - cookiecutter
-  - pgcli
-  - poetry
-  - pre-commit
-
 
 ## Setup neovim:
 
@@ -211,3 +168,58 @@ flatpak install com.axosoft.GitKraken \
 
 1. Make sure machine name is not conflicting with current [list](https://login.tailscale.com/admin/machines)
 2. Use official [setup instructions](https://tailscale.com/download)
+
+
+## Development Environment Setup
+
+### Common Build Dependencies
+The following packages are useful for building development tools from source. They might be needed by `uv` if it has to build a requested Python version from source when a pre-built version isn't available:
+`sudo apt-get install libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev`
+
+### Python with uv
+`uv` is used for managing Python versions and installing Python CLI tools. Ensure `uv` is installed (it's included in the main `apt install` command list).
+
+**Managing Python Versions with uv:**
+- To list Python versions installable by `uv`: `uv python list-available` (this command is subject to change; refer to `uv python --help` for the latest usage).
+- To install a specific Python version: `uv python install <version>` (e.g., `uv python install 3.13`)
+- In your project directory, creating a `.python-version` file (e.g., containing `3.13`) allows `uv` to automatically use the specified Python version for commands like `uv pip install` or `uv run`.
+- To create and activate a virtual environment with a specific Python version: `uv venv --python <version_or_path> .venv && source .venv/bin/activate`
+  (Replace `<version_or_path>` with a specific version like `3.13` or the path to a Python executable).
+- To create a virtual environment with the current Python version: `uv venv .venv && source .venv/bin/activate`
+
+### Node.js with NVM
+Node Version Manager (NVM) is used to manage Node.js versions.
+
+**Install NVM:**
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+```
+After installation, source your shell's configuration file (e.g., `~/.bashrc`, `~/.zshrc`, or `~/.config/fish/config.fish`) or open a new terminal. Follow the NVM installation output instructions to add the necessary lines to your shell's startup file for automatic loading.
+
+**Using NVM:**
+- To install the latest LTS version of Node.js: `nvm install --lts`
+- To install a specific version: `nvm install <version>` (e.g., `nvm install 20.10.0`)
+- To list installed versions: `nvm ls`
+- To use a specific version in the current shell: `nvm use <version>`
+- To set a default Node.js version for new shells: `nvm alias default <version>`
+
+### Rust and GoLang
+For Rust and GoLang development, install the compilers and tools using your system's package manager (e.g., `apt`):
+
+**Example:**
+```bash
+sudo apt install rustc cargo golang
+```
+
+## Python specific CLI tools
+
+Use `uv tool install <package_name>` to install the following globally managed Python tools:
+  - yt-dlp
+  - streamlink
+  - gallery-dl
+  - cookiecutter
+  - pgcli
+  - poetry
+  - pre-commit
+  - aider-chat
+  - open-webui

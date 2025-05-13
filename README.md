@@ -24,7 +24,7 @@ These dotfiles are extended and copied from various sources with appropriate lic
 
 - Clone this repo in home directory
 - Copy `.config` directories for fish, terminator, tmux, starship and neovim
-- Some programs may need to be installed via system package manager(pacman/apt/brew) or [pipx](https://github.com/pipxproject/pipx/)
+- Some programs may need to be installed via system package manager(pacman/apt/brew) or using `uv tool install <pkg>`
 - Have a look at the [New Setup](new_setup.md) file for a list of programs I have found helpful
 - Terminator config uses *FiraCode Nerd Font Mono* font for starship prompt. Install nerd fonts first
 - For Kitty, get themes by `kitten themes`
