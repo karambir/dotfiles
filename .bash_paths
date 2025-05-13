@@ -6,12 +6,14 @@ if [ -d "/var/lib/flatpak/exports/bin/" ] ; then
     PATH="/var/lib/flatpak/exports/bin/:$PATH"
 fi
 
-# Add zoxide with j command - autojump alternate
-eval "$(zoxide init --cmd j bash)"
-
 # rustup
 if [ -f "$HOME/.cargo/env" ] ; then
     source $HOME/.cargo/env
+fi
+
+# activate nvm
+if [ -f "/usr/share/nvm/init-nvm.sh" ] ; then
+    source /usr/share/nvm/init-nvm.sh
 fi
 
 # gcloud

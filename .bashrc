@@ -123,3 +123,6 @@ fi
 # AUR Makepkg assign more cores for compilation
 # https://wiki.archlinux.org/title/Makepkg#Parallel_compilation
 export MAKEFLAGS="--jobs=$(nproc --ignore=4)"
+
+# Add zoxide with j command - autojump alternate
+eval "$(zoxide init --cmd j bash)"

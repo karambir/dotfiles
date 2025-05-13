@@ -65,8 +65,9 @@ alias du='dust'
 alias cat='bat'
 alias grep='rg'
 alias curl='curlie'
+alias code='flatpak run com.visualstudio.code'
 
-# Run Programs 
+# Run Programs
 alias p="python"
 alias v="vim"
 alias yt='yt-dlp'
@@ -106,8 +107,8 @@ then
 fi
 
 # Directory
-alias	md='mkdir -p'
-alias	rd=rmdir
+alias   md='mkdir -p'
+alias   rd=rmdir
 
 # Git Aliases
 alias gcl='git clone'
