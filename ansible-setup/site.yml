@@ -1,0 +1,23 @@
+---
+- name: Setup development workstation
+  hosts: local
+  become: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  pre_tasks:
+    - name: Update package cache (Ubuntu)
+      apt:
+        update_cache: yes
+      when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+    - name: Update package cache (Arch)
+      pacman:
+        update_cache: yes
+      when: ansible_distribution == 'Archlinux'
+
+  roles:
+    - common
+    - docker
+    - virtualization
+    - development

@@ -1,0 +1,37 @@
+---
+# Virtualization packages
+
+- name: Install QEMU/KVM virtualization packages (Ubuntu)
+  apt:
+    name:
+      - qemu-kvm
+      - libvirt-daemon-system
+      - libvirt-clients
+      - bridge-utils
+      - virt-manager
+    state: present
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install QEMU/KVM virtualization packages (Arch)
+  pacman:
+    name:
+      - qemu
+      - libvirt
+      - virt-manager
+      - bridge-utils
+      - dnsmasq
+      - ebtables
+    state: present
+  when: ansible_distribution == 'Archlinux'
+
+- name: Enable and start libvirtd service
+  systemd:
+    name: libvirtd
+    state: started
+    enabled: yes
+
+- name: Add user to libvirt group
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: libvirt
+    append: yes

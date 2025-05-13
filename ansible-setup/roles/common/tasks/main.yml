@@ -1,0 +1,183 @@
+---
+# Common packages installation
+
+- name: Install essential packages (Ubuntu)
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - make
+    - build-essential
+    - git
+    - ca-certificates
+    - gnupg
+    - tree
+    - wget
+    - curl
+    - htop
+    - glances
+    - nethogs
+    - vnstat
+    - tmux
+    - ldnsutils
+    - fastfetch
+    - autojump
+    - encfs
+    - securefs
+    - ffmpeg
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install essential packages (Arch)
+  pacman:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - make
+    - base-devel
+    - git
+    - ca-certificates
+    - gnupg
+    - tree
+    - wget
+    - curl
+    - htop
+    - glances
+    - nethogs
+    - vnstat
+    - tmux
+    - ldns
+    - fastfetch
+    - autojump
+    - encfs
+    - ffmpeg
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install modern CLI tools (Ubuntu)
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - exa
+    - bat
+    - ripgrep
+    - dust
+    - zoxide
+    - gitui
+    - httpie
+    - tealdeer
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install modern CLI tools (Arch)
+  pacman:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - exa
+    - bat
+    - ripgrep
+    - dust
+    - zoxide
+    - gitui
+    - httpie
+    - tealdeer
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install terminal applications (Ubuntu)
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - terminator
+    - kitty
+    - neovim
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install terminal applications (Arch)
+  pacman:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - terminator
+    - kitty
+    - neovim
+    - starship
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install Starship prompt
+  shell: sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -y
+  args:
+    creates: /usr/local/bin/starship
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install desktop applications (Ubuntu)
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - gparted
+    - timeshift
+    - vlc
+    - handbrake
+    - shotwell
+    - nomacs
+    - gimp
+    - obs-studio
+    - thunderbird
+    - sirikali
+    - nextcloud-desktop
+    - transmission-gtk
+    - code
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install desktop applications (Arch)
+  pacman:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - gparted
+    - timeshift
+    - vlc
+    - handbrake
+    - shotwell
+    - nomacs
+    - gimp
+    - obs-studio
+    - thunderbird
+    - sirikali
+    - nextcloud-client
+    - transmission-gtk
+    - code
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install fonts (Ubuntu)
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - fonts-firacode
+    - fonts-noto-mono
+    - fonts-jetbrains-mono
+    - fonts-inconsolata
+    - fonts-anonymous-pro
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install fonts (Arch)
+  pacman:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - ttf-fira-code
+    - noto-fonts
+    - ttf-jetbrains-mono
+    - ttf-inconsolata
+    - ttf-anonymous-pro
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install Ubuntu restricted extras
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - ubuntu-restricted-extras
+    - ubuntu-restricted-addons
+  when: ansible_distribution == 'Ubuntu'

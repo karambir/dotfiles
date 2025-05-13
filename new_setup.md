@@ -1,141 +1,89 @@
-# System setup
+# System Setup Guide
 
-## normal apt/pacman install
+## Essential Packages
 
-- make
-- build-essential
-- ubuntu-restricted-extras (will display Microsoft fonts license)
-- ubuntu-restricted-addons
-- nvim
-- terminator
-- git
-- ca-certificates
-- gnupg
-- tree
-- wget
-- curl
-- htop
-- glances
-- nethogs
-- vnstat
-- kitty
-- tmux
-- ldnsutils  (for drill command)
-- gparted
-- autojump
-- fastfetch
-- postgresql-16
-- postgresql-contrib
-- postgresql-server-dev-16
-- redis-server
-- chromium-browser
-- thunderbird
-- encfs
-- securefs
-- sirikali
-- nextcloud-desktop
-- ffmpeg
-- vlc
-- handbrake
-- shotwell
-- gimp
-- timeshift
-- obs-studio
-- transmission-gtk
-- nomacs
-- code (Visual Studio Code)
-- fonts-firacode
-- fonts-noto-mono
-- fonts-jetbrains-mono
-- fonts-inconsolata
-- fonts-anonymous-pro
-- terraform
-- restic
-- uv
+The following essential packages should be installed on your system:
 
-Some modern programs for traditional unix commands:
+### Base System Utilities
+- make, build-essential
+- git, ca-certificates, gnupg
+- tree, wget, curl
+- htop, glances, nethogs, vnstat
+- tmux, ldnsutils, fastfetch
+- autojump, encfs, securefs, sirikali
+- ffmpeg, nvim, kitty
 
-- exa (ls)
-- drill (dig)
-- ss (netstat)
-- dust (du)
-- bat (cat)
-- ripgrep (grep)
-- zoxide (autojump)
-- tealdeer (man-pages, not quite a replacement)
+### Modern CLI Tools
+These are modern alternatives to traditional Unix commands:
+- exa (replacement for ls)
+- drill (replacement for dig)
+- dust (replacement for du)
+- bat (replacement for cat)
+- ripgrep (replacement for grep)
+- zoxide (replacement for autojump)
+- tealdeer (simplified man pages)
 - gitui (git TUI)
-- httpie (curl for web apis)
+- httpie (replacement for curl for web APIs)
 
-With few commands:
+### Desktop Applications
+- terminator (terminal emulator)
+- gparted (partition editor)
+- timeshift (system backup)
+- vlc, handbrake (media players)
+- shotwell, nomacs, gimp (image editing)
+- obs-studio (screen recording)
+- thunderbird (email client)
+- nextcloud-desktop (file sync)
+- transmission-gtk (BitTorrent client)
+- code (Visual Studio Code)
 
-```bash
-sudo apt install make build-essential git ca-certificates gnupg tree wget curl htop glances nethogs vnstat tmux ldnsutils fastfetch autojump encfs securefs ffmpeg nvim kitty
+### Fonts
+- Fira Code
+- Noto Mono
+- JetBrains Mono
+- Inconsolata
+- Anonymous Pro
 
-sudo apt install bat exa ripgrep dust zoxide gitui httpie uv
+### Media Codecs
+- ubuntu-restricted-extras
+- ubuntu-restricted-addons
 
-sudo apt install postgresql-16 postgresql-server-dev-16 postgresql-contrib redis-server
+## Development Environment
 
-sudo apt install ubuntu-restricted-extras ubuntu-restricted-addons
+### Database Servers
+- PostgreSQL 16 and related packages
+- Redis server
 
-sudo apt install terminator gparted timeshift vlc handbrake shotwell nomacs gimp obs-studio thunderbird sirikali nextcloud-desktop transmission-gtk code
+### Terminal Prompt
+Install Starship for a better terminal prompt experience.
 
-sudo apt install fonts-firacode fonts-noto-mono fonts-jetbrains-mono fonts-inconsolata fonts-anonymous-pro
-```
+### Virtualization
+Set up QEMU/KVM for running virtual machines:
+- qemu-kvm
+- libvirt-daemon-system
+- libvirt-clients
+- bridge-utils
+- virt-manager
 
+### Docker
+Install Docker Engine and related packages:
+- docker-ce
+- docker-ce-cli
+- containerd.io
+- docker-buildx-plugin
+- docker-compose-plugin
 
-## Setup bash prompt
+Configure Docker to use Cloudflare DNS (1.1.1.1, 1.0.0.1).
 
-- Install Starship `sh -c "$(curl -fsSL https://starship.rs/install.sh)"`
+### Neovim Setup
+Set up Neovim using the [kickstart-repo](https://github.com/nvim-lua/kickstart.nvim).
 
+## External Applications
 
-## Setup qemu/virtual machines
-
-```bash
-sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
-```
-
-## Setup docker
-
-```bash
-# Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-sudo groupadd docker
-sudo usermod -aG docker $USER
-```
-
-Put following in `/etc/docker/daemon.json`:
-
-```json
-{
-    "dns": ["1.1.1.1", "1.0.0.1"]
-}
-```
-
-## Setup neovim:
-
-Setup using this [kickstart-repo](https://github.com/nvim-lua/kickstart.nvim). The docs there recommend cloning and forking it. For now, my usecase of vim is shrinking, so the initial setup from that repo is enough for me.
-
-
-## External DEB/AUR/Flatpak
-
+The following applications can be installed via Flatpak, DEB, AUR, or other package managers:
 - Pycharm
 - Tailscale
-- Nextdns
-- Tailscale
+- NextDNS
 - Steam
 - Telegram
 - Discord
@@ -147,89 +95,53 @@ Setup using this [kickstart-repo](https://github.com/nvim-lua/kickstart.nvim). T
 - Postman
 - Kdenlive
 - DrawIO
+- GitKraken
+- DBeaverCommunity
+- Brave Browser
+- Chromium
+- Insomnia
+- Okular
+- Gwenview
 
-One command for flatpaks
-
-```bash
-flatpak install com.axosoft.GitKraken \
-  com.bitwarden.desktop \
-  com.brave.Browser \
-  com.discordapp.Discord \
-  com.getpostman.Postman \
-  com.github.bleakgrey.tootle \
-  com.nextcloud.desktopclient.nextcloud \
-  com.slack.Slack \
-  com.spotify.Client \
-  io.dbeaver.DBeaverCommunity \
-  io.dbeaver.DBeaverCommunity.Client.mariadb \
-  io.dbeaver.DBeaverCommunity.Client.pgsql \
-  org.chromium.Chromium \
-  org.gnome.Fractal \
-  org.kde.gwenview \
-  org.kde.okular \
-  org.telegram.desktop \
-  rest.insomnia.Insomnia \
-  org.kde.kdenlive \
-  com.jgraph.drawio.desktop
-```
-
-
-## Setup Tailscale
-
-1. Make sure machine name is not conflicting with current [list](https://login.tailscale.com/admin/machines)
-2. Use official [setup instructions](https://tailscale.com/download)
-
+## Tailscale VPN Setup
+1. Ensure your machine name doesn't conflict with existing devices
+2. Follow the official [setup instructions](https://tailscale.com/download)
 
 ## Development Environment Setup
 
 ### Common Build Dependencies
-The following packages are useful for building development tools from source. They might be needed by `uv` if it has to build a requested Python version from source when a pre-built version isn't available:
-`sudo apt-get install libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev`
+The following packages are useful for building development tools from source:
+- libssl-dev, zlib1g-dev, libbz2-dev
+- libreadline-dev, libsqlite3-dev
+- llvm, libncursesw5-dev, xz-utils, tk-dev
+- libxml2-dev, libxmlsec1-dev, libffi-dev, liblzma-dev
 
-### Python with uv
-`uv` is used for managing Python versions and installing Python CLI tools. Ensure `uv` is installed (it's included in the main `apt install` command list).
-
-**Managing Python Versions with uv:**
-- To list Python versions installable by `uv`: `uv python list-available` (this command is subject to change; refer to `uv python --help` for the latest usage).
-- To install a specific Python version: `uv python install <version>` (e.g., `uv python install 3.13`)
-- In your project directory, creating a `.python-version` file (e.g., containing `3.13`) allows `uv` to automatically use the specified Python version for commands like `uv pip install` or `uv run`.
-- To create and activate a virtual environment with a specific Python version: `uv venv --python <version_or_path> .venv && source .venv/bin/activate`
-  (Replace `<version_or_path>` with a specific version like `3.13` or the path to a Python executable).
-- To create a virtual environment with the current Python version: `uv venv .venv && source .venv/bin/activate`
+### Python with UV
+Use UV for managing Python versions and installing Python CLI tools:
+- Install specific Python versions
+- Create and manage virtual environments
+- Install global Python tools
 
 ### Node.js with NVM
-Node Version Manager (NVM) is used to manage Node.js versions.
-
-**Install NVM:**
-```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-```
-After installation, source your shell's configuration file (e.g., `~/.bashrc`, `~/.zshrc`, or `~/.config/fish/config.fish`) or open a new terminal. Follow the NVM installation output instructions to add the necessary lines to your shell's startup file for automatic loading.
-
-**Using NVM:**
-- To install the latest LTS version of Node.js: `nvm install --lts`
-- To install a specific version: `nvm install <version>` (e.g., `nvm install 20.10.0`)
-- To list installed versions: `nvm ls`
-- To use a specific version in the current shell: `nvm use <version>`
-- To set a default Node.js version for new shells: `nvm alias default <version>`
+Use Node Version Manager (NVM) to manage Node.js versions:
+- Install and switch between different Node.js versions
+- Set default Node.js version for new shells
 
 ### Rust and GoLang
-For Rust and GoLang development, install the compilers and tools using your system's package manager (e.g., `apt`):
+Install the compilers and tools for Rust and GoLang development.
 
-**Example:**
-```bash
-sudo apt install rustc cargo golang
-```
+### Python CLI Tools
+Install these useful Python CLI tools:
+- yt-dlp (YouTube downloader)
+- streamlink (stream media player)
+- gallery-dl (image gallery downloader)
+- cookiecutter (project templates)
+- pgcli (PostgreSQL CLI)
+- poetry (Python dependency management)
+- pre-commit (Git hooks manager)
+- aider-chat (AI coding assistant)
+- open-webui (UI for AI models)
 
-## Python specific CLI tools
+---
 
-Use `uv tool install <package_name>` to install the following globally managed Python tools:
-  - yt-dlp
-  - streamlink
-  - gallery-dl
-  - cookiecutter
-  - pgcli
-  - poetry
-  - pre-commit
-  - aider-chat
-  - open-webui
+**Note:** This setup can be automated using the Ansible playbook available in the [ansible-setup](ansible-setup/) directory. See the [README](ansible-setup/README.md) for instructions on how to use the playbook to automate the installation of all these components on Ubuntu or Arch Linux systems.

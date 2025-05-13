@@ -105,6 +105,9 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+### Ansible ###
+*.retry
+
 config/fish/completions/
 config/fish/functions/
 config/fish/conf.d/

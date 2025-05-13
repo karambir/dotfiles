@@ -1,0 +1,235 @@
+---
+# Development tools, languages, and external applications
+
+# Database servers
+- name: Install database servers (Ubuntu)
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - postgresql-16
+    - postgresql-server-dev-16
+    - postgresql-contrib
+    - redis-server
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install database servers (Arch)
+  pacman:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - postgresql
+    - redis
+  when: ansible_distribution == 'Archlinux'
+
+# Python development environment
+- name: Install Python build dependencies (Ubuntu)
+  apt:
+    name:
+      - libssl-dev
+      - zlib1g-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - llvm
+      - libncursesw5-dev
+      - xz-utils
+      - tk-dev
+      - libxml2-dev
+      - libxmlsec1-dev
+      - libffi-dev
+      - liblzma-dev
+    state: present
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install Python build dependencies (Arch)
+  pacman:
+    name:
+      - openssl
+      - zlib
+      - bzip2
+      - readline
+      - sqlite
+      - llvm
+      - ncurses
+      - xz
+      - tk
+      - libxml2
+      - libxmlsec
+      - libffi
+      - xz
+    state: present
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install UV package manager (Ubuntu)
+  apt:
+    name: uv
+    state: present
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install UV package manager (Arch)
+  pacman:
+    name: uv
+    state: present
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install Python CLI tools with uv
+  shell: uv tool install {{ item }}
+  become: false  # Run as normal user
+  loop:
+    - yt-dlp
+    - streamlink
+    - gallery-dl
+    - cookiecutter
+    - pgcli
+    - poetry
+    - pre-commit
+    - aider-chat
+    - open-webui
+
+# Node.js setup with NVM
+- name: Install NVM dependencies
+  package:
+    name:
+      - curl
+      - git
+    state: present
+
+- name: Check if NVM is installed
+  stat:
+    path: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+  register: nvm_installed
+  become: false
+
+- name: Install NVM
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+  become: false
+  when: not nvm_installed.stat.exists
+
+- name: Install Node.js LTS
+  shell: >
+    source {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install --lts
+  args:
+    executable: /bin/bash
+  become: false
+  when: not nvm_installed.stat.exists
+
+- name: Set default Node.js version
+  shell: >
+    source {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm alias default node
+  args:
+    executable: /bin/bash
+  become: false
+  when: not nvm_installed.stat.exists
+
+# Rust and Golang setup
+- name: Install Rust and Golang (Ubuntu)
+  apt:
+    name:
+      - rustc
+      - cargo
+      - golang
+    state: present
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install Rust and Golang (Arch)
+  pacman:
+    name:
+      - rust
+      - go
+    state: present
+  when: ansible_distribution == 'Archlinux'
+
+# External applications and tools
+- name: Install Flatpak (Ubuntu)
+  apt:
+    name: flatpak
+    state: present
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install Flatpak (Arch)
+  pacman:
+    name: flatpak
+    state: present
+  when: ansible_distribution == 'Archlinux'
+
+- name: Add Flathub repository
+  shell: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  become: false
+
+- name: Install applications via Flatpak
+  flatpak:
+    name: "{{ item }}"
+    state: present
+    method: user
+  become: false
+  loop:
+    - com.axosoft.GitKraken
+    - com.bitwarden.desktop
+    - com.brave.Browser
+    - com.discordapp.Discord
+    - com.getpostman.Postman
+    - com.github.bleakgrey.tootle
+    - com.nextcloud.desktopclient.nextcloud
+    - com.slack.Slack
+    - com.spotify.Client
+    - io.dbeaver.DBeaverCommunity
+    - io.dbeaver.DBeaverCommunity.Client.mariadb
+    - io.dbeaver.DBeaverCommunity.Client.pgsql
+    - org.chromium.Chromium
+    - org.gnome.Fractal
+    - org.kde.gwenview
+    - org.kde.okular
+    - org.telegram.desktop
+    - rest.insomnia.Insomnia
+    - org.kde.kdenlive
+    - com.jgraph.drawio.desktop
+
+# Install Tailscale
+- name: Install Tailscale (Ubuntu)
+  block:
+    - name: Add Tailscale GPG key
+      apt_key:
+        url: https://pkgs.tailscale.com/stable/ubuntu/jammy.gpg
+        state: present
+
+    - name: Add Tailscale repository
+      apt_repository:
+        repo: "deb https://pkgs.tailscale.com/stable/ubuntu {{ ansible_distribution_release }} main"
+        state: present
+        filename: tailscale
+
+    - name: Install Tailscale
+      apt:
+        name: tailscale
+        state: present
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install Tailscale (Arch)
+  pacman:
+    name: tailscale
+    state: present
+  when: ansible_distribution == 'Archlinux'
+
+- name: Enable and start Tailscale service
+  systemd:
+    name: tailscaled
+    state: started
+    enabled: yes
+
+# Setup Neovim
+- name: Check if Neovim config directory exists
+  stat:
+    path: "{{ ansible_env.HOME }}/.config/nvim"
+  register: nvim_config
+  become: false
+
+- name: Clone Neovim kickstart repository
+  git:
+    repo: https://github.com/nvim-lua/kickstart.nvim.git
+    dest: "{{ ansible_env.HOME }}/.config/nvim"
+  become: false
+  when: not nvim_config.stat.exists
