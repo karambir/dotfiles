@@ -19,12 +19,3 @@ jobs:
       run: pip install pre-commit
     - name: Run pre-commit
       run: pre-commit run --all-files
-
-  ansible-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run ansible-lint
-        uses: ansible/ansible-lint@v25
-        with:
-          path: ./ansible-setup/

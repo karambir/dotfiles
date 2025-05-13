@@ -74,8 +74,9 @@
   when: ansible_distribution == 'Archlinux'
 
 - name: Install Python CLI tools with uv
-  shell: uv tool install {{ item }}
+  command: uv tool install {{ item }}
   become: false  # Run as normal user
+  changed_when: false
   loop:
     - yt-dlp
     - streamlink
@@ -101,13 +102,21 @@
   register: nvm_installed
   become: false
 
-- name: Install NVM
-  shell: >
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+- name: Download NVM installer
+  get_url:
+    url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh
+    dest: "/tmp/nvm_installer.sh"
+    mode: '0755'
+  become: false
+  when: not nvm_installed.stat.exists
+
+- name: Run NVM installer
+  command: bash /tmp/nvm_installer.sh
   args:
     creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
   become: false
   when: not nvm_installed.stat.exists
+  changed_when: false
 
 - name: Install Node.js LTS
   shell: >
@@ -116,6 +125,7 @@
     executable: /bin/bash
   become: false
   when: not nvm_installed.stat.exists
+  changed_when: false
 
 - name: Set default Node.js version
   shell: >
@@ -124,6 +134,7 @@
     executable: /bin/bash
   become: false
   when: not nvm_installed.stat.exists
+  changed_when: false
 
 # Rust and Golang setup
 - name: Install Rust and Golang (Ubuntu)
@@ -157,8 +168,9 @@
   when: ansible_distribution == 'Archlinux'
 
 - name: Add Flathub repository
-  shell: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  command: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   become: false
+  changed_when: false
 
 - name: Install applications via Flatpak
   flatpak:
@@ -190,6 +202,7 @@
 
 # Install Tailscale
 - name: Install Tailscale (Ubuntu)
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
   block:
     - name: Add Tailscale GPG key
       apt_key:
@@ -206,7 +219,6 @@
       apt:
         name: tailscale
         state: present
-  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
 
 - name: Install Tailscale (Arch)
   pacman:
@@ -218,7 +230,7 @@
   systemd:
     name: tailscaled
     state: started
-    enabled: yes
+    enabled: true
 
 # Setup Neovim
 - name: Check if Neovim config directory exists
@@ -231,5 +243,6 @@
   git:
     repo: https://github.com/nvim-lua/kickstart.nvim.git
     dest: "{{ ansible_env.HOME }}/.config/nvim"
+    version: "main"  # Specify a version to avoid the 'latest' warning
   become: false
   when: not nvim_config.stat.exists

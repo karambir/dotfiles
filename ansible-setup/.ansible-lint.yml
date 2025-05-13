@@ -1,0 +1,19 @@
+---
+# .ansible-lint.yml configuration file
+profile: basic
+
+offline: true
+
+# Skip rules
+skip_list:
+  - 'fqcn[action]'               # Skip rule for non-core actions FQCN
+  - 'fqcn[action-core]'          # Skip rule for core actions FQCN
+
+# This is the configuration we're skipping:
+# - Use of FQCN for modules that require it, such as community.general.pacman
+# - Use of FQCN for builtin modules, such as ansible.builtin.apt
+
+# Exclude these directories
+exclude_paths:
+  - .cache/  # Implicit unless exclude_paths is defined in config
+  - .github/

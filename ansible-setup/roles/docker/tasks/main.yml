@@ -2,12 +2,13 @@
 # Docker installation
 
 - name: Install Docker on Ubuntu
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
   block:
     - name: Create Docker directory for apt keyrings
       file:
         path: /etc/apt/keyrings
         state: directory
-        mode: 0755
+        mode: '0755'
 
     - name: Add Docker GPG apt key
       get_url:
@@ -17,7 +18,9 @@
 
     - name: Add Docker repository for Ubuntu
       apt_repository:
-        repo: "deb [arch={{ ansible_architecture }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        repo: >-
+          deb [arch={{ ansible_architecture }} signed-by=/etc/apt/keyrings/docker.asc]
+          https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
         state: present
         filename: docker
 
@@ -30,8 +33,7 @@
           - docker-buildx-plugin
           - docker-compose-plugin
         state: present
-        update_cache: yes
-  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+        update_cache: true
 
 - name: Install Docker on Arch
   pacman:
@@ -50,13 +52,13 @@
   user:
     name: "{{ ansible_user_id }}"
     groups: docker
-    append: yes
+    append: true
 
 - name: Create Docker daemon configuration directory
   file:
     path: /etc/docker
     state: directory
-    mode: 0755
+    mode: '0755'
 
 - name: Configure Docker daemon
   copy:
@@ -65,10 +67,10 @@
       {
           "dns": ["1.1.1.1", "1.0.0.1"]
       }
-    mode: 0644
+    mode: '0644'
 
 - name: Enable and start Docker service
   systemd:
     name: docker
     state: started
-    enabled: yes
+    enabled: true

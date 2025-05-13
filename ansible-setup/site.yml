@@ -8,12 +8,12 @@
   pre_tasks:
     - name: Update package cache (Ubuntu)
       apt:
-        update_cache: yes
+        update_cache: true
       when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
 
     - name: Update package cache (Arch)
       pacman:
-        update_cache: yes
+        update_cache: true
       when: ansible_distribution == 'Archlinux'
 
   roles:

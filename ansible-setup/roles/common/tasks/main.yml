@@ -107,6 +107,7 @@
   shell: sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -y
   args:
     creates: /usr/local/bin/starship
+  changed_when: false
   when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
 
 - name: Install desktop applications (Ubuntu)

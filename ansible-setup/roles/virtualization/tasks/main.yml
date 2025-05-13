@@ -28,10 +28,10 @@
   systemd:
     name: libvirtd
     state: started
-    enabled: yes
+    enabled: true
 
 - name: Add user to libvirt group
   user:
     name: "{{ ansible_user_id }}"
     groups: libvirt
-    append: yes
+    append: true
