@@ -105,8 +105,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# neochad for neovim config
-config/nvim/.github
 config/fish/completions/
 config/fish/functions/
 config/fish/conf.d/

@@ -160,8 +160,7 @@ asdf global golang latest
 
 ## Setup neovim:
 
-- copy `.config/nvim` from dotfiles repo to `~/.config/nvim`
-- More info [here](https://nvchad.com/quickstart/install#pre-requisites)
+Setup using this [kickstart-repo](https://github.com/nvim-lua/kickstart.nvim). The docs there recommend cloning and forking it. For now, my usecase of vim is shrinking, so the initial setup from that repo is enough for me.
 
 
 ## External DEB/AUR/Flatpak
