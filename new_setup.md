@@ -92,7 +92,7 @@ The following applications can be installed via Flatpak, DEB, AUR, or other pack
 - Fractal
 - Tootle
 - Slack
-- Postman
+- Bruno
 - Kdenlive
 - DrawIO
 - GitKraken

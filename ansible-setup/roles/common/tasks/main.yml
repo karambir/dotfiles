@@ -166,6 +166,7 @@
     # - { name: 'nomacs', binary: 'nomacs' }
     - { name: 'sirikali', binary: 'sirikali' }
     - { name: 'cursor-bin', binary: 'cursor' }
+    - { name: 'fnm-bin', binary: 'fnm' }
   args:
     creates: /usr/bin/{{ item.binary }}
   changed_when: false # yay handles idempotency

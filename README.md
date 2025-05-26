@@ -18,7 +18,7 @@ These dotfiles are extended and copied from various sources with appropriate lic
 - [Neovim](https://neovim.io/) config using [nvchad](https://nvchad.com)
 - A collection of helpful git aliases from [here](https://github.com/theskumar/dotfiles)
 - SSH config for modern algorithms from [Mozilla](https://infosec.mozilla.org/guidelines/openssh). For new ssh key: `ssh-keygen -t ed25519 -f ~/.ssh/id_personal_$(date +%Y-%m-%d) -C "personal"`
-- A list of commonly used CLI and GUI programs that one can install via apt and flatpak. See [New Setup](./new_setup.md) and [Ansible Setup](./ansible-setup/README.md)
+- A comprehensive list of development tools, CLI utilities, and GUI applications. See [New Setup](./new_setup.md) and [Ansible Setup](./ansible-setup/README.md). Automated setup using Ansible with support for both Debian-based and Arch Linux systems
 
 ## Usage:
 

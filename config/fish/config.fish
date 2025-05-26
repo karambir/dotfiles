@@ -50,14 +50,6 @@ if command -v zoxide > /dev/null
     zoxide init --cmd j fish | source
 end
 
-# NVM (Node Version Manager)
-# IMPORTANT: Fish requires a dedicated NVM plugin. The bash source line won't work.
-# 1. Install Fisher plugin manager: https://github.com/jorgebucaran/fisher
-#    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-# 2. Install the NVM fish plugin:
-#    fisher install jorgebucaran/nvm.fish
-# This replaces the need for the `source /usr/share/nvm/init-nvm.sh` line.
-
 # SSH Agent
 # Start ssh-agent if not running
 if test -z "$SSH_AGENT_PID"; and status is-interactive
@@ -112,6 +104,7 @@ alias h 'history'
 alias md 'mkdir -p'
 alias rd 'rmdir' # Note: rmdir only removes empty directories
 alias incognito 'fish --private' # Start a private session (no history saved)
+alias nvm 'fnm'
 
 # Aliases overriding commands
 alias ls 'eza -al --color=always --group-directories-first'

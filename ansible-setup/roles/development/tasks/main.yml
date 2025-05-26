@@ -88,52 +88,67 @@
     - aider-chat
     - open-webui
 
-# Node.js setup with NVM
-- name: Install NVM dependencies
+# Node.js setup with fnm (Fast Node Manager)
+- name: Install fnm dependencies (Debian-based)
   package:
     name:
       - curl
-      - git
+      - unzip
     state: present
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
 
-- name: Check if NVM is installed
+- name: Check if fnm is installed
   stat:
-    path: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
-  register: nvm_installed
+    path: "{{ ansible_env.HOME }}/.local/share/fnm"
+  register: fnm_installed
   become: false
 
-- name: Download NVM installer
+- name: Download fnm installer script (Debian-based)
   get_url:
-    url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh
-    dest: "/tmp/nvm_installer.sh"
+    url: https://fnm.vercel.app/install
+    dest: "/tmp/fnm_installer.sh"
     mode: '0755'
   become: false
-  when: not nvm_installed.stat.exists
+  when:
+    - not fnm_installed.stat.exists
+    - ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
 
-- name: Run NVM installer
-  command: bash /tmp/nvm_installer.sh
-  args:
-    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+- name: Install fnm (Debian-based)
+  shell: |
+    bash /tmp/fnm_installer.sh --install-dir "{{ ansible_env.HOME }}/.local/share/fnm" --skip-shell
   become: false
-  when: not nvm_installed.stat.exists
+  when:
+    - not fnm_installed.stat.exists
+    - ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
   changed_when: false
 
-- name: Install Node.js LTS
-  shell: >
-    source {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install --lts
-  args:
-    executable: /bin/bash
+- name: Create Fish config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/fish/conf.d"
+    state: directory
+    mode: '0755'
   become: false
-  when: not nvm_installed.stat.exists
-  changed_when: false
 
-- name: Set default Node.js version
-  shell: >
-    source {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm alias default node
-  args:
-    executable: /bin/bash
+- name: Setup fnm for Fish shell
+  copy:
+    content: |
+      # fnm (Fast Node Manager) setup
+      set -gx PATH "{{ ansible_env.HOME }}/.local/share/fnm" $PATH
+      fnm env --use-on-cd | source
+    dest: "{{ ansible_env.HOME }}/.config/fish/conf.d/fnm.fish"
+    mode: '0644'
   become: false
-  when: not nvm_installed.stat.exists
+
+- name: Install Node.js LTS with fnm
+  shell: |
+    set -gx PATH "{{ ansible_env.HOME }}/.local/share/fnm" $PATH
+    fnm install --lts
+    fnm use lts-latest
+    fnm default lts-latest
+  args:
+    executable: /usr/bin/fish
+  become: false
+  when: not fnm_installed.stat.exists
   changed_when: false
 
 # Rust and Golang setup
@@ -183,7 +198,7 @@
     - com.bitwarden.desktop
     - com.brave.Browser
     - com.discordapp.Discord
-    - com.getpostman.Postman
+    - com.usebruno.Bruno
     - com.github.bleakgrey.tootle
     - com.nextcloud.desktopclient.nextcloud
     - com.slack.Slack
