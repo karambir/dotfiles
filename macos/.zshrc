@@ -44,6 +44,9 @@ eval "$(starship init zsh)"
 # zoxide for cd
 eval "$(zoxide init --cmd j zsh)"
 
+# activate fnm
+eval "$(fnm env --use-on-cd --shell zsh)"
+
 ###### PATHS
 #-------------------------------------
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
@@ -121,6 +124,7 @@ alias cat='bat'
 alias grep='rg'
 alias curl='curlie'
 alias tree='erd'
+alias nvm='fnm'
 
 alias _ug="brew update && brew upgrade"
 alias sc="brew services"

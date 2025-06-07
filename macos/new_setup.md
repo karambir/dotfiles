@@ -25,13 +25,13 @@ brew install curl git gnupg gnu-sed rsync nmap starship neovim wget openssl@3 ca
 brew install redis postgresql@16 tailscale ollama
 
 # Development tools
-brew install go hugo uv poetry pre-commit ruff justfile google-cloud-sdk kubernetes-cli k9s hashicorp/tap/terraform dopplerhq/cli/doppler
+brew install go hugo fnm uv poetry pre-commit ruff justfile google-cloud-sdk kubernetes-cli k9s hashicorp/tap/terraform dopplerhq/cli/doppler
 
 # Modern CLI tools
 brew install drill dust bat ripgrep zoxide tealdeer gitui httpie fzf erdtree
 
 # GUI applications
-brew install kitty nextcloud firefox firefox-nightly google-chrome bitwarden slack vlc iterm2 visual-studio-code cursor zed pycharm bruno
+brew install kitty nextcloud firefox firefox-nightly google-chrome bitwarden slack vlc iterm2 visual-studio-code cursor zed pycharm bruno discord
 
 # Additional applications
 brew install --cask handbrake tailscale

@@ -126,3 +126,6 @@ export MAKEFLAGS="--jobs=$(nproc --ignore=4)"
 
 # Add zoxide with j command - autojump alternate
 eval "$(zoxide init --cmd j bash)"
+
+# activate fnm
+eval "$(fnm env --use-on-cd --shell bash)"

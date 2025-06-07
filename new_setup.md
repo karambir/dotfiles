@@ -122,8 +122,8 @@ Use UV for managing Python versions and installing Python CLI tools:
 - Create and manage virtual environments
 - Install global Python tools
 
-### Node.js with NVM
-Use Node Version Manager (NVM) to manage Node.js versions:
+### Node.js with FNM
+Use Fast Node Manager (FNM) to manage Node.js versions:
 - Install and switch between different Node.js versions
 - Set default Node.js version for new shells
 
