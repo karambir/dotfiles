@@ -168,8 +168,8 @@ alias -- -="cd -"        # Go back
 alias h='history'
 
 # Directory
-alias	md='mkdir -p'
-alias	rd=rmdir
+alias md='mkdir -p'
+alias rd=rmdir
 
 # Git Aliases
 alias gcl='git clone'
