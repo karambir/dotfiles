@@ -26,16 +26,16 @@ These are modern alternatives to traditional Unix commands:
 - httpie (replacement for curl for web APIs)
 
 ### Desktop Applications
-- terminator (terminal emulator)
-- gparted (partition editor)
-- timeshift (system backup)
-- vlc, handbrake (media players)
-- shotwell, nomacs, gimp (image editing)
-- obs-studio (screen recording)
-- thunderbird (email client)
-- nextcloud-desktop (file sync)
-- transmission-gtk (BitTorrent client)
-- code (Visual Studio Code)
+- Terminator (terminal emulator)
+- GParted (partition editor)
+- Timeshift (system backup)
+- VLC, HandBrake (media players)
+- Shotwell, Nomacs, GIMP (image editing)
+- OBS Studio (screen recording)
+- Thunderbird (email client)
+- Nextcloud Desktop (file sync)
+- Transmission-GTK (BitTorrent client)
+- Visual Studio Code
 
 ### Fonts
 - Fira Code
@@ -81,7 +81,7 @@ Set up Neovim using the [kickstart-repo](https://github.com/nvim-lua/kickstart.n
 ## External Applications
 
 The following applications can be installed via Flatpak, DEB, AUR, or other package managers:
-- Pycharm
+- PyCharm
 - Tailscale
 - NextDNS
 - Steam
@@ -94,9 +94,9 @@ The following applications can be installed via Flatpak, DEB, AUR, or other pack
 - Slack
 - Bruno
 - Kdenlive
-- DrawIO
+- Draw.io
 - GitKraken
-- DBeaverCommunity
+- DBeaver Community
 - Brave Browser
 - Chromium
 - Insomnia
@@ -127,8 +127,8 @@ Use Node Version Manager (NVM) to manage Node.js versions:
 - Install and switch between different Node.js versions
 - Set default Node.js version for new shells
 
-### Rust and GoLang
-Install the compilers and tools for Rust and GoLang development.
+### Rust and Go
+Install the compilers and tools for Rust and Go development.
 
 ### Python CLI Tools
 Install these useful Python CLI tools:
