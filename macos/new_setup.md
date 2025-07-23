@@ -19,19 +19,19 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 ```sh
 # Core utilities
-brew install curl git gnupg gnu-sed rsync nmap starship neovim wget openssl@3 ca-certificates zlib readline xz libmagic libmxml libffi sqlite3 ssh-copy-id zsh-completions tmux
+brew install curl git gnupg gnu-sed jq rsync nmap starship neovim wget openssl@3 ca-certificates zlib readline xz libmagic libmxml libffi sqlite3 ssh-copy-id zsh-completions ldns tmux
 
 # CLI services
 brew install redis postgresql@16 tailscale ollama
 
 # Development tools
-brew install go hugo fnm uv poetry pre-commit ruff justfile google-cloud-sdk kubernetes-cli k9s hashicorp/tap/terraform dopplerhq/cli/doppler
+brew install go hugo fnm uv poetry pre-commit ruff justfile google-cloud-sdk kubernetes-cli k9s helm helmfile argocd hashicorp/tap/terraform dopplerhq/cli/doppler
 
 # Modern CLI tools
-brew install drill dust bat ripgrep zoxide tealdeer gitui httpie fzf erdtree
+brew install fd dust bat ripgrep zoxide tealdeer gitui httpie fzf erdtree curlie
 
 # GUI applications
-brew install kitty nextcloud firefox firefox-nightly google-chrome bitwarden slack vlc iterm2 visual-studio-code cursor zed pycharm bruno discord
+brew install kitty nextcloud firefox firefox-nightly google-chrome bitwarden slack vlc iterm2 visual-studio-code cursor zed pycharm bruno discord skim
 
 # Additional applications
 brew install --cask handbrake tailscale

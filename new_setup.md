@@ -16,7 +16,7 @@ The following essential packages should be installed on your system:
 ### Modern CLI Tools
 These are modern alternatives to traditional Unix commands:
 - exa (replacement for ls)
-- drill (replacement for dig)
+- drill (replacement for dig, provided by ldnsutils)
 - dust (replacement for du)
 - bat (replacement for cat)
 - ripgrep (replacement for grep)
