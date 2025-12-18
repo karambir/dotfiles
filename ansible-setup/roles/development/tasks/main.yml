@@ -78,13 +78,24 @@
   become: false  # Run as normal user
   changed_when: false
   loop:
-    - yt-dlp
     - streamlink
     - gallery-dl
     - cookiecutter
     - pgcli
-    - poetry
-    - pre-commit
+
+- name: Install Python CLI tools with uv (with extras)
+  command: uv tool install {{ item.name }} --with {{ item.extra }}
+  become: false
+  changed_when: false
+  loop:
+    - { name: "keyring", extra: "keyrings.google-artifactregistry-auth" }
+    - { name: "yt-dlp", extra: "yt-dlp-ejs" }
+
+- name: Install Python CLI tools with uv (specific Python version)
+  command: uv tool install --python 3.12 {{ item }}
+  become: false
+  changed_when: false
+  loop:
     - aider-chat
     - open-webui
 
