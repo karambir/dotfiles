@@ -9,7 +9,6 @@ end
 fish_add_path "$HOME/.local/share/fnm"
 fish_add_path /var/lib/flatpak/exports/bin/
 fish_add_path $HOME/.local/share/JetBrains/Toolbox/scripts
-fish_add_path $HOME/.local/google-cloud-sdk/bin
 
 # --- Linux Aliases ---
 # Detect package manager and set aliases
@@ -33,7 +32,6 @@ alias sc "sudo systemctl"
 alias scu "systemctl --user"
 alias fo "xdg-open"
 alias watchcpu 'watch -n.1 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
-alias code "flatpak run com.visualstudio.code"
 
 # --- SSH Agent ---
 # Start ssh-agent if not running (macOS uses Keychain instead)

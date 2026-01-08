@@ -108,6 +108,8 @@ $RECYCLE.BIN/
 ### Ansible ###
 *.retry
 
+### Fish Shell ###
+# Ignore auto-generated completions (can be regenerated with commands like `fnm completions --shell fish`)
 config/fish/completions/
-config/fish/functions/
+# Ignore machine-specific state and runtime data
 config/fish/fish_variables

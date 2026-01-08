@@ -20,6 +20,10 @@ fish_add_path "/opt/homebrew/opt/openjdk/bin"
 fish_add_path "/opt/homebrew/opt/gnu-sed/libexec/gnubin"
 fish_add_path "/opt/homebrew/opt/postgresql@16/bin"
 
+# --- macOS-specific Tools ---
+fish_add_path "$HOME/.rd/bin"
+fish_add_path "$HOME/.local/google-cloud-sdk/bin"
+
 # --- Compiler Flags (Homebrew) ---
 if status is-interactive
     # zlib, curl, sqlite

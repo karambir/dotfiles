@@ -31,7 +31,6 @@ end
 # --- PATH Setup ---
 # OS-specific paths are in conf.d/macos.fish and conf.d/linux.fish
 fish_add_path $HOME/.cargo/bin
-fish_add_path "$HOME/.rd/bin"
 fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/.local/npm-global/bin"
 
@@ -54,6 +53,12 @@ end
 # fnm(better nvm)
 if command -v fnm > /dev/null
     fnm env --use-on-cd --shell fish | source
+end
+
+# uv (Python package manager)
+# (Ensure uv is installed: https://docs.astral.sh/uv/)
+if command -v uv > /dev/null
+    uv generate-shell-completion fish | source
 end
 
 # SSH Agent - handled in conf.d/linux.fish (macOS uses Keychain)
