@@ -110,5 +110,4 @@ $RECYCLE.BIN/
 
 config/fish/completions/
 config/fish/functions/
-config/fish/conf.d/
 config/fish/fish_variables

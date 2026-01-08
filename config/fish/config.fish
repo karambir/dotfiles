@@ -1,4 +1,8 @@
 # ~/.config/fish/config.fish
+# -gx means set global variable and export to child processes
+
+set -x LANG en_US.UTF-8
+set fish_greeting
 
 # --- Basic Setup ---
 # Only run commands for interactive sessions
@@ -21,20 +25,17 @@ if status is-interactive
 
     # Set parallel make jobs (adjust ignore count as needed)
     # set -gx MAKEFLAGS "--jobs=(nproc --ignore=4)"
+
 end
 
 # --- PATH Setup ---
-# Fish automatically includes ~/.local/bin if it exists.
-# Add other paths using fish_add_path (ensures no duplicates)
-# From bash_paths.txt
-fish_add_path /var/lib/flatpak/exports/bin/
-fish_add_path $HOME/.local/share/JetBrains/Toolbox/scripts
-# Add Cargo bin path (Rust)
+# OS-specific paths are in conf.d/macos.fish and conf.d/linux.fish
 fish_add_path $HOME/.cargo/bin
-# Add Google Cloud SDK path (assuming default install location)
-fish_add_path $HOME/.local/google-cloud-sdk/bin
+fish_add_path "$HOME/.rd/bin"
 fish_add_path "$HOME/.local/bin"
+fish_add_path "$HOME/.local/npm-global/bin"
 
+# fish_update_completions
 
 # --- Tool Initializations ---
 
@@ -50,14 +51,12 @@ if command -v zoxide > /dev/null
     zoxide init --cmd j fish | source
 end
 
-# SSH Agent
-# Start ssh-agent if not running
-if test -z "$SSH_AGENT_PID"; and status is-interactive
-    set -U XDG_RUNTIME_DIR (mktemp -d -p "$TMPDIR" ssh-agent.XXXXXX) # Store socket in a unique temp dir if needed, or use default
-    eval (ssh-agent -c | sed 's/^echo/#echo/') > /dev/null
-    # The above line sets SSH_AUTH_SOCK and SSH_AGENT_PID
-    # Fish automatically exports them if set with -gx, but eval works here too.
+# fnm(better nvm)
+if command -v fnm > /dev/null
+    fnm env --use-on-cd --shell fish | source
 end
+
+# SSH Agent - handled in conf.d/linux.fish (macOS uses Keychain)
 
 # --- Load Aliases and Functions ---
 # Fish automatically loads functions from ~/.config/fish/functions/
@@ -72,17 +71,16 @@ end
 # --- Aliases (Alternatively, place in ~/.config/fish/conf.d/aliases.fish) ---
 # General Aliases
 alias mycow 'fortune | cowsay'
-alias watchcpu 'watch -n.1 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
+# alias myproxy='ssh -D 8123 -f -C -q -N $1'
+alias myproxystart='ssh -D 8123 -S /tmp/.ssh-myproxy -M -f -C -q -N $1'
+alias myproxycheck='ssh -S /tmp/.ssh-myproxy -O check $1'
+alias myproxyexit='ssh -S /tmp/.ssh-myproxy -O exit $1'
+alias generaterandom='openssl rand -hex $1'
 alias myip "curl -4 ifconfig.co"
 alias myip6 "curl -6 ifconfig.co"
-alias _ug "yay -Syu --devel --needed; and flatpak update --noninteractive" # Fish uses ; and/or
-alias unlock 'sudo rm /var/lib/pacman/db.lck'
-alias orphan 'sudo pacman -Rns (pacman -Qtdq)' # Command substitution () is same
-alias sc "sudo systemctl"
 alias dc 'docker compose'
 alias docker-compose 'docker compose'
 alias df 'df -h'
-alias fo 'xdg-open'
 alias pyclean 'find . -name \*.pyc -type f -ls -delete'
 alias pipgrep 'pip freeze | grep -i '
 alias psgrep 'ps aux | grep '
@@ -104,7 +102,6 @@ alias h 'history'
 alias md 'mkdir -p'
 alias rd 'rmdir' # Note: rmdir only removes empty directories
 alias incognito 'fish --private' # Start a private session (no history saved)
-alias nvm 'fnm'
 
 # Aliases overriding commands
 alias ls 'eza -al --color=always --group-directories-first'
@@ -118,17 +115,19 @@ alias du 'dust'
 alias cat 'bat'
 alias grep 'rg' # Ripgrep alias
 alias curl 'curlie'
-alias code 'flatpak run com.visualstudio.code'
+alias nvm 'fnm'
+
 alias p "python"
 alias v "nvim" # Use $EDITOR or explicitly nvim
 alias yt 'yt-dlp'
+# alias yt 'yt-dlp --remote-components ejs:github'
 alias sl 'streamlink'
 alias s "sudo"
 alias root "sudo su"
 
-# Conditional alias for shuf (if gshuf exists)
-if not command -v gshuf > /dev/null
-  alias shuf 'gshuf'
+# Conditional alias for shuf (macOS has gshuf from coreutils, Linux has native shuf)
+if command -v gshuf > /dev/null
+    alias shuf 'gshuf'
 end
 
 # Conditional alias for tree (if tree command doesn't exist)
@@ -180,10 +179,5 @@ set -U fish_history_size 500000 # Combine HISTSIZE/HISTFILESIZE
 # HISTCONTROL=ignorespace -> Fish uses `fish_history=erasedups` (default) or `fish_history=contains`
 # histappend is default in Fish
 # cmdhist is default in Fish
-set -U fish_color_autosuggestion 555 brblack
-set -U fish_color_command blue
-set -U fish_color_error red --bold
-set -U fish_color_param cyan
-# Customize other colors via `fish_config` web UI
 
 # --- End of config.fish ---

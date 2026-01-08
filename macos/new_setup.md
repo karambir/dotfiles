@@ -135,11 +135,11 @@ uv python install 3.10 3.11 3.12 3.13
 
 # Install tools
 uv tool install keyring --with keyrings.google-artifactregistry-auth
-uv tool install yt-dlp
+uv tool install yt-dlp --with yt-dlp-ejs
 uv tool install cookiecutter
 uv tool install gallery-dl
 uv tool install streamlink
 uv tool install pgcli
-uv tool install aider-chat
+uv tool install --python 3.12 aider-chat
 uv tool install --python 3.12 open-webui
 ```
