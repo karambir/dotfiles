@@ -1,6 +1,3 @@
-# Fish theme configuration
-# Colors using global scope (fish 4.3+)
-
 set --global fish_color_autosuggestion 555 brblack
 set --global fish_color_cancel -r
 set --global fish_color_command blue

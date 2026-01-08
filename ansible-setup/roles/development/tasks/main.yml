@@ -111,7 +111,7 @@
 - name: Check if fnm is installed
   stat:
     path: "{{ ansible_env.HOME }}/.local/share/fnm"
-  register: fnm_installed
+  register: development_fnm_installed
   become: false
 
 - name: Download fnm installer script (Debian-based)
@@ -121,7 +121,7 @@
     mode: '0755'
   become: false
   when:
-    - not fnm_installed.stat.exists
+    - not development_fnm_installed.stat.exists
     - ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
 
 - name: Install fnm (Debian-based)
@@ -129,7 +129,7 @@
     bash /tmp/fnm_installer.sh --install-dir "{{ ansible_env.HOME }}/.local/share/fnm" --skip-shell
   become: false
   when:
-    - not fnm_installed.stat.exists
+    - not development_fnm_installed.stat.exists
     - ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
   changed_when: false
 
@@ -159,7 +159,7 @@
   args:
     executable: /usr/bin/fish
   become: false
-  when: not fnm_installed.stat.exists
+  when: not development_fnm_installed.stat.exists
   changed_when: false
 
 # Rust and Golang setup
@@ -262,7 +262,7 @@
 - name: Check if Neovim config directory exists
   stat:
     path: "{{ ansible_env.HOME }}/.config/nvim"
-  register: nvim_config
+  register: development_nvim_config
   become: false
 
 - name: Clone Neovim kickstart repository
@@ -271,4 +271,4 @@
     dest: "{{ ansible_env.HOME }}/.config/nvim"
     version: "main"  # Specify a version to avoid the 'latest' warning
   become: false
-  when: not nvim_config.stat.exists
+  when: not development_nvim_config.stat.exists
