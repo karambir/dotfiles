@@ -118,7 +118,9 @@ The following packages are useful for building development tools from source:
 
 ### Python with UV
 Use UV for managing Python versions and installing Python CLI tools:
-- Install specific Python versions
+```sh
+uv python install 3.10 3.11 3.12 3.13 3.14
+```
 - Create and manage virtual environments
 - Install global Python tools
 
@@ -137,7 +139,7 @@ Install these useful Python CLI tools:
 - gallery-dl (image gallery downloader)
 - cookiecutter (project templates)
 - pgcli (PostgreSQL CLI)
-- poetry (Python dependency management)
+- keyring (credential storage)
 - pre-commit (Git hooks manager)
 - aider-chat (AI coding assistant)
 - open-webui (UI for AI models)

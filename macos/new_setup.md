@@ -131,10 +131,11 @@ Install using uv:
 
 ```sh
 # Install Python versions
-uv python install 3.10 3.11 3.12 3.13
+uv python install 3.10 3.11 3.12 3.13 3.14
 
 # Install tools
 uv tool install keyring --with keyrings.google-artifactregistry-auth
+uv tool install pre-commit --with pre-commit-uv
 uv tool install yt-dlp --with yt-dlp-ejs
 uv tool install cookiecutter
 uv tool install gallery-dl

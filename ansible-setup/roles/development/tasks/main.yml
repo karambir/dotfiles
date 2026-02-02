@@ -73,6 +73,17 @@
     state: present
   when: ansible_distribution == 'Archlinux'
 
+- name: Install Python versions with uv
+  command: uv python install {{ item }}
+  become: false
+  changed_when: false
+  loop:
+    - "3.10"
+    - "3.11"
+    - "3.12"
+    - "3.13"
+    - "3.14"
+
 - name: Install Python CLI tools with uv
   command: uv tool install {{ item }}
   become: false  # Run as normal user
@@ -89,6 +100,7 @@
   changed_when: false
   loop:
     - { name: "keyring", extra: "keyrings.google-artifactregistry-auth" }
+    - { name: "pre-commit", extra: "pre-commit-uv" }
     - { name: "yt-dlp", extra: "yt-dlp-ejs" }
 
 - name: Install Python CLI tools with uv (specific Python version)
