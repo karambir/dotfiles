@@ -30,6 +30,18 @@ These dotfiles are extended and copied from various sources with appropriate lic
 4. For Kitty, get themes by running `kitten themes`
 5. For tmux configuration, we use tpm as plugin manager. Get it by running `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
+## Arch Linux Notes:
+
+### ZFS update with yay
+
+When updating ZFS packages, yay may fail with a dependency conflict like:
+`installing zfs-utils (x.y.z) breaks dependency 'zfs-utils=x.y.z-old' required by zfs-dkms`
+
+Fix: update both packages together in one transaction:
+```
+yay -S zfs-dkms zfs-utils
+```
+
 ## macOS Note:
 
 There is a macOS setup guide [here](./macos/new_setup.md) with [zshrc](./macos/.zshrc)

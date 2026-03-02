@@ -7,7 +7,7 @@ fish_add_path /var/lib/flatpak/exports/bin/
 fish_add_path $HOME/.local/share/JetBrains/Toolbox/scripts
 
 if status is-interactive
-    set -gx MAKEFLAGS "--jobs=(nproc --ignore=4)"
+    set -gx MAKEFLAGS "--jobs="(nproc --ignore=4)
 end
 
 if command -v apt > /dev/null
