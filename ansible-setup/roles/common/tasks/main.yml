@@ -97,6 +97,14 @@
     - starship
   when: ansible_distribution == 'Archlinux'
 
+- name: Install AI tools (Arch)
+  pacman:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - opencode
+  when: ansible_distribution == 'Archlinux'
+
 - name: Install Starship prompt
   shell: sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -y
   args:

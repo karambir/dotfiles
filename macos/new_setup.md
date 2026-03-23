@@ -25,7 +25,7 @@ brew install curl git gnupg gnu-sed jq rsync nmap starship neovim wget openssl@3
 brew install redis postgresql@16 tailscale ollama
 
 # Development tools
-brew install go hugo fnm uv poetry pre-commit ruff justfile google-cloud-sdk kubernetes-cli k9s helm helmfile argocd hashicorp/tap/terraform dopplerhq/cli/doppler
+brew install go hugo fnm uv poetry pre-commit ruff justfile google-cloud-sdk kubernetes-cli k9s helm helmfile argocd hashicorp/tap/terraform dopplerhq/cli/doppler anomalyco/tap/opencode
 
 # Modern CLI tools
 brew install fd dust bat ripgrep zoxide tealdeer gitui httpie fzf erdtree curlie

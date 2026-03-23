@@ -82,6 +82,7 @@ alias nvm 'fnm'
 
 alias p "python"
 alias v "nvim"
+alias vim "nvim"
 alias yt 'yt-dlp'
 alias sl 'streamlink'
 alias s "sudo"

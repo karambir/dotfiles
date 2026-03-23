@@ -102,6 +102,7 @@ The following applications can be installed via Flatpak, DEB, AUR, or other pack
 - Insomnia
 - Okular
 - Gwenview
+- OpenCode
 
 ## Tailscale VPN Setup
 1. Ensure your machine name doesn't conflict with existing devices
