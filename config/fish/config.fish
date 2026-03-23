@@ -124,5 +124,3 @@ alias gll 'git log --graph --pretty=oneline --abbrev-commit'
 alias gitlog "git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias grb 'git rebase -p'
 alias gup 'git fetch origin && git rebase origin/(git_current_branch)'
-
-set -U fish_history_size 500000
