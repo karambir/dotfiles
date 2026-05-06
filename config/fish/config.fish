@@ -3,7 +3,7 @@ set fish_greeting
 
 if status is-interactive
     set -gx EDITOR nvim
-    set -gx MANPAGER "sh -c 'sed -u -e \\\"s/\\\\x1B\\[[0-9;]*m//g; s/.\\\\x08//g\\\" | bat -p -lman'"
+    set -gx MANPAGER "sh -c 'sed -u -e \"s/\\x1B\\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 
     set -gx LESS_TERMCAP_mb (printf '\e[01;31m')
     set -gx LESS_TERMCAP_md (printf '\e[01;38;5;74m')
@@ -38,10 +38,10 @@ end
 # SSH Agent handled in conf.d/linux.fish (macOS uses Keychain)
 
 alias mycow 'fortune | cowsay'
-alias myproxystart='ssh -D 8123 -S /tmp/.ssh-myproxy -M -f -C -q -N $1'
-alias myproxycheck='ssh -S /tmp/.ssh-myproxy -O check $1'
-alias myproxyexit='ssh -S /tmp/.ssh-myproxy -O exit $1'
-alias generaterandom='openssl rand -hex $1'
+function myproxystart; ssh -D 8123 -S /tmp/.ssh-myproxy -M -f -C -q -N $argv[1]; end
+function myproxycheck; ssh -S /tmp/.ssh-myproxy -O check $argv[1]; end
+function myproxyexit; ssh -S /tmp/.ssh-myproxy -O exit $argv[1]; end
+function generaterandom; openssl rand -hex $argv[1]; end
 alias myip "curl -4 ifconfig.co"
 alias myip6 "curl -6 ifconfig.co"
 alias dc 'docker compose'

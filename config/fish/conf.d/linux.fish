@@ -28,7 +28,6 @@ alias sc "sudo systemctl"
 alias scu "systemctl --user"
 alias fo "xdg-open"
 alias watchcpu 'watch -n.1 "cat /proc/cpuinfo | grep \"^[c]pu MHz\""'
-if test -z "$SSH_AGENT_PID"; and status is-interactive
-    set -U XDG_RUNTIME_DIR (mktemp -d -p "$TMPDIR" ssh-agent.XXXXXX)
-    eval (ssh-agent -c | sed 's/^echo/#echo/') > /dev/null
+if test -z "$SSH_CONNECTION"
+    set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
 end

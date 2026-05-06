@@ -57,6 +57,12 @@ These are modern alternatives to traditional Unix commands:
 ### Terminal Prompt
 Install Starship for a better terminal prompt experience.
 
+### SSH Agent
+Enable the systemd user service (included in openssh) so the agent starts at login:
+```sh
+systemctl --user enable --now ssh-agent
+```
+
 ### Virtualization
 Set up QEMU/KVM for running virtual machines:
 - qemu-kvm

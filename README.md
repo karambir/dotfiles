@@ -27,8 +27,9 @@ These dotfiles are extended and copied from various sources with appropriate lic
 1. Clone this repo in your home directory: `git clone https://github.com/karambir/dotfiles.git`
 2. Run `ansible-playbook -i inventory site.yml --ask-become-pass` from the `ansible-setup` directory to install the programs
 3. Copy `.config` directories for fish, terminator, tmux, starship, and neovim
-4. For Kitty, get themes by running `kitten themes`
-5. For tmux configuration, we use tpm as plugin manager. Get it by running `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+4. On Linux, enable the SSH agent systemd service: `systemctl --user enable --now ssh-agent`
+5. For Kitty, get themes by running `kitten themes`
+6. For tmux configuration, we use tpm as plugin manager. Get it by running `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
 ## Arch Linux Notes:
 
