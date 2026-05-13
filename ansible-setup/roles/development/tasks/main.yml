@@ -86,7 +86,7 @@
 
 - name: Install Python CLI tools with uv
   command: uv tool install {{ item }}
-  become: false  # Run as normal user
+  become: false # Run as normal user
   changed_when: false
   loop:
     - streamlink
@@ -94,22 +94,15 @@
     - cookiecutter
     - pgcli
 
-- name: Install Python CLI tools with uv (with extras)
-  command: uv tool install {{ item.name }} --with {{ item.extra }}
+- name: Install Python CLI tools with uv (with extras and custom python version)
+  command: uv tool install --python {{ item.python }} {{ item.name }} --with {{ item.extra }}
   become: false
   changed_when: false
   loop:
-    - { name: "keyring", extra: "keyrings.google-artifactregistry-auth" }
-    - { name: "pre-commit", extra: "pre-commit-uv" }
-    - { name: "yt-dlp", extra: "yt-dlp-ejs" }
-
-- name: Install Python CLI tools with uv (specific Python version)
-  command: uv tool install --python 3.12 {{ item }}
-  become: false
-  changed_when: false
-  loop:
-    - aider-chat
-    - open-webui
+    - { name: "keyring", extra: "keyrings.google-artifactregistry-auth", python: "3.13" }
+    - { name: "pre-commit", extra: "pre-commit-uv", python: "3.13" }
+    - { name: "yt-dlp", extra: "yt-dlp-ejs", python: "3.12" }
+    - { name: "open-webui", extra: "greenlet", python: "3.12" }
 
 # Node.js setup with fnm (Fast Node Manager)
 - name: Install fnm dependencies (Debian-based)
@@ -130,7 +123,7 @@
   get_url:
     url: https://fnm.vercel.app/install
     dest: "/tmp/fnm_installer.sh"
-    mode: '0755'
+    mode: "0755"
   become: false
   when:
     - not development_fnm_installed.stat.exists
@@ -149,7 +142,7 @@
   file:
     path: "{{ ansible_env.HOME }}/.config/fish/conf.d"
     state: directory
-    mode: '0755'
+    mode: "0755"
   become: false
 
 - name: Setup fnm for Fish shell
@@ -159,7 +152,7 @@
       set -gx PATH "{{ ansible_env.HOME }}/.local/share/fnm" $PATH
       fnm env --use-on-cd | source
     dest: "{{ ansible_env.HOME }}/.config/fish/conf.d/fnm.fish"
-    mode: '0644'
+    mode: "0644"
   become: false
 
 - name: Install Node.js LTS with fnm
@@ -281,6 +274,6 @@
   git:
     repo: https://github.com/nvim-lua/kickstart.nvim.git
     dest: "{{ ansible_env.HOME }}/.config/nvim"
-    version: "main"  # Specify a version to avoid the 'latest' warning
+    version: "main" # Specify a version to avoid the 'latest' warning
   become: false
   when: not development_nvim_config.stat.exists

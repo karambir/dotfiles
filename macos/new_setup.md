@@ -141,6 +141,5 @@ uv tool install cookiecutter
 uv tool install gallery-dl
 uv tool install streamlink
 uv tool install pgcli
-uv tool install --python 3.12 aider-chat
-uv tool install --python 3.12 open-webui
+uv tool install --python 3.12 open-webui --with greenlet
 ```
