@@ -84,6 +84,7 @@ alias p "python"
 alias v "nvim"
 alias vim "nvim"
 alias yt 'yt-dlp'
+alias ytmusic 'yt-dlp --format="ba" --extract-audio --add-metadata --embed-thumbnail -o "%(title)s.%(ext)s" --parse-metadata "Ado: %(meta_artist)s"'
 alias sl 'streamlink'
 alias s "sudo"
 alias root "sudo su"
