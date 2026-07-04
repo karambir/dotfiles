@@ -5,7 +5,7 @@ end
 if status is-interactive
     set -gx OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES
 end
-fish_add_path /opt/homebrew/bin
+fish_add_path "/opt/homebrew/bin"
 fish_add_path "/opt/homebrew/opt/openssl@3/bin"
 fish_add_path "/opt/homebrew/opt/ssh-copy-id/bin"
 fish_add_path "/opt/homebrew/opt/curl/bin"
@@ -21,6 +21,9 @@ if status is-interactive
     set -gx --append CPPFLAGS "-I/opt/homebrew/opt/zlib/include" "-I/opt/homebrew/opt/curl/include" "-I/opt/homebrew/opt/sqlite/include"
     set -gx --append --path PKG_CONFIG_PATH "/opt/homebrew/opt/zlib/lib/pkgconfig" "/opt/homebrew/opt/curl/lib/pkgconfig" "/opt/homebrew/opt/sqlite/lib/pkgconfig"
 end
-alias _ug "brew update && brew upgrade"
+alias _ug "HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1 brew update && HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1 brew upgrade"
 alias sc "brew services"
 alias fo "open"
+
+# AI Agents
+set -gx DISABLE_TELEMETRY 1
