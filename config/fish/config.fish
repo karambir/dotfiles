@@ -35,6 +35,10 @@ if command -v uv > /dev/null
     uv generate-shell-completion fish | source
 end
 
+if command -v gwq > /dev/null
+    gwq completion fish | source
+end
+
 # SSH Agent handled in conf.d/linux.fish (macOS uses Keychain)
 
 alias mycow 'fortune | cowsay'

@@ -13,7 +13,7 @@ end
 if command -v apt > /dev/null
     alias _ug "sudo apt update && sudo apt upgrade"
 else if command -v yay > /dev/null
-    alias _ug "yay -Syu --devel --needed && flatpak update --noninteractive"
+    alias _ug "yay -Syu --devel --needed && sudo flatpak update --noninteractive"
     alias unlock "sudo rm /var/lib/pacman/db.lck"
     alias orphan "sudo pacman -Rns (pacman -Qtdq)"
 else if command -v pacman > /dev/null
