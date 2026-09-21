@@ -151,6 +151,22 @@ Install these useful Python CLI tools:
 - aider-chat (AI coding assistant)
 - open-webui (UI for AI models)
 
+## Auto-Start User Services on WoL Wake
+
+Enable linger so systemd user services (e.g. Jellyfin via docker compose) start at boot/wake without requiring a graphical login:
+
+```sh
+sudo loginctl enable-linger <username>
+
+# Verify
+loginctl show-user <username> | rg Linger
+# Linger=yes
+```
+
+This starts `user@<UID>.service` immediately on boot/wake, bringing up all `--user` services. No DE session is created -- the lock screen stays until manual login.
+
+- [systemd/User - ArchWiki](https://wiki.archlinux.org/title/Systemd/User#Automatic_start-up_of_systemd_user_instances)
+
 ---
 
 **Note:** This setup can be automated using the Ansible playbook available in the [ansible-setup](ansible-setup/) directory. See the [README](ansible-setup/README.md) for instructions on how to use the playbook to automate the installation of all these components on Ubuntu or Arch Linux systems.
