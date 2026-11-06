@@ -31,6 +31,26 @@ These dotfiles are extended and copied from various sources with appropriate lic
 5. For Kitty, get themes by running `kitten themes`
 6. For tmux configuration, we use tpm as plugin manager. Get it by running `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
+### Kitty screenshake
+
+Failed interactive Fish commands trigger a silent, 150 ms horizontal shake in
+Kitty, based on [Jonathan Davies's shader](https://jcd.pub/2026/11/04/screenshake-shaders-for-kitty/).
+Requires Kitty 0.49+ and the Slang shader compiler (`slangc`). On Arch Linux,
+install the compiler with `sudo pacman -S --needed shader-slang`.
+
+Copy `config/kitty/shaders/` to `~/.config/kitty/shaders/` and
+`config/fish/conf.d/kitty-screenshake.fish` to `~/.config/fish/conf.d/`.
+The Kitty settings are in the terminal bell section of `config/kitty/kitty.conf`:
+`custom_shaders shake`, `enable_audio_bell no`, and `visual_bell_duration 0.00001`.
+
+Open a new Kitty window, or reload Kitty with `Ctrl+Shift+F5` and run
+`source ~/.config/fish/conf.d/kitty-screenshake.fish` in existing Fish shells.
+Run `false` to try it; `printf '\a'` tests the shader directly.
+Adjust `max_displacement` (pixels) and `animation_stop` (milliseconds) in
+`~/.config/kitty/shaders/shake.pipeline`, then reload Kitty.
+To disable the effect, remove `custom_shaders shake`, set `visual_bell_duration 0`,
+and remove the Fish snippet; reload Kitty and start a new Fish shell.
+
 ## Arch Linux Notes:
 
 ### ZFS update with yay

@@ -1,0 +1,12 @@
+# Horizontal screenshake on the terminal bell, fading out over 150 ms.
+# https://jcd.pub/2026/11/04/screenshake-shaders-for-kitty/
+startgroup
+    animation_start bell-in-window
+    animation_stop 150
+    animation_curve ease-out
+    animation_step 1
+    shaders shake
+
+    # Maximum horizontal displacement in pixels.
+    var float max_displacement 15.0
+endgroup
